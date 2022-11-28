@@ -16,11 +16,11 @@ export class DokoSettingsService {
   private currentUrl: string = undefined;
 
   jwtSecurityKey = '';
-  tokenKey = 'customidentitytoken';
-  studentTokenKey = 'studentCustomidentitytoken';
+  tokenKey = 'tttt';
+  studentTokenKey = 'ttt';
 
   apiUrl = environment.apiUrl;
-  sessionKey='customidentitySession';
+  sessionKey='ttt';
 
   siteUrl="";
 
