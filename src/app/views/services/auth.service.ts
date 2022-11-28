@@ -21,7 +21,7 @@ export class AuthenticationService {
   ) { }
 
   login(loginmodel: loginModel): Observable<any> {
-    loginmodel.key = sha512(loginmodel.eposta + loginmodel.sifre + "jy7qvxqt2qxtc8d7rmx39xacm6hzhm69c5danpvt");
+    loginmodel.key = sha512(loginmodel.eposta + loginmodel.sifre + "ttttt");
     return this.http.post<any>(this.dokoSettingsService.apiUrl + 'admin/login', loginmodel);
   }
 
