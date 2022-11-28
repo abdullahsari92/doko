@@ -1,0 +1,68 @@
+<div class="modalBody">
+	<div class="header">
+		<h4>{{ 'TITLE.bildirim_tanim' | translate }}</h4>
+		<span [mat-dialog-close]="data.animal" style=" position: absolute;  top: 10px;right: -20px;">
+			<mat-icon> close</mat-icon>
+		</span>
+	</div>
+	<form class="kt-login__form kt-form" [formGroup]="bildirimTanimForm" autocomplete="off">
+		<div class="form-group kt-form__group row">
+			<div class="col-lg-12 kt-margin-bottom-20-mobile">
+                <mat-form-field class="mat-form-field-fluid">
+                    <mat-select placeholder="{{'TEXT.turu' | translate}}"  formControlName="turu">
+                        <mat-option >{{'TEXT.SELECT' | translate}}</mat-option>
+                        <mat-option [value]="0">{{'TEXT.genel' | translate}}</mat-option>
+                        <mat-option *ngFor="let item of ogrenciList" [value]="item.value">{{item.key}}</mat-option>
+                    </mat-select>
+                </mat-form-field>  
+            </div>  
+            <div class="col-lg-12 kt-margin-bottom-20-mobile">
+				<mat-form-field class="mat-form-field-fluid">
+					<mat-label>{{'TEXT.mesaj' | translate}}</mat-label>
+                    <textarea matInput formControlName="mesaj"></textarea>
+					<mat-error *ngIf="isControlHasError('mesaj','required')">
+						<strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+					<mat-error *ngIf="isControlHasError('mesaj','maxlength')">
+						<strong> {{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }}</strong>
+					</mat-error>
+				</mat-form-field>
+			</div>
+            <div class="col-lg-12 kt-margin-bottom-20-mobile">
+				<mat-form-field class="mat-form-field-fluid">
+					<mat-label>{{'TEXT.baslangic_tarihi' | translate}}</mat-label>
+					<input matInput type="date" placeholder="{{'TEXT.baslangic_tarihi' | translate}}" formControlName="baslama_tarihi" />
+					<mat-error *ngIf="isControlHasError('baslama_tarihi','required')">
+						<strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+					<mat-error *ngIf="isControlHasError('baslama_tarihi','maxlength')">
+						<strong> {{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }}</strong>
+					</mat-error>
+				</mat-form-field>
+			</div>
+            <div class="col-lg-12 kt-margin-bottom-20-mobile">
+				<mat-form-field class="mat-form-field-fluid">
+					<mat-label>{{'TEXT.bitis_tarihi' | translate}}</mat-label>
+					<input matInput type="date" placeholder="{{'TEXT.bitis_tarihi' | translate}}" formControlName="bitis_tarihi" />
+					<mat-error *ngIf="isControlHasError('bitis_tarihi','required')">
+						<strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+					<mat-error *ngIf="isControlHasError('bitis_tarihi','maxlength')">
+						<strong> {{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }}</strong>
+					</mat-error>
+				</mat-form-field>
+			</div>
+            <div class="col-lg-12 kt-margin-bottom-20-mobile">
+                <div>{{'TEXT.durumu' | translate}} </div>
+                <mat-slide-toggle formControlName="durumu" (change)="changeStatu()" >{{durumuText | translate}}</mat-slide-toggle>
+            </div> 
+		</div>
+	</form>
+	<div class="rightCrudBtn">
+		<button (click)="submit()" id="kt_login_signin_submit" class="btn btn-primary btn-elevate kt-login__btn-primary"
+			[ngClass]="{'kt-spinner kt-spinner--right kt-spinner--md kt-spinner--light': loading}">{{buttonSave}}
+		</button>
+		<button type="button" mat-raised-button [mat-dialog-close]="data.animal" class="btn pull-right cancbtn">
+			{{"TEXT.CANCEL" | translate }} </button>
+	</div>
+</div>

@@ -1,0 +1,54 @@
+@import "../../../../../assets/student/login/css/style.bundle.css";
+.vizeKutu {
+    background-color: #660F44 !important;
+    background-size: 100%;
+    background-image: url('../../../../../assets/student/general/bg-7.jpg');
+    box-shadow: 3px 3px 4px #660F44;
+    cursor: pointer;
+    color: #fff !important;
+}
+
+.vizeEkleCerceve {
+    min-width: 380px;
+    min-height: 160px;
+    height: 160px;
+    padding-top: 10px;
+}
+
+.vizeEkle {
+    background-position: 326px 35px;
+    box-shadow: 3px 3px 4px #660F44 !important;
+    background-size: auto 70%;
+    background-image: url('../../../../../assets/student/general/7.svg');
+    cursor: pointer;
+    text-align: center;
+    opacity: 0.6;
+    -webkit-transition: opacity 0.3s ease-in;
+    -moz-transition: opacity 0.3s ease-in;
+    -ms-transition: opacity 0.3s ease-in;
+    -o-transition: opacity 0.3s ease-in;
+    transition: opacity 0.3s ease-in;
+}
+
+.vizeEkle>i {
+    font-size: 64px;
+    padding-top: 10px;
+    color: #660F44;
+}
+
+.vizeEkle:hover {
+    zoom: 1;
+    filter: alpha(opacity=1);
+    opacity: 1;
+}
+
+@media (max-width: 991.98px) {
+    .cerceve {
+        min-width: 100px!important;
+        min-height: 180px;
+    }
+    .vizeEkleCerceve {
+        min-width: 100px!important;
+        min-height: 180px;
+    }
+}

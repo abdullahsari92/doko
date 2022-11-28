@@ -1,0 +1,8 @@
+<kt-custom-ag-grid height="550px" title="{{sinavMerkez.adi_tr}} {{'TITLE.sinav_salon_listesi' | translate}} "
+	(agGridCustom)="agGridSet($event)" (editData)="editModal($event)" (removeData)="remove($event)" [rowData]="rowData"
+	[columnDefs]="columnDefs"> </kt-custom-ag-grid>
+<p style="text-align: right;">
+	<a mat-fab (click)="editModal({id:null})" color="primary" title="{{'TEXT.yeni_kayit' | translate}}">
+		<mat-icon>add</mat-icon>
+	</a>
+</p>

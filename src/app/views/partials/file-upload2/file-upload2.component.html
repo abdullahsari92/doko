@@ -1,0 +1,17 @@
+<div class="col-lg-12 kt-margin-bottom-40-mobile" >
+    <label for="singleFile">Resim Yükleyin</label>
+    <input id="singleFile"  type="file" (change)="onFileChange($event)" >
+    <br>
+
+    <input type="hidden"  formControlName="controlName" [name]="controlName">
+    
+ 
+
+    <div class="image-preview">
+        <img [src]="imgURL" >
+    </div>
+
+    <mat-error *ngIf="isFileControlHasError">
+        <strong>Sadece Resim yükleyebilirsin</strong>
+    </mat-error>
+</div>

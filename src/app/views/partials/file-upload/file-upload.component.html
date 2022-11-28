@@ -1,0 +1,71 @@
+<!-- <div class="col-lg-12 kt-margin-bottom-40-mobile" >
+    <label for="singleFile">Resim Yükleyin</label>
+    <input id="singleFile"  type="file" (change)="onFileChange($event)" >
+    <br>
+
+    <input type="hidden"  [formControlName]="controlName" [name]="controlName">
+    
+ 
+
+    <div class="image-preview">
+        <img [src]="imgURL" >
+    </div>
+
+    <mat-error *ngIf="isFileControlHasError">
+        <strong>Sadece Resim yükleyebilirsin</strong>
+    </mat-error>
+</div> -->
+
+
+<div [fileUploadInputFor]="fileUploadQueue" (onFileSelected)="onFileDragDrop($event)"   class="upload-drop-zone text-center">
+    <br>
+    <br>
+        <span class="text-center">
+
+            <img src="../../../../assets/media/icons/file.png" alt=""> <br><br>
+           Drog your banner here, or <br> select <br>
+        <!-- <input id="singleFile" class="fileInput"  (change)="onFileChange($event)" type="file" /> -->
+
+
+        <div class="file is-normal text-center ">
+            <label class="file-label">
+              <input class="file-input " type="file" name="resume">
+              <span >
+                click to browse..
+              </span>
+            </label>
+          </div>
+
+ 
+               
+                <div class="image-preview" *ngFor="let item of imgUrlList let i=index"  >
+                <mat-icon style="position: absolute; top :28px; right:26px;cursor: pointer;" (click)="removeItem(i)">cancel</mat-icon>
+                    <img [src]="item" style="border: 10px solid white;">
+                    
+      
+                </div>
+       
+     
+     
+        </span> 
+</div>
+
+<input type="hidden"   [formControlName]="controlName" [name]="controlName">
+<input type="hidden" *ngIf="typeName"  [formControlName]="typeName" [name]="typeName">
+
+
+
+<div style="width: 500px"  >
+    <mat-file-upload-queue #fileUploadQueue  
+        [fileAlias]="'file'"
+        [httpUrl]="'http://localhost:8180/jax-rs-jersey-application-sample'" multiple>
+
+     
+            <mat-file-upload [file]="file" (removeEvent)="imgURL=''"   [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index">    </mat-file-upload>
+
+    </mat-file-upload-queue>
+
+    <mat-error *ngIf="isFileControlHasError">
+        <strong>Sadece Resim yükleyebilirsin</strong>
+    </mat-error>
+</div>

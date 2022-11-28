@@ -1,0 +1,132 @@
+<kt-portlet>
+    <kt-portlet-header [sticky]="true" [title]="getComponentTitle()" [class]="'kt-portlet__head--lg'">
+        <ng-container ktPortletTools>
+            <a (click)="goBackWithoutId()" class="btn btn-secondary kt-margin-r-10" mat-raised-button
+                matTooltip="{{'TEXT.BACK' | translate}}">
+                <i class="la la-arrow-left"></i>
+                <span class="kt-hidden-mobile">{{'TEXT.BACK' | translate}}</span>
+            </a>
+            <a href="javascript:;" class="btn btn-primary kt-margin-r-10" color="primary" (click)="onSumbit()"
+                mat-raised-button matTooltip="{{buttonSave}}">
+                <span class="kt-hidden-mobile">{{buttonSave}}</span>
+            </a>
+        </ng-container>
+    </kt-portlet-header>
+    <kt-portlet-body>
+        <form [formGroup]="ogrenciTanimForm" class="kt-form kt-form--group-seperator-dashed">
+            <kt-alert *ngIf="hasFormErrors" type="warn" [showCloseButton]="true" [duration]="10000"
+                (close)="onAlertClose($event)">
+                {{'VALIDATION.ERROR' | translate}}
+            </kt-alert>
+            <div class="kt-form__section kt-form__section--first">
+
+                <div class="kt-form__group">
+                    <div class="row">
+                        <div class="col-lg-12 kt-margin-bottom-20-mobile">                 
+
+                            <app-img-upload [imgURL]="data?.resim? dokoSettingsService.apiUrl + data.resim : ''"  controlName="resim" ></app-img-upload>
+                        </div>
+                    </div>
+                </div>
+                <div class="kt-form__group">
+                    <div class="row">
+                        <div class="col-lg-6 kt-margin-bottom-20-mobile" *ngFor="let item of ObjectContorls()">
+                            <mat-form-field class="mat-form-field-fluid" *ngIf="ifTextBox(item) == true">
+                                <mat-label>{{'TEXT.'+item | translate }}</mat-label>
+                                <input matInput type="text" placeholder="{{'TEXT.'+item | translate }}"
+                                    formControlName="{{item}}" autocomplete="off" />
+                                <mat-error *ngIf="isControlHasError(item,'required')">
+                                    <strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                                </mat-error>
+                                <mat-error *ngIf="isControlHasError(item,'maxlength')">
+                                    <strong>{{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }} </strong>
+                                </mat-error>
+                                <mat-error *ngIf="isControlHasError(item,'minlength')">
+                                    <strong>{{ 'VALIDATION.MIN_LENGTH_FIELD' | translate }} </strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="kt-form__group">
+                    <div class="row">
+                        <div class="col-md-4 kt-margin-bottom-20-mobile">
+                            <mat-form-field>
+                                <input matInput [matDatepicker]="picker1" (click)="picker1.open()" autocomplete="off"
+                                    placeholder="{{'TEXT.dogum_tarihi' | translate}}" formControlName="dogum_tarihi">
+                                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                <mat-datepicker #picker1></mat-datepicker>
+                            </mat-form-field>
+
+
+
+
+                        </div>
+                        <div class="col-md-4 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <mat-select placeholder="{{'TEXT.cinsiyet' | translate}}" formControlName="cinsiyet">
+                                    <mat-option *ngFor="let cinsiyet of cinsiyetListesi" [value]="cinsiyet.value">
+                                        {{cinsiyet.key}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-4 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <mat-select placeholder="{{'TEXT.ulke_kodu' | translate}}" formControlName="ulke_kodu">
+                                    <mat-option *ngFor="let ulke of ulkeKodlari" [value]="ulke.value">{{ulke.key}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="kt-form__group">
+                    <div class="row">
+                        <div class="col-md-4 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <mat-select placeholder="{{'TEXT.kimlik_no'+' - '+'TEXT.pasaport_no' | translate}}"
+                                    formControlName="turler">
+                                    <mat-option [value]="1">{{'TEXT.kimlik_no' | translate}}</mat-option>
+                                    <mat-option [value]="2">{{'TEXT.pasaport_no' | translate}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-4 kt-margin-bottom-20-mobile"
+                            *ngIf="ogrenciTanimForm.controls['turler'].value == 1">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <mat-label>{{'TEXT.kimlik_no' | translate }}</mat-label>
+                                <input matInput type="text" placeholder="{{'TEXT.kimlik_no' | translate }}"
+                                    formControlName="kimlik_no" />
+                                <mat-error *ngIf="isControlHasError('kimlik_no','required')">
+                                    <strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                                </mat-error>
+                                <mat-error *ngIf="isControlHasError('kimlik_no','maxlength')">
+                                    <strong>{{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }} </strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-4 kt-margin-bottom-20-mobile"
+                            *ngIf="ogrenciTanimForm.controls['turler'].value == 2">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <mat-label>{{'TEXT.pasaport_no' | translate }}</mat-label>
+                                <input matInput type="text" placeholder="{{'TEXT.pasaport_no' | translate }}"
+                                    formControlName="pasaport_no" />
+                                <mat-error *ngIf="isControlHasError('pasaport_no','required')">
+                                    <strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                                </mat-error>
+                                <mat-error *ngIf="isControlHasError('pasaport_no','maxlength')">
+                                    <strong>{{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }} </strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-4 kt-margin-bottom-20-mobile">
+                            <div>{{'TEXT.durumu'| translate }}:</div>
+                            <mat-slide-toggle formControlName="durumu" (change)="changeStatu()">{{durumuText |
+                                translate}}</mat-slide-toggle>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </kt-portlet-body>
+</kt-portlet>

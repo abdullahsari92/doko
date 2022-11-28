@@ -1,0 +1,112 @@
+<div class="modalBody">
+	<div class="header">
+		<h4>{{ 'TITLE.sinav_salon_tanim' | translate }}</h4>
+		<span [mat-dialog-close]="data.animal" style=" position: absolute;  top: 10px;right: -20px;">
+			<mat-icon> close</mat-icon>
+		</span>
+	</div>
+	<form class="kt-login__form kt-form" [formGroup]="sinavSalon" autocomplete="off">
+		<div class="form-group kt-form__group row">
+			<div class="col-lg-6 kt-margin-bottom-20-mobile">
+				<mat-form-field class="mat-form-field-fluid">
+					<mat-label>{{'TEXT.adi_tr' | translate }}</mat-label>
+					<input matInput type="text" placeholder="{{'TEXT.adi_tr' | translate}}" formControlName="adi_tr" />
+					<mat-error *ngIf="isControlHasError('adi_tr','required')">
+						<strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+					<mat-error *ngIf="isControlHasError('adi_tr','minlength')">
+						<strong>{{ 'VALIDATION.MIN_LENGTH_FIELD' | translate }} 2</strong>
+					</mat-error>
+					<mat-error *ngIf="isControlHasError('adi_tr','maxlength')">
+						<strong>{{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }} 100</strong>
+					</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="col-lg-6 kt-margin-bottom-20-mobile">
+				<mat-form-field class="mat-form-field-fluid">
+					<mat-label>{{'TEXT.adi_en' | translate }}</mat-label>
+					<input matInput type="text" placeholder="{{'TEXT.adi_en' | translate}}" formControlName="adi_en" />
+					<mat-error *ngIf="isControlHasError('adi_en','required')">
+						<strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+					<mat-error *ngIf="isControlHasError('adi_en','minlength')">
+						<strong>{{ 'VALIDATION.MIN_LENGTH_FIELD' | translate }} 2</strong>
+					</mat-error>
+					<mat-error *ngIf="isControlHasError('adi_en','maxlength')">
+						<strong>{{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }} 100</strong>
+					</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="col-lg-6 kt-margin-bottom-20-mobile">
+				<mat-form-field class="mat-form-field-fluid">
+					<mat-label>{{'TEXT.bina_adi' | translate }}</mat-label>
+					<input matInput type="text" placeholder="{{'TEXT.bina_adi' | translate}}"
+						formControlName="bina_adi" />
+					<mat-error *ngIf="isControlHasError('bina_adi','required')">
+						<strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="col-lg-6 kt-margin-bottom-20-mobile">
+				<mat-form-field class="mat-form-field-fluid">
+					<mat-label>{{'TEXT.kontenjan' | translate }}</mat-label>
+					<input matInput type="text" placeholder="{{'TEXT.kontenjan' | translate}}"
+						formControlName="kontenjan" />
+					<mat-error *ngIf="isControlHasError('kontenjan','required')">
+						<strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+
+				</mat-form-field>
+			</div>
+			<div class="col-lg-6 kt-margin-bottom-20-mobile">
+				<mat-form-field class="mat-form-field-fluid">
+					<mat-label>{{'TEXT.adres' | translate }}</mat-label>
+					<input matInput type="text" placeholder="{{'TEXT.adres' | translate}}" formControlName="adres" />
+					<mat-error *ngIf="isControlHasError('adres','required')">
+						<strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+					<mat-error *ngIf="isControlHasError('adres','minlength')">
+						<strong>{{ 'VALIDATION.MIN_LENGTH_FIELD' | translate }} 2</strong>
+					</mat-error>
+					<mat-error *ngIf="isControlHasError('adres','maxlength')">
+						<strong>{{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }} 100</strong>
+					</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="col-lg-6 kt-margin-bottom-20-mobile">
+				<mat-form-field class="mat-form-field-fluid">
+					<mat-label>{{'TEXT.gozetmen' | translate }}</mat-label>
+					<input matInput type="text" placeholder="{{'TEXT.gozetmen' | translate}}"
+						formControlName="gozetmen" />
+					<mat-error *ngIf="isControlHasError('gozetmen','required')">
+						<strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+					<mat-error *ngIf="isControlHasError('gozetmen','minlength')">
+						<strong>{{ 'VALIDATION.MIN_LENGTH_FIELD' | translate }} 2</strong>
+					</mat-error>
+					<mat-error *ngIf="isControlHasError('gozetmen','maxlength')">
+						<strong>{{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }} 100</strong>
+					</mat-error>
+				</mat-form-field>
+			</div>
+
+			<div class="form-group kt-form__group row">
+				<div class="col-lg-6">
+					<div class="col-md-4">
+						<div>{{'TEXT.durumu' | translate}} </div>
+						<mat-slide-toggle formControlName="durumu" (change)="changeStatu(1)">{{durumuText | translate}}
+						</mat-slide-toggle>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--end::Action-->
+	</form>
+	<div class="rightCrudBtn">
+		<button (click)="submit()" id="kt_login_signin_submit" class="btn btn-primary btn-elevate kt-login__btn-primary"
+			[ngClass]="{'kt-spinner kt-spinner--right kt-spinner--md kt-spinner--light': loading}">{{buttonSave}}
+		</button>
+		<button type="button" mat-raised-button [mat-dialog-close]="data.animal" class="btn pull-right cancbtn">
+			{{"TEXT.CANCEL" | translate }} </button>
+	</div>
+</div>

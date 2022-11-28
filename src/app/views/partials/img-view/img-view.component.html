@@ -1,0 +1,13 @@
+
+<div style="text-align:center;">
+    <img src="../../../../assets/general/avatar.png" width="100px" height="100px"  *ngIf="!imgURL" alt="">
+    <img  [src]="imgURL"  width="100px" height="100px"  style="border-radius: 100%;" *ngIf="imgURL" alt="">
+
+    <br>
+
+    <p *ngIf="textTitle" >
+        {{textTitle}}
+    </p>
+
+
+</div>

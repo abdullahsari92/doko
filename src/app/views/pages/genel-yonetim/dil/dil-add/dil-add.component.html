@@ -1,0 +1,107 @@
+<div class="modalBody">
+	<div class="header">
+		<h4>{{ 'TITLE.dil_tanim' | translate }}</h4>
+		<span [mat-dialog-close]="data.animal" style=" position: absolute;  top: 10px;right: -20px;">
+			<mat-icon> close</mat-icon>
+		</span>
+	</div>
+	<form class="kt-login__form kt-form" [formGroup]="dilTanimForm" autocomplete="off">
+		<div class="form-group kt-form__group row">
+			<div class="col-lg-12 kt-margin-bottom-20-mobile">
+				<mat-form-field class="mat-form-field-fluid">
+					<mat-label>{{'TEXT.keyword' | translate}}</mat-label>
+					<div *ngIf="data.id; then thenBlock; else elseBlock"></div>
+					<ng-template #thenBlock><input matInput type="text" placeholder="{{'TEXT.keyword' | translate}}"
+							formControlName="keyword" readonly="readonly" /></ng-template>
+					<ng-template #elseBlock><input matInput type="text" placeholder="{{'TEXT.keyword' | translate}}"
+							formControlName="keyword" /></ng-template>
+					<mat-error *ngIf="isControlHasError('keyword','required')">
+						<strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+					<mat-error *ngIf="isControlHasError('keyword','maxlength')">
+						<strong> {{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }}</strong>
+					</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="col-lg-12 kt-margin-bottom-20-mobile">
+				<mat-form-field class="mat-form-field-fluid">
+					<mat-label>{{'LANGUAGE.tr' | translate}}</mat-label>
+					<input matInput type="text" placeholder="{{'LANGUAGE.tr' | translate}}" formControlName="tr" />
+					<mat-error *ngIf="isControlHasError('tr','required')">
+						<strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+					<mat-error *ngIf="isControlHasError('tr','maxlength')">
+						<strong> {{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }}</strong>
+					</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="col-lg-12 kt-margin-bottom-20-mobile">
+				<mat-form-field class="mat-form-field-fluid">
+					<mat-label>{{'LANGUAGE.en' | translate}}</mat-label>
+					<input matInput type="text" placeholder="{{'LANGUAGE.en' | translate}}" formControlName="en" />
+					<mat-error *ngIf="isControlHasError('en','required')">
+						<strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+					<mat-error *ngIf="isControlHasError('en','maxlength')">
+						<strong> {{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }}</strong>
+					</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="col-lg-12 kt-margin-bottom-20-mobile">
+				<mat-form-field class="mat-form-field-fluid">
+					<mat-label>{{'LANGUAGE.fr' | translate}}</mat-label>
+					<input matInput type="text" placeholder="{{'LANGUAGE.fr' | translate}}" formControlName="fr" />
+					<mat-error *ngIf="isControlHasError('fr','required')">
+						<strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+					<mat-error *ngIf="isControlHasError('fr','maxlength')">
+						<strong> {{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }}</strong>
+					</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="col-lg-12 kt-margin-bottom-20-mobile">
+				<mat-form-field class="mat-form-field-fluid">
+					<mat-label>{{'LANGUAGE.ge' | translate}}</mat-label>
+					<input matInput type="text" placeholder="{{'LANGUAGE.ge' | translate}}" formControlName="ge" />
+					<mat-error *ngIf="isControlHasError('ge','required')">
+						<strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+					<mat-error *ngIf="isControlHasError('ge','maxlength')">
+						<strong> {{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }}</strong>
+					</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="col-lg-12 kt-margin-bottom-20-mobile">
+				<mat-form-field class="mat-form-field-fluid">
+					<mat-label>{{'LANGUAGE.sp' | translate}}</mat-label>
+					<input matInput type="text" placeholder="{{'LANGUAGE.sp' | translate}}" formControlName="sp" />
+					<mat-error *ngIf="isControlHasError('sp','required')">
+						<strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+					<mat-error *ngIf="isControlHasError('sp','maxlength')">
+						<strong> {{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }}</strong>
+					</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="col-lg-12 kt-margin-bottom-20-mobile">
+				<mat-form-field class="mat-form-field-fluid">
+					<mat-label>{{'LANGUAGE.ch' | translate}}</mat-label>
+					<input matInput type="text" placeholder="{{'LANGUAGE.ch' | translate}}" formControlName="ch" />
+					<mat-error *ngIf="isControlHasError('ch','required')">
+						<strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+					<mat-error *ngIf="isControlHasError('ch','maxlength')">
+						<strong> {{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }}</strong>
+					</mat-error>
+				</mat-form-field>
+			</div>
+		</div>
+	</form>
+	<div class="rightCrudBtn">
+		<button (click)="submit()" id="kt_login_signin_submit" class="btn btn-primary btn-elevate kt-login__btn-primary"
+			[ngClass]="{'kt-spinner kt-spinner--right kt-spinner--md kt-spinner--light': loading}">{{buttonSave}}
+		</button>
+		<button type="button" mat-raised-button [mat-dialog-close]="data.animal" class="btn pull-right cancbtn">
+			{{"TEXT.CANCEL" | translate }} </button>
+	</div>
+</div>

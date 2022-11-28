@@ -1,0 +1,55 @@
+<div style="position: absolute; top:65%; left: 45%;" *ngIf="loader">
+    <div class="col-lg-2">
+        <mat-spinner diameter="80"></mat-spinner>
+        {{'TEXT.YUKLENIYOR' | translate}}
+    </div>
+</div>
+<kt-portlet *ngIf="!loader">
+    <div class="row">
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12" *ngFor="let item of ortakBasvuruList">
+            <mat-card class="card-bt">
+                <div class="text-right"> <span class="badge badge-{{item.badstatu}}">{{item.statudetail}} </span> </div>
+                <mat-card-title> {{item.adi_tr }} </mat-card-title>
+                <div class="kt-separator kt-separator--dashed"></div>
+                <mat-card-content class="card-content-bt">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <span class="grafikTop"></span>
+                            <div class="grafikText"> <b>{{'TEXT.basvuran_ogrenci_sayisi' | translate}} :</b>
+                                {{item.basvuran_ogrenci_sayisi}} </div>
+                            <span class="grafikTop" style="background-color: #0099c6;"></span>
+                            <div class="grafikText"> <b> {{'TEXT.sinava_giren_ogrenci_sayisi' |
+                                    translate}}:</b>{{item.sinava_giren_ogrenci_sayisi}} </div>
+                            <google-chart [type]="chart.type" [data]="item.data" [slices]=""
+                                [columns]="chart.columnNames" [options]="chart.options">
+                            </google-chart>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-6 mr-10">
+                            <!-- <span class="badge badge-info">Info</span> -->
+                            <p class="spanTitle">{{'TEXT.baslangic_tarihi' | translate}} : <span
+                                    class="spanData">{{item.baslangic_tarihi | date:'dd/MM/yyyy'}}</span> </p>
+                            <p class="spanTitle">{{'TEXT.bitis_tarihi' | translate}} : <span class="spanData">
+                                    {{item.bitis_tarihi | date: 'dd/MM/yyyy'}} </span> </p>
+                            <p class="spanTitle">{{'TEXT.sinav_tarihi' | translate}} : <span
+                                    class="spanData">{{item.sinav_tarihi | date: 'dd/MM/yyyy'}}</span> </p>
+                            <p class="spanTitle">{{'TEXT.sonuc_gorme_durumu' | translate}} : <span
+                                    class="spanData">{{item.sonuclari_goster ? this.translate.instant("TEXT.goster") :
+                                    this.translate.instant("TEXT.GIZLI")}}</span>
+                            </p>
+                            <p class="spanTitle">{{'TEXT.ucret' | translate}} : <span class="spanData">{{item.ucret
+                                    }}</span> </p>
+                        </div>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <br>
+                </mat-card-content>
+                <mat-card-footer class="text-center card-foot">
+                    <button mat-raised-button color="accent" (click)="editData(item.id)" style="width: 90%;height: 90%;"
+                        matTooltip="{{'TEXT.detay' | translate}}">
+                        {{'TEXT.detay' | translate }}
+                    </button>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+    </div>

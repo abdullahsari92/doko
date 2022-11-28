@@ -1,0 +1,17 @@
+<kt-portlet>
+    <kt-portlet-header [sticky]="true" [title]="'TITLE.basvuru_bolumler_kontenjan_listesi'| translate"
+        [class]="'kt-portlet__head--lg'">
+        <ng-container ktPortletTools>
+            <a (click)="goBackWithoutId()" class="btn btn-secondary kt-margin-r-10" mat-raised-button
+                matTooltip="{{'TEXT.BACK' | translate}}">
+                <i class="la la-arrow-left"></i>
+                <span class="kt-hidden-mobile">{{'TEXT.BACK' | translate}}</span>
+            </a>
+        </ng-container>
+    </kt-portlet-header>
+    <kt-portlet-body>
+        <kt-bolum-kontenjan-add [addModel]="addModel"></kt-bolum-kontenjan-add>
+        <kt-custom-ag-grid (agGridCustom)="agGridSet($event)" (editData)="editData($event)"
+            (removeData)="remove($event)" [rowData]="rowData" [columnDefs]="columnDefs"> </kt-custom-ag-grid>
+    </kt-portlet-body>
+</kt-portlet>

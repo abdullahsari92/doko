@@ -1,0 +1,169 @@
+<!--begin::Card-->
+<div class="card card-custom">
+    <!--begin::Card header-->
+    <div class="card-header card-header-tabs-line nav-tabs-line-3x">
+        <!--begin::Toolbar-->
+        <div class="card-toolbar">
+            <ul class="nav nav-tabs nav-bold nav-tabs-line nav-tabs-line-3x">
+                <!--begin::Item-->
+                <li class="nav-item mr-3">
+                    <button type="button" (click)="changeTab(1)" class="nav-link" [class.active]="selectedTab == 1" data-toggle="tab" *ngIf="aktifEgitimDereceleri(basvuruTurEnum.lisans) || aktifEgitimDereceleri(basvuruTurEnum.yuksekLisans) || aktifEgitimDereceleri(basvuruTurEnum.doktora)">
+                        <span class="nav-icon">
+                            <span class="svg-icon">
+                                <span class="svg-icon svg-icon-primary svg-icon-2x">
+                                    <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo10/dist/../src/media/svg/icons/Text/Article.svg--><svg
+                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <rect x="0" y="0" width="24" height="24" />
+                                            <rect fill="#000000" x="4" y="5" width="16" height="3" rx="1.5" />
+                                            <path
+                                                d="M5.5,15 L18.5,15 C19.3284271,15 20,15.6715729 20,16.5 C20,17.3284271 19.3284271,18 18.5,18 L5.5,18 C4.67157288,18 4,17.3284271 4,16.5 C4,15.6715729 4.67157288,15 5.5,15 Z M5.5,10 L12.5,10 C13.3284271,10 14,10.6715729 14,11.5 C14,12.3284271 13.3284271,13 12.5,13 L5.5,13 C4.67157288,13 4,12.3284271 4,11.5 C4,10.6715729 4.67157288,10 5.5,10 Z"
+                                                fill="#000000" opacity="0.3" />
+                                        </g>
+                                    </svg>
+                                    <!--end::Svg Icon-->
+                                </span>
+                            </span>
+
+                        </span>
+                        <span class="nav-text font-size-lg">
+                            {{'TEXT.HIGHSCHOOL' | translate}}
+                        </span>
+                    </button>
+                </li>
+                <!--end::Item-->
+                <!--begin::Item-->
+                <li class="nav-item">
+                    <button type="button" (click)="changeTab(2)" class="nav-link" [class.active]="selectedTab == 2" data-toggle="tab" *ngIf="aktifEgitimDereceleri(basvuruTurEnum.lisans) || aktifEgitimDereceleri(basvuruTurEnum.yuksekLisans) || aktifEgitimDereceleri(basvuruTurEnum.doktora)">
+                        <span class="nav-icon">
+                            <span class="svg-icon svg-icon-primary svg-icon-2x">
+                                <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo10/dist/../src/media/svg/icons/Text/Article.svg-->
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24" />
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M22 11.5C22 12.3284 21.3284 13 20.5 13H3.5C2.6716 13 2 12.3284 2 11.5C2 10.6716 2.6716 10 3.5 10H20.5C21.3284 10 22 10.6716 22 11.5Z"
+                                            fill="black" />
+                                        <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M14.5 20C15.3284 20 16 19.3284 16 18.5C16 17.6716 15.3284 17 14.5 17H3.5C2.6716 17 2 17.6716 2 18.5C2 19.3284 2.6716 20 3.5 20H14.5ZM8.5 6C9.3284 6 10 5.32843 10 4.5C10 3.67157 9.3284 3 8.5 3H3.5C2.6716 3 2 3.67157 2 4.5C2 5.32843 2.6716 6 3.5 6H8.5Z"
+                                            fill="black" />
+                                    </g>
+                                </svg>
+                                <!--end::Svg Icon-->
+                            </span>
+                        </span>
+                        <span class="nav-text font-size-lg">
+                            {{'TEXT.ASSOCDEGREE' | translate}} /
+                            {{'TEXT.lisans' | translate}}
+                        </span>
+                    </button>
+                </li>
+                <!--end::Item-->
+                <!--begin::Item-->
+                <li class="nav-item">
+                    <button type="button" (click)="changeTab(3)" class="nav-link" [class.active]="selectedTab == 3" data-toggle="tab" *ngIf="aktifEgitimDereceleri(basvuruTurEnum.lisans) || aktifEgitimDereceleri(basvuruTurEnum.yuksekLisans) || aktifEgitimDereceleri(basvuruTurEnum.doktora)">
+                        <span class="nav-icon" style="transform: rotate(180deg)">
+                            <span class="svg-icon svg-icon-primary svg-icon-2x">
+                                <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo10/dist/../src/media/svg/icons/Text/Article.svg--><svg
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24" />
+                                        <rect fill="#000000" x="4" y="5" width="16" height="3" rx="1.5" />
+                                        <path
+                                            d="M5.5,15 L18.5,15 C19.3284271,15 20,15.6715729 20,16.5 C20,17.3284271 19.3284271,18 18.5,18 L5.5,18 C4.67157288,18 4,17.3284271 4,16.5 C4,15.6715729 4.67157288,15 5.5,15 Z M5.5,10 L12.5,10 C13.3284271,10 14,10.6715729 14,11.5 C14,12.3284271 13.3284271,13 12.5,13 L5.5,13 C4.67157288,13 4,12.3284271 4,11.5 C4,10.6715729 4.67157288,10 5.5,10 Z"
+                                            fill="#000000" opacity="0.3" />
+                                    </g>
+                                </svg>
+                                <!--end::Svg Icon-->
+                            </span>
+                        </span>
+                        <span class="nav-text font-size-lg">
+                            {{'TEXT.yuksek_lisans' | translate}}
+                        </span>
+                    </button>
+                </li>
+                <!--end::Item-->
+                <!--begin::Item-->
+                <li class="nav-item">
+                    <button type="button" (click)="changeTab(4)" class="nav-link" [class.active]="selectedTab == 4" data-toggle="tab" *ngIf="(routerBasvuruID) && aktifEgitimDereceleri(basvuruTurEnum.lisans) || aktifEgitimDereceleri(basvuruTurEnum.yuksekLisans) || aktifEgitimDereceleri(basvuruTurEnum.doktora)">
+                        <i class="flaticon2-chat-2 icon-2x text-primary"></i>
+                        <span class="nav-text font-size-lg">
+                            {{'TITLE.dil_bilgisi' | translate }}
+                        </span>
+                    </button>
+                </li>
+                <!--end::Item-->
+                <!--begin::Item-->
+
+                <!-- <li class="nav-item">
+                    <button type="button" (click)="changeTab(5)" class="nav-link" [class.active]="selectedTab == 5" data-toggle="tab" *ngIf="aktifEgitimDereceleri(2) || aktifEgitimDereceleri(3) || aktifEgitimDereceleri(4)">
+                        <i class="flaticon2-chat-2 icon-2x text-primary"></i>
+                        <span class="nav-text font-size-lg">
+                            {{'TITLE.vize_bilgisi' | translate }}
+                        </span>
+                    </button>
+                </li> -->
+
+                <!--end::Item-->
+                <!--begin::Item-->
+                <!-- <li class="nav-item">
+                    <button type="button" (click)="changeTab(6)" class="nav-link" [class.active]="selectedTab == 6" data-toggle="tab" *ngIf="aktifEgitimDereceleri(2) || aktifEgitimDereceleri(3) || aktifEgitimDereceleri(4)">
+                        <i class="flaticon-list icon-2x text-primary"></i>
+                        <span class="nav-text font-size-lg">
+                            {{'TEXT.tercih_bilgisi' | translate }}
+                        </span>
+                    </button>
+                </li> -->
+                <!--end::Item-->
+            </ul>
+        </div>
+        <!--end::Toolbar-->
+    </div>
+    <!--end::Card header-->
+    <!--begin::Card body-->
+    <div class="card-body">
+        <form class="form" id="kt_form">
+            <div class="tab-content">
+                <!--begin::Tab-->
+                <div class="tab-pane px-7" [class.active]="selectedTab == 1" *ngIf="selectedTab == 1 && (aktifEgitimDereceleri(basvuruTurEnum.lisans) || aktifEgitimDereceleri(basvuruTurEnum.yuksekLisans) || aktifEgitimDereceleri(basvuruTurEnum.doktora))">
+                    <!--begin::Row-->
+                    <kt-lycee-information></kt-lycee-information>
+                    <!--end::Row-->
+                </div>
+                <!--end::Tab-->
+                <!--begin::Tab-->
+                <div class="tab-pane px-7" [class.active]="selectedTab == 2" *ngIf="selectedTab == 2 && (aktifEgitimDereceleri(basvuruTurEnum.lisans) || aktifEgitimDereceleri(basvuruTurEnum.yuksekLisans) || aktifEgitimDereceleri(basvuruTurEnum.doktora))">
+                    <kt-licence-information></kt-licence-information>
+                </div>
+                <!--end::Tab-->
+                <!--begin::Tab-->
+                <div class="tab-pane px-7" [class.active]="selectedTab == 3" *ngIf="selectedTab == 3 && (aktifEgitimDereceleri(basvuruTurEnum.lisans) || aktifEgitimDereceleri(basvuruTurEnum.yuksekLisans) || aktifEgitimDereceleri(basvuruTurEnum.doktora))">
+                    <kt-graduate-information></kt-graduate-information>
+                </div>
+                <!--end::Tab-->
+                <!--begin::Tab-->
+                <div class="tab-pane px-7" [class.active]="selectedTab == 4" *ngIf="selectedTab == 4 && (aktifEgitimDereceleri(basvuruTurEnum.lisans) || aktifEgitimDereceleri(basvuruTurEnum.yuksekLisans) || aktifEgitimDereceleri(basvuruTurEnum.doktora))">
+                    <kt-language-information [routerBasvuruID]="routerBasvuruID"></kt-language-information>
+                </div>
+                <!--end::Tab-->
+                <!--begin::Tab-->
+
+                <!-- <div class="tab-pane px-7" [class.active]="selectedTab == 5" *ngIf="selectedTab == 5 && (aktifEgitimDereceleri(2) || aktifEgitimDereceleri(3) || aktifEgitimDereceleri(4))">
+                    <kt-visa-information></kt-visa-information>
+                </div> -->
+
+                <!--end::Tab-->
+                <!--begin::Tab-->
+                <!-- <div class="tab-pane px-7" [class.active]="selectedTab == 6" *ngIf="selectedTab == 6 && (aktifEgitimDereceleri(2) || aktifEgitimDereceleri(3) || aktifEgitimDereceleri(4))">
+                    <kt-preference-information [basvuruID]="68" [ogrenciBasvuruID]="284" [ham_puani]="284" [puan_turu_id]="284" [puan_belgesi]="s"></kt-preference-information>
+                </div> -->
+                <!--end::Tab-->
+            </div>
+        </form>
+    </div>
+    <!--begin::Card body-->
+</div>
+<!--end::Card-->

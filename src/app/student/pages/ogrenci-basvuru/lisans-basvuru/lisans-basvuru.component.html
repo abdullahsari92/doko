@@ -1,0 +1,462 @@
+<div class="modalBody">
+    <div class="header">
+        <div style="margin: 0 -20px;">
+            <span [mat-dialog-close]="data.animal" style=" position: absolute;  top: 10px;right: -20px;">
+                <mat-icon> cancel</mat-icon>
+            </span>
+        </div>
+    </div>
+    <!-- <div *ngIf="data.ogrenci_basvuru_durumu==ogrenciBasvuruDurumEnum.yeni_kayit || data.ogrenci_basvuru_durumu==null">-->
+    <div class="kt-heading kt-heading--md text-center m-0">
+        {{basvuruVerileri.adi_tr | translateData :basvuruVerileri.adi_en }}
+    </div>
+    <div #wizard class="kt-grid kt-wizard-v2 kt-wizard-v2--white" id="kt_wizard_v2" data-ktwizard-state="step-first" style="flex: -3 0 400px !important">
+        <div class="kt-grid__item kt-wizard-v2__aside merkezler p-2">
+            <!--begin: Form Wizard Nav -->
+            <div class="kt-wizard-v2__nav">
+                <div class="kt-wizard-v2__nav-items">
+                    <!--begin: Form Wizard Bilgilendirme-->
+                    <a class="kt-wizard-v2__nav-item" href="javascript:;" *ngIf="bilgiDurum" data-ktwizard-type="step" data-ktwizard-state="current">
+                        <div class="kt-wizard-v2__nav-body">
+                            <div class="kt-wizard-v2__nav-icon">
+                                <i id="iconBaslangic" class="flaticon-globe icon-2x"></i>
+                            </div>
+                            <div class="kt-wizard-v2__nav-label pt-2">
+                                <div class="kt-wizard-v2__nav-label-title">
+                                    {{'TEXT.INFORM' | translate }}
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!--end: Form Wizard Bilgilendirme-->
+                    <!--begin: Form Wizard Step 1-->
+                    <a class="kt-wizard-v2__nav-item" href="javascript:;" *ngIf="!bilgiDurum" id="10" data-ktwizard-type="step" [attr.data-ktwizard-state]="!bilgiDurum ? current : ''">
+                        <div class="kt-wizard-v2__nav-body">
+                            <div class="kt-wizard-v2__nav-icon">
+                                <i id="icon10" class="flaticon-globe icon-2x"></i>
+                            </div>
+                            <div class="kt-wizard-v2__nav-label pt-2">
+                                <div class="kt-wizard-v2__nav-label-title">
+                                    {{'TEXT.APPLICATION_INFORMATION' | translate }}
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!--end: Form Wizard Step 1-->
+                    <!--begin: Form Wizard Step 2-->
+                    <a class="kt-wizard-v2__nav-item" id="20" *ngIf="!bilgiDurum && data.kabulKosullari.result" href="javascript:;" data-ktwizard-type="step">
+                        <div class="kt-wizard-v2__nav-body">
+                            <div class="kt-wizard-v2__nav-icon">
+                                <i id="icon20" class="flaticon-list-2 icon-2x"></i>
+                            </div>
+                            <div class="kt-wizard-v2__nav-label pt-2">
+                                <div class="kt-wizard-v2__nav-label-title">
+                                    {{'TITLE.kabul_kosullari' | translate }}
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!--end: Form Wizard Step 2-->
+                    <!--begin: Form Wizard Step 3-->
+                    <a class="kt-wizard-v2__nav-item" id="30" *ngIf="!bilgiDurum && data.vizeBilgileri.result" href="javascript:;" data-ktwizard-type="step">
+                        <div class="kt-wizard-v2__nav-body">
+                            <div class="kt-wizard-v2__nav-icon">
+                                <i id="icon30" class="flaticon2-writing icon-2x"></i>
+                            </div>
+                            <div class="kt-wizard-v2__nav-label">
+                                <div class="kt-wizard-v2__nav-label-title">
+                                    {{'TEXT.vize_bilgisi' | translate }}
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!--end: Form Wizard Step 3-->
+                    <!--begin: Form Wizard Step 4-->
+                    <a class="kt-wizard-v2__nav-item" id="40" *ngIf="!bilgiDurum" href="javascript:;" data-ktwizard-type="step">
+                        <div class="kt-wizard-v2__nav-body">
+                            <div class="kt-wizard-v2__nav-icon">
+                                <i id="icon40" class="flaticon-map-location icon-2x"></i>
+                            </div>
+                            <div class="kt-wizard-v2__nav-label">
+                                <div class="kt-wizard-v2__nav-label-title">
+                                    {{'TITLE.lise_bilgileri' | translate }}
+                                </div>
+                            </div>
+                            <div class="kt-wizard-v2__nav-icon ml-auto">
+                                <i id="2icon40" class="flaticon2-checkmark icon-2x"></i>
+                            </div>
+                        </div>
+                    </a>
+                    <!--end: Form Wizard Step 4-->
+                    <!--begin: Form Wizard Step 5-->
+                    <a class="kt-wizard-v2__nav-item" id="50" *ngIf="!bilgiDurum && data.dilBilgileri.result" href="javascript:;" data-ktwizard-type="step">
+                        <div class="kt-wizard-v2__nav-body">
+                            <div class="kt-wizard-v2__nav-icon">
+                                <i id="icon50" class="flaticon2-chat-2 icon-2x"></i>
+                            </div>
+                            <div class="kt-wizard-v2__nav-label">
+                                <div class="kt-wizard-v2__nav-label-title">
+                                    {{'TEXT.dil_bilgileri' | translate }}
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!--end: Form Wizard Step 5-->
+                    <!--begin: Form Wizard Step 6-->
+
+                    <!-- <a class="kt-wizard-v2__nav-item" id="60" *ngIf="!bilgiDurum" href="javascript:;" data-ktwizard-type="step">
+                        <div class="kt-wizard-v2__nav-body">
+                            <div class="kt-wizard-v2__nav-icon">
+                                <i id="icon60" class="flaticon-earth-globe icon-2x"></i>
+                            </div>
+                            <div class="kt-wizard-v2__nav-label">
+                                <div class="kt-wizard-v2__nav-label-title">
+                                    {{'TEXT.uyruk_bilgisi' | translate }}
+                                </div>
+                            </div>
+                        </div>
+                    </a> -->
+
+                    <!--end: Form Wizard Step 6-->
+                    <!--begin: Form Wizard Step 7-->
+                    <a class="kt-wizard-v2__nav-item" id="70" *ngIf="!bilgiDurum" href="javascript:;" data-ktwizard-type="step">
+                        <div class="kt-wizard-v2__nav-body">
+                            <div class="kt-wizard-v2__nav-icon">
+                                <i id="icon70" class="flaticon-list icon-2x"></i>
+                            </div>
+                            <div class="kt-wizard-v2__nav-label">
+                                <div class="kt-wizard-v2__nav-label-title">
+                                    {{'TITLE.preference_information' | translate }}
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!--end: Form Wizard Step 7-->
+                    <!--begin: Form Wizard Step 8-->
+                    <a class="kt-wizard-v2__nav-item" id="80" href="javascript:;" *ngIf="!bilgiDurum && data.basvuruBilgileri.data.ucret_odeme_turu!=ucretOdemeTuru.odeme_istenmiyor && data.basvuruBilgileri.data.ucret_zamani!=ucretOdemeZamani.sinavdan_sonra" data-ktwizard-type="step">
+                        <div class="kt-wizard-v2__nav-body">
+                            <div class="kt-wizard-v2__nav-icon">
+                                <i id="icon80" class="flaticon-coins icon-2x"></i>
+                            </div>
+                            <div class="kt-wizard-v2__nav-label pt-2">
+                                <div class="kt-wizard-v2__nav-label-title">
+                                    {{'TITLE.odeme' | translate }}
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!--end: Form Wizard Step 8-->
+                    <!--begin: Form Wizard Step 9-->
+                    <a class="kt-wizard-v2__nav-item" id="90" *ngIf="!bilgiDurum" href="javascript:;" data-ktwizard-type="step">
+                        <div class="kt-wizard-v2__nav-body">
+                            <div class="kt-wizard-v2__nav-icon">
+                                <i id="icon90" class="flaticon2-checkmark icon-2x"></i>
+                            </div>
+                            <div class="kt-wizard-v2__nav-label pt-2">
+                                <div class="kt-wizard-v2__nav-label-title">
+                                    {{'TITLE.basvuruyu_onayla' | translate }}
+                                </div>
+
+                            </div>
+                        </div>
+                    </a>
+                    <!--end: Form Wizard Step 9-->
+                </div>
+            </div>
+            <!--end: Form Wizard Nav -->
+
+        </div>
+        <div class="kt-grid__item kt-grid__item--fluid kt-wizard-v2__wrapper ml-2">
+
+            <!--begin: Form Wizard Form-->
+            <form class="kt-form" style="padding-top: 2rem !important;" id="kt_form" [formGroup]="basvuruForm">
+                <!--begin: Form Wizard Bilgilendirme-->
+                <div class="kt-wizard-v2__content" *ngIf="bilgiDurum" data-ktwizard-type="step-content">
+                    <div class="kt-form__section kt-form__section--first">
+                        <div class="form-group row">
+                            {{bilgiMesaj}}
+                        </div>
+                    </div>
+                </div>
+                <!--end: Form Wizard Bilgilendirme-->
+
+                <!--begin: Form Wizard Step 1-->
+                <div class="kt-wizard-v2__content" data-ktwizard-type="step-content" data-ktwizard-state="current">
+                    <div class="kt-form__section kt-form__section--first">
+                        <div class="wizardInLabel">
+                            {{'TEXT.baslangic_tarihi' | translate }}:
+                            <span>
+                                {{basvuruVerileri.baslangic_tarihi |date:"dd.MM.yyyy"}}
+                            </span>
+                        </div>
+                        <div class="wizardInLabel">
+                            {{'TEXT.bitis_tarihi' | translate }}:
+                            <span>
+                                {{basvuruVerileri.bitis_tarihi |date:"dd.MM.yyyy"}}
+                            </span>
+                        </div>
+                        <div *ngIf="data.basvuruBilgileri.data.ucret_odeme_turu!=ucretOdemeTuru.odeme_istenmiyor && data.basvuruBilgileri.data.ucret_zamani!=ucretOdemeZamani.sinavdan_sonra">
+                            <div class="wizardInLabel">
+                                {{'TEXT.ucret' | translate}}:
+                                <span>
+                                    {{basvuruVerileri.ucret}}
+                                </span>
+                            </div>
+
+                            <div class="wizardInLabel">
+                                {{'TEXT.ucret_son_odeme_tarihi' | translate }}:
+                                <span>
+                                    {{basvuruVerileri.ucret_son_odeme_tarihi |date:"dd.MM.yyyy"}}
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="wizardInLabel">
+                            <input class="" type="checkbox" (change)="inputChange($event, 'kullanim_kosulu_metni_tr')" formControlName="kullanim_kosullari" />
+                            <span style="color:#000!important;cursor: pointer;" (click)="openModal(basvuruVerileri.kullanim_kosulu_metni_tr,'kullanim_kosulu_metni_tr')">
+                                {{'TEXT.kullanim_kosulu_metni_okudum' | translate }}
+                            </span>
+                            <div class="fv-plugins-message-container" *ngIf="errorState">
+                                <div class="fv-help-block">
+                                    <div class="fv-help-block">
+                                        <span *ngFor="let i of errorControl('kullanim_kosullari')">
+                                            {{i}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end: Form Wizard Step 1-->
+                <!--begin: Form Wizard Step 2-->
+                <div class="kt-wizard-v2__content" *ngIf="!bilgiDurum && data.kabulKosullari.result" data-ktwizard-type="step-content">
+                    <div class="kt-form__section kt-form__section--first">
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <mat-radio-group aria-label="Select an option" aria-labelledby="example-radio-group-label" formControlName="kabul_kosulu">
+                                    <div class="wizardInLabel" *ngFor="let kosul of kabulKosulVerileri;">
+                                        <mat-radio-button [value]="kosul.id">
+                                            {{kosul.adi_tr}}
+                                            <br />
+                                            <div>
+                                                <span class="wrap-mat-radio-label">
+                                                    {{kosul.aciklama_tr | translateData: kosul.aciklama_en }}
+                                                </span>
+                                            </div>
+                                        </mat-radio-button>
+                                    </div>
+                                    <div class="fv-plugins-message-container" *ngIf="errorState">
+                                        <div class="fv-help-block">
+                                            <div class="fv-help-block">
+                                                <span *ngFor="let i of errorControl('kabul_kosulu')">
+                                                    {{i}}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </mat-radio-group>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end: Form Wizard Step 2-->
+                <!--begin: Form Wizard Step 3-->
+                <div class="kt-wizard-v2__content" *ngIf="!bilgiDurum && data.vizeBilgileri.result" data-ktwizard-type="step-content">
+                    <div class="kt-form__section kt-form__section--first">
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <div>
+                                    <kt-visa-information [vize_durumu]="vize_durumu" [vize_ulke_kodu]="vize_ulke_kodu" [vize_konsolosluk_kodu]="vize_konsolosluk_kodu"></kt-visa-information>
+                                    <div class="fv-plugins-message-container" *ngIf="errorState">
+                                        <div class="fv-help-block">
+                                            <div class="fv-help-block">
+                                                <span *ngFor="let i of errorControl('vize_durumu')">
+                                                    {{i}}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end: Form Wizard Step 3-->
+                <!--begin: Form Wizard Step 4-->
+                <div class="kt-wizard-v2__content" data-ktwizard-type="step-content">
+                    <div class="kt-form__section kt-form__section--first">
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <div>
+                                    <kt-lycee-information (liseDurumu)="alanKontrol('lise', $event)"></kt-lycee-information>
+                                    <div class="fv-plugins-message-container" *ngIf="errorState">
+                                        <div class="fv-help-block">
+                                            <div class="fv-help-block">
+                                                <span *ngFor="let i of errorControl('lise_bilgileri')">
+                                                    {{i}}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end: Form Wizard Step 4-->
+
+                <!--begin: Form Wizard Step 5-->
+                <div class="kt-wizard-v2__content" *ngIf="!bilgiDurum && data.dilBilgileri.result" data-ktwizard-type="step-content">
+                    <div class="kt-form__section kt-form__section--first">
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <div>
+                                    <kt-language-information [basvuruID]="basvuruVerileri.basvuru_id" (dilDurumu)="alanKontrol('dil', $event)"></kt-language-information>
+                                    <div class="fv-plugins-message-container" *ngIf="errorState">
+                                        <div class="fv-help-block">
+                                            <div class="fv-help-block">
+                                                <span *ngFor="let i of errorControl('dil_bilgileri')">
+                                                    {{i}}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end: Form Wizard Step 5-->
+
+
+                <!--begin: Form Wizard Step 6-->
+                <!-- Uyruk -->
+                <!--end: Form Wizard Step 6-->
+
+
+                <!--begin: Form Wizard Step 7-->
+                <div class="kt-wizard-v2__content" *ngIf="!bilgiDurum" data-ktwizard-type="step-content">
+                    <div class="kt-form__section kt-form__section--first">
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <div *ngIf="basvuruForm.value.basvuru_id && basvuruForm.value.ogrenci_basvuru_id">
+                                    <kt-preference-information [basvuruID]="basvuruForm.value.basvuru_id" [ogrenciBasvuruID]="basvuruForm.value.ogrenci_basvuru_id" (tercihDurumu)="alanKontrol('tercih', $event)"></kt-preference-information>
+                                    <div class="fv-plugins-message-container" *ngIf="errorState">
+                                        <div class="fv-help-block">
+                                            <div class="fv-help-block">
+                                                <span *ngFor="let i of errorControl('tercih_bilgisi')">
+                                                    {{i}}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end: Form Wizard Step 7-->
+
+
+                <!--begin: Form Wizard Step 8-->
+                <div class="kt-wizard-v2__content" *ngIf="data.basvuruBilgileri.data.ucret_odeme_turu!=ucretOdemeTuru.odeme_istenmiyor && data.basvuruBilgileri.data.ucret_zamani!=ucretOdemeZamani.sinavdan_sonra" data-ktwizard-type="step-content" style="padding: 0px; margin: 0px;">
+                    <div class="kt-form__section kt-form__section--first" style="min-height: 300px;">
+                        <div *ngIf="(basvuruVerileri.ucret_odeme_turu==ucretOdemeTuru.online)">
+                            <span *ngIf="basvuruVerileri.odeme_onay!=1" style="font-size: 14px; color:red">
+                                {{'TEXT.odeme_bekleme' |translate}}
+                            </span>
+                            <div class="wizardInLabel">
+                                <a (click)="iptalIadeUrl()">
+                                    <input type="checkbox" formControlName="iptal_iade_kosullari" />
+                                    <span style="color:#000!important;cursor: pointer;">
+                                        {{'TEXT.iptal_iade_kosullari' | translate }}
+                                    </span>
+                                </a>
+                                <div class="fv-plugins-message-container" *ngIf="errorState">
+                                    <div class="fv-help-block">
+                                        <div class="fv-help-block">
+                                            <span *ngFor="let i of errorControl('iptal_iade_kosullari')">
+                                                {{i}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="ifIframePos">
+                                <iframe [src]="posOdemeUrl" width="580" [height]="basvuruVerileri.ogrenci_basvuru_onay==1?'300px':'500px'" frameBorder="0" allowfullscreen></iframe>
+                            </div>
+                            <div class="fv-plugins-message-container" *ngIf="errorState && basvuruForm.value.iptal_iade_kosullari">
+                                <div class="fv-help-block">
+                                    <div class="fv-help-block">
+                                        <span *ngFor="let i of errorControl('odeme_onay')">
+                                            {{i}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="basvuruVerileri.ucret_odeme_turu==ucretOdemeTuru.dekont">
+                            <form [formGroup]="basvuruForm">
+                                <doko-file-upload-all [imgURL]="basvuruForm.value.dekont?dokoSettingsService.apiUrl + basvuruForm.value.dekont :false" controlName="dekont" [isSaveButton]="false" [multiple]="false">
+                                </doko-file-upload-all>
+                            </form>
+                            <div class="fv-plugins-message-container" *ngIf="errorState">
+                                <div class="fv-help-block">
+                                    <div class="fv-help-block">
+                                        <span *ngFor="let i of errorControl('dekont')">
+                                            {{i}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end: Form Wizard Step  8-->
+                <!--begin: Form Wizard Step 9-->
+                <div class="kt-wizard-v2__content" data-ktwizard-type="step-content" style="padding: 0px; margin: 0px;">
+                    <div>
+                        <mat-slide-toggle formControlName="onay"></mat-slide-toggle>
+                        {{'TEXT.I_AGREE_INFORMATION' | translate}}
+                        <br>
+                    </div>
+                    <div class="fv-plugins-message-container" *ngIf="errorState">
+                        <div class="fv-help-block">
+                            <div class="fv-help-block">
+                                <span *ngFor="let i of errorControl('onay')">
+                                    {{i}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end: Form Wizard Step 9-->
+
+                <div *ngIf="!bilgiDurum" class="rightCrudBtn">
+                    <div style="  margin-right:-30px;">
+                        <div class="kt-form__actions">
+                            <button type="button" class="btn btn-light-primary text-uppercase px-9 py-4" data-ktwizard-type="action-prev">
+                                {{'TEXT.PREVIOUS' | translate }}
+                            </button>
+                            <div (click)="basvuruTamamla()" class="btn btn-success btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u" data-ktwizard-type="action-submit">
+                                {{'TITLE.basvuruyu_onayla' | translate }}
+                            </div>
+                            <button type="button" class="btn btn-primary text-uppercase px-9 py-4" data-ktwizard-type="action-next">
+                                {{'TEXT.NEXT' | translate }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+            <!--end: Form Actions -->
+            <!--end: Form Wizard Form-->
+        </div>
+
+
+    </div>
+
+    <!-- </div> -->
+
+</div>

@@ -1,0 +1,23 @@
+<kt-portlet>
+
+
+	<kt-portlet-header [title]="'TITLE.birim_kayit_turleri'| translate" [class]="'kt-portlet__head--lg'">
+
+		<ng-container ktPortletTools>
+			<button routerLink="../add" mat-raised-button color="primary" matTooltip="{{'TEXT.ADD' | translate}}">{{'TEXT.ADD' | translate}} </button>
+			<!-- Buttons (Material Angular) | See off.documenations 'https://material.angular.io/components/button/overview' -->
+			<!-- mat-raised-button | Rectangular contained button w/ elevation  -->
+		</ng-container>
+	</kt-portlet-header>
+
+    <kt-portlet-body>
+
+		<!-- <input type="text" id="filter" [(ngModel)]="filter" placeholder="Filter..." (keyup)="onFilterTextBoxChanged()"> -->
+
+		<kt-custom-ag-grid  (agGridCustom)="agGridSet($event)"  (editData)="editData($event)" (removeData)="remove($event)" [rowData]="rowData" [columnDefs]="columnDefs" > </kt-custom-ag-grid>
+	
+
+
+	</kt-portlet-body>
+	<!-- end::Body -->
+</kt-portlet>

@@ -1,0 +1,54 @@
+@import "../../../../../assets/student/login/css/style.bundle.css";
+.dilKutu {
+    background-color: #e0e8f7 !important;
+    background-size: 100%;
+    background-image: url('../../../../../assets/student/general/bg-6.jpg');
+    box-shadow: 3px 3px 4px #e0e8f7;
+    cursor: pointer;
+    color: #000 !important;
+}
+
+.dilEkleCerceve {
+    min-width: 380px;
+    min-height: 160px;
+    height: 160px;
+    padding-top: 10px;
+}
+
+.dilEkle {
+    background-position: 0px -30px;
+    box-shadow: 3px 3px 4px #e0e8f7 !important;
+    background-size: 100%;
+    background-image: url('../../../../../assets/student/general/6.jpg');
+    cursor: pointer;
+    text-align: center;
+    opacity: 0.6;
+    -webkit-transition: opacity 0.3s ease-in;
+    -moz-transition: opacity 0.3s ease-in;
+    -ms-transition: opacity 0.3s ease-in;
+    -o-transition: opacity 0.3s ease-in;
+    transition: opacity 0.3s ease-in;
+}
+
+.dilEkle>i {
+    font-size: 64px;
+    padding-top: 10px;
+    color: #e0e8f7;
+}
+
+.dilEkle:hover {
+    zoom: 1;
+    filter: alpha(opacity=1);
+    opacity: 1;
+}
+
+@media (max-width: 991.98px) {
+    .cerceve {
+        min-width: 100px!important;
+        min-height: 180px;
+    }
+    .dilEkleCerceve {
+        min-width: 100px!important;
+        min-height: 180px;
+    }
+}

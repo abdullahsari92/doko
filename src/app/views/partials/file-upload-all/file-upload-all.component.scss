@@ -1,0 +1,108 @@
+
+.image-preview {
+  
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 25px;
+ 
+    float: left;
+    position: relative;
+}
+.image-preview > img {
+    object-fit: contain;
+    width: auto;
+    border-radius: var(--border-radius);
+    height: 100%;
+}
+
+.upload-drop-zone{
+
+    background: #f3f6f9;
+    border: 1px dashed  #919191;
+    border-radius: 10px;
+    position: relative;
+    
+}
+
+.fileInput{
+
+    border: none;
+    color:blue;
+
+}
+
+.file {
+    // align-items: stretch;
+   // display: flex;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.file-label {
+   // align-items: stretch;
+  //  display: flex;
+    cursor: pointer;
+    justify-content: flex-start;
+    // overflow: hidden;
+    // position: relative;
+    //      left: 47%;
+    color: #0e76a8;
+}
+
+.file-input {
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    outline: 0;  
+    top: 0;
+    position: absolute;
+    width: 100%;
+}
+                                
+
+.yuklenecekDosyalar{
+
+    //position: absolute;
+ //top:20%;
+ //left: 40%;
+ //padding:0px 10% ;
+ text-align: center;
+
+ width:100%;
+ height: auto;
+
+}
+                       
+
+.yuklenecekDosya{
+
+    position: relative;
+  
+    padding: 20px;
+
+}
+
+.yuklenecekDosya mat-icon
+{
+    position: absolute;
+     top :105px;
+      right:-4px;
+      cursor: pointer;
+      font-size: 18px;
+      color: red;
+      width: 20px;
+      height: 20px;
+}
+
+.yuklenecekDosya span
+{
+    position: absolute;
+     bottom:40px;
+      right:-4px;
+      cursor: pointer;
+      font-size: 18px;
+      color: red;
+      width: 20px;
+      height: 20px;
+}

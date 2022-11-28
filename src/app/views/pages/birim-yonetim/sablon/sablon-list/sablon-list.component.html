@@ -1,0 +1,81 @@
+<kt-portlet>
+  <kt-portlet-header [title]="'TITLE.sablon_listesi'| translate" [class]="'kt-portlet__head--lg'">
+    <ng-container ktPortletTools>
+      <!-- <a (click)="goBackWithoutId()" class="btn btn-secondary kt-margin-r-10"  mat-raised-button matTooltip="Back to the products list">
+				<i class="la la-arrow-left"></i>
+				<span class="kt-hidden-mobile">{{'TEXT.BACK' | translate}}</span>
+			</a> -->
+    </ng-container>
+  </kt-portlet-header>
+  <kt-portlet-body>
+    <!--begin: Wizard -->
+    <div #wizard class="kt-grid kt-wizard-v2 kt-wizard-v2--white" id="kt_wizard_v2">
+      <div class="kt-grid__item kt-wizard-v2__nav kategoriler">
+        <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+          <!-- This is the tree node template for leaf nodes -->
+          <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+            <!-- use a disabled button to provide padding for tree leaf -->
+            <button mat-icon-button disabled></button>
+            <a class="kt-wizard-v2__nav-item  allItem" (click)="getList(node.key)">{{node.name}} </a>
+          </mat-tree-node>
+          <!-- This is the tree node template for expandable nodes -->
+          <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding
+            class="kt-wizard-v2__nav-item allItem">
+            <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name">
+              <mat-icon class="mat-icon-rtl-mirror">
+                {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+              </mat-icon>
+              <span>{{node.name}}</span>
+            </button>
+          </mat-tree-node>
+        </mat-tree>
+      </div>
+
+      <div class="kt-grid__item kt-grid__item--fluid kt-wizard-v2__wrapper" style="width: 100%;">
+        <div class="" style="padding:1em 4em; text-align:center">
+          <div class="row" *ngIf="getSablonList">
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12" *ngFor="let item of getSablonList" >
+              <mat-card style="margin-bottom: 10px;">
+                <mat-card-actions align="right" style="margin-bottom: 0px!important;padding: 0px!important;">
+                  <button mat-icon-button color="danger" (click)="previewModal(item.sablon_tanimlari_id,item.id)"
+                    matTooltip="{{'TEXT.PREVİEW' | translate}}" type="{{'TEXT.PREVİEW' | translate}}">
+                    <mat-icon>list</mat-icon>
+                  </button>
+                  <button mat-icon-button color="danger" (click)="editModal(item.sablon_tanimlari_id,item.id)"
+                    matTooltip="{{'TEXT.UPDATE' | translate}}" type="{{'TEXT.UPDATE' | translate}}">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                  <button mat-icon-button color="warn" (click)="deleteModal(item.sablon_tanimlari_id,item.id)"
+                    matTooltip="{{'TEXT.DELETE' | translate}}" type="{{'TEXT.DELETE' | translate}}">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </mat-card-actions>
+                <a (click)="getId(item.sablon_tanimlari_id,item.id)">
+                  <mat-card-content>
+                    <div class="row">
+                      <div class="col-lg-12 mr-20">
+                        <i class="flaticon-file-2 icon-3x"></i>
+                      </div>
+                    </div>
+                  </mat-card-content>
+                  <mat-card-footer>
+                    <p> {{item.adi}}</p>
+                    <br>
+                  </mat-card-footer>
+                </a>
+              </mat-card>
+            </div>
+            <br>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <p style="text-align: right; position: sticky;bottom: 20px; right: 20px;">
+      <a mat-fab color="primary" (click)="addModal()" title="{{'TEXT.yeni_kayit' | translate}}">
+        <mat-icon>add</mat-icon>
+      </a>
+    </p>
+    <!--end: Wizard -->
+  </kt-portlet-body>
+</kt-portlet>

@@ -1,0 +1,43 @@
+<div class="modalBody">
+    <div class="header">
+        <h4>{{ 'TITLE.dil_tanim' | translate }}</h4>
+        <span [mat-dialog-close]="data.animal" style=" position: absolute;  top: 10px;right: -20px;">
+            <mat-icon> close</mat-icon>
+        </span>
+    </div>
+    <form class="kt-login__form kt-form" [formGroup]="sablonEditForm" autocomplete="off">
+        <div class="form-group kt-form__group row">
+            <div class="col-lg-12 kt-margin-bottom-20-mobile">
+                <mat-form-field class="mat-form-field-fluid">
+                    <mat-label>{{'TEXT.adi' | translate}}</mat-label>
+                    <input matInput type="text" placeholder="{{'TEXT.adi' | translate}}" formControlName="adi" />
+                    <mat-error *ngIf="isControlHasError('adi','required')">
+                        <strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                    </mat-error>
+                    <mat-error *ngIf="isControlHasError('adi','maxlength')">
+                        <strong> {{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }}</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-lg-12 kt-margin-bottom-20-mobile">
+                <mat-form-field class="mat-form-field-fluid">
+                    <mat-select placeholder="{{'TEXT.default_dil' | translate}}" formControlName="dil">
+                        <mat-option *ngFor="let dil of dilKodlari" [value]="dil.value">{{dil.key}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-lg-12 kt-margin-bottom-20-mobile">
+                <div>{{'TEXT.default_pattern' | translate}}:</div>
+                <mat-slide-toggle formControlName="durumu" (change)="changeStatu(1)">{{durumuText | translate}}
+                </mat-slide-toggle>
+            </div>
+        </div>
+    </form>
+    <div class="rightCrudBtn">
+        <button (click)="submit()" id="kt_login_signin_submit" class="btn btn-primary btn-elevate kt-login__btn-primary"
+            [ngClass]="{'kt-spinner kt-spinner--right kt-spinner--md kt-spinner--light': loading}">{{buttonSave}}
+        </button>
+        <button type="button" mat-raised-button [mat-dialog-close]="data.animal" class="btn pull-right cancbtn">
+            {{"TEXT.CANCEL" | translate }} </button>
+    </div>
+</div>

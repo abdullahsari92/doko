@@ -1,0 +1,447 @@
+<div class="modalBody">
+    <div class="header">
+        <div style="margin: 0 -20px;">
+            <span [mat-dialog-close]="data.animal" style=" position: absolute;  top: 10px;right: -20px;">
+                <mat-icon> cancel</mat-icon>
+            </span>
+        </div>
+    </div>
+    <!-- <div *ngIf="data.ogrenci_basvuru_durumu==ogrenciBasvuruDurumEnum.yeniKayit || data.ogrenci_basvuru_durumu==null">-->
+    <div class="kt-heading kt-heading--md text-center m-0">
+        {{sinavVerileri.adi_tr | translateData :sinavVerileri.adi_en }}
+    </div>
+    <div #wizard class="kt-grid kt-wizard-v2 kt-wizard-v2--white" id="kt_wizard_v2" data-ktwizard-state="step-first" style="flex: -3 0 400px !important">
+        <div class="kt-grid__item kt-wizard-v2__aside merkezler p-2">
+            <!--begin: Form Wizard Nav -->
+            <div class="kt-wizard-v2__nav">
+                <div class="kt-wizard-v2__nav-items">
+                    <!--begin: Form Wizard Bilgilendirme-->
+                    <a class="kt-wizard-v2__nav-item" href="javascript:;" *ngIf="bilgiDurum" href="javascript:;" data-ktwizard-type="step" data-ktwizard-state="current">
+                        <div class="kt-wizard-v2__nav-body">
+                            <div class="kt-wizard-v2__nav-icon">
+                                <i id="iconBaslangic" class="flaticon-globe"></i>
+                            </div>
+                            <div class="kt-wizard-v2__nav-label pt-2">
+                                <div class="kt-wizard-v2__nav-label-title">
+                                    {{'TEXT.INFORM' | translate }}
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!--end: Form Wizard Bilgilendirme-->
+                    <!--begin: Form Wizard Step 1-->
+                    <a class="kt-wizard-v2__nav-item" href="javascript:;" *ngIf="!bilgiDurum" id="10" data-ktwizard-type="step" [attr.data-ktwizard-state]="!bilgiDurum ? current : ''">
+                        <div class="kt-wizard-v2__nav-body">
+                            <div class="kt-wizard-v2__nav-icon">
+                                <i id="icon10" class="flaticon-globe"></i>
+                            </div>
+                            <div class="kt-wizard-v2__nav-label pt-2">
+                                <div class="kt-wizard-v2__nav-label-title">
+                                    {{'TEXT.exam_information' | translate }}
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!--end: Form Wizard Step 1-->
+                    <!--begin: Form Wizard Step 2-->
+                    <a class="kt-wizard-v2__nav-item" id="20" *ngIf="!bilgiDurum && data.kabulKosullari.result" href="javascript:;" data-ktwizard-type="step">
+                        <div class="kt-wizard-v2__nav-body">
+                            <div class="kt-wizard-v2__nav-icon">
+                                <i id="icon20" class="flaticon-list-2"></i>
+                            </div>
+                            <div class="kt-wizard-v2__nav-label pt-2">
+                                <div class="kt-wizard-v2__nav-label-title">
+                                    {{'TITLE.kabul_kosullari' | translate }}
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="kt-wizard-v2__nav-item" id="30" *ngIf="!bilgiDurum && data.sinavMerkezleri.result" href="javascript:;" data-ktwizard-type="step">
+                        <div class="kt-wizard-v2__nav-body">
+                            <div class="kt-wizard-v2__nav-icon">
+                                <i id="icon30" class="flaticon-map-location"></i>
+                            </div>
+                            <div class="kt-wizard-v2__nav-label pt-2">
+                                <div class="kt-wizard-v2__nav-label-title">
+                                    {{'TEXT.sinav_merkezi' | translate }}
+                                </div>
+                            </div>
+                            <div class="kt-wizard-v2__nav-icon ml-auto">
+                                <i id="2icon30" class="flaticon2-checkmark d-none"></i>
+                            </div>
+                        </div>
+                    </a>
+                    <!--end: Form Wizard Step 3-->
+                    <!--begin: Form Wizard Step 4-->
+                    <a class="kt-wizard-v2__nav-item" id="40" href="javascript:;" *ngIf="!bilgiDurum && (data.ucret_odeme_turu!=ucretOdemeTuru.odeme_istenmiyor || data.ucret_zamani==ucretOdemeZamani.sinavdan_once)" data-ktwizard-type="step">
+                        <div class="kt-wizard-v2__nav-body">
+                            <div class="kt-wizard-v2__nav-icon">
+                                <i id="icon40" class="flaticon-responsive"></i>
+                            </div>
+                            <div class="kt-wizard-v2__nav-label pt-2">
+                                <div class="kt-wizard-v2__nav-label-title">
+                                    {{'TITLE.odeme' | translate }}
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!--end: Form Wizard Step 4-->
+                    <!--begin: Form Wizard Step 5-->
+                    <a class="kt-wizard-v2__nav-item" id="50" *ngIf="!bilgiDurum" href="javascript:;" data-ktwizard-type="step">
+                        <div class="kt-wizard-v2__nav-body">
+                            <div class="kt-wizard-v2__nav-icon">
+                                <i id="icon50" class="flaticon-responsive"></i>
+                            </div>
+                            <div class="kt-wizard-v2__nav-label pt-2">
+                                <div class="kt-wizard-v2__nav-label-title">
+                                    {{'TITLE.basvuruyu_onayla' | translate }}
+                                </div>
+
+                            </div>
+                        </div>
+                    </a>
+                    <!--end: Form Wizard Step 5-->
+                </div>
+            </div>
+            <!--end: Form Wizard Nav -->
+
+        </div>
+        <div class="kt-grid__item kt-grid__item--fluid kt-wizard-v2__wrapper ml-2">
+
+            <!--begin: Form Wizard Form-->
+            <form class="kt-form" style="padding-top: 2rem !important;" id="kt_form" [formGroup]="hazirlikBasvuruForm">
+                <!--begin: Form Wizard Bilgilendirme-->
+                <div class="kt-wizard-v2__content" *ngIf="bilgiDurum" data-ktwizard-type="step-content">
+                    <div class="kt-form__section kt-form__section--first">
+                        <div class="form-group row">
+                            {{bilgiMesaj}}
+                        </div>
+                    </div>
+                </div>
+                <!--end: Form Wizard Bilgilendirme-->
+                <!--begin: Form Wizard Step 1-->
+                <div class="kt-wizard-v2__content" data-ktwizard-type="step-content" data-ktwizard-state="current">
+                    <!-- <div class="kt-heading kt-heading--md text-center">
+                        {{sinavVerileri.adi_tr | translateData :sinavVerileri.adi_en }}
+                    </div> -->
+                    <div class="kt-form__section kt-form__section--first">
+                        <div class="wizardInLabel">
+                            {{'TEXT.baslangic_tarihi' | translate }}:
+                            <span>
+                                {{sinavVerileri.baslangic_tarihi |date:"dd.MM.yyyy"}}
+                            </span>
+                        </div>
+                        <div class="wizardInLabel">
+                            {{'TEXT.bitis_tarihi' | translate }}:
+                            <span>
+                                {{sinavVerileri.bitis_tarihi |date:"dd.MM.yyyy"}}
+                            </span>
+                        </div>
+                        <div class="wizardInLabel">
+                            {{'TEXT.sinav_tarihi' | translate }}:
+                            <span>
+                                {{sinavVerileri.sinav_tarihi |date:"dd.MM.yyyy"}}
+                            </span>
+                        </div>
+                        <div class="wizardInLabel">
+                            {{'TEXT.ucret' | translate}}:
+                            <span>
+                                {{sinavVerileri.ucret}}
+                            </span>
+                        </div>
+                        <div class="wizardInLabel">
+                            <input type="checkbox" (change)="inputChange($event, 'kvkk_metni_tr')" formControlName="kvkk" />
+                            <span style="color:#000!important;cursor: pointer;" (click)="openModal(sinavVerileri.kvkk_metni_tr, 'kvkk_metni_tr')">
+                                {{'TEXT.kvkk_metni_okudum' | translate }}
+                            </span>
+                            <div class="fv-plugins-message-container" *ngIf="errorState">
+                                <div class="fv-help-block">
+                                    <div class="fv-help-block">
+                                        <span *ngFor="let i of errorControl('kvkk')">
+                                            {{i}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wizardInLabel">
+                            <input class="" type="checkbox" (change)="inputChange($event, 'kullanim_kosulu_metni_tr')" formControlName="kullanim_kosullari" />
+                            <span style="color:#000!important;cursor: pointer;" (click)="openModal(sinavVerileri.kullanim_kosulu_metni_tr,'kullanim_kosulu_metni_tr')">
+                                {{'TEXT.kullanim_kosulu_metni_okudum' | translate }}
+                            </span>
+                            <div class="fv-plugins-message-container" *ngIf="errorState">
+                                <div class="fv-help-block">
+                                    <div class="fv-help-block">
+                                        <span *ngFor="let i of errorControl('kullanim_kosullari')">
+                                            {{i}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="wizardInLabel">
+                            <mat-checkbox formControlName="kvkk_metni_onay" (change)="$event.checked?openModal(sinavVerileri.kvkk_metni_tr,0):''"></mat-checkbox>
+                            <span style="color:#000!important;" (click)="openModal(sinavVerileri.kvkk_metni_tr,1)">
+                                {{'TEXT.kvkk_metni_okudum' | translate }}
+                            </span>
+                            <br>
+                            <mat-error *ngIf="isCexkBoxContorl('kvkk_metni_onay','required') || isErrorKvkk">
+                                <strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                            </mat-error>
+                        </div>
+                        <div class="wizardInLabel">
+                            <mat-checkbox formControlName="kullanim_kosulu_onay" (change)="$event.checked?openModal(sinavVerileri.kullanim_kosulu_metni_tr,0):''">
+                            </mat-checkbox>
+                            <span style="color:#000!important;" (click)="openModal(sinavVerileri.kullanim_kosulu_metni_tr,2)">
+                                {{'TEXT.kullanim_kosulu_metni_okudum' | translate }} </span>
+
+                            <mat-error *ngIf="isCexkBoxContorl('kullanim_kosulu_onay','required') || isErrorKullanimKosulu">
+                                <strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                            </mat-error>
+                        </div> -->
+
+
+                        <!-- 
+                        <ul class="list-group list-group-flush">
+
+                           <li class="list-group-item">
+                                <span class="font-weight-bold">
+                                    {{'TEXT.baslangic_tarihi' | translate }} :
+                                </span> {{sinavVerileri.baslangic_tarihi |date:"dd.MM.yyyy"}}
+                            </li>
+
+                            <li class="list-group-item"> <span><b> {{'TEXT.bitis_tarihi' | translate }} :</b> </span> {{sinavVerileri.bitis_tarihi | date:"dd.MM.yyyy"}} </li>
+                            <li class="list-group-item"> <span><b> {{'TEXT.sinav_tarihi' | translate }} :</b> </span> {{sinavVerileri.sinav_tarihi | date:"dd.MM.yyyy" }} </li>
+                            <li class="list-group-item"><span><b> 
+                                {{data.ucret_aciklama_tr | translateData: data.ucret_aciklama_en }} :</b> </span> {{sinavVerileri.ucret}} </li>
+
+                            <li class="list-group-item">
+                                <mat-checkbox formControlName="kvkk_metni_onay" (change)="$event.checked?openModal(sinavVerileri.kvkk_metni_tr,0):''">
+                                </mat-checkbox>
+                                <span style="color:black" (click)="openModal(sinavVerileri.kvkk_metni_tr,1)"> {{'TEXT.kvkk_metni_okudum' |
+                                    translate }} </span>
+                                <br>
+                                <mat-error *ngIf="isCexkBoxContorl('kvkk_metni_onay','required') || isErrorKvkk">
+                                    <strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                                </mat-error>
+
+                            </li>
+                            <li class="list-group-item">
+
+                                <mat-checkbox formControlName="kullanim_kosulu_onay" (change)="$event.checked?openModal(sinavVerileri.kullanim_kosulu_metni_tr,0):''">
+                                </mat-checkbox>
+                                <span (click)="openModal(sinavVerileri.kullanim_kosulu_metni_tr,2)">
+                                    {{'TEXT.kullanim_kosulu_metni_okudum' | translate }} </span>
+
+                                <mat-error *ngIf="isCexkBoxContorl('kullanim_kosulu_onay','required') || isErrorKullanimKosulu">
+                                    <strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                                </mat-error>
+
+                            </li>
+
+                        </ul>
+-->
+                    </div>
+                </div>
+                <!--begin: Form Wizard Step 2-->
+                <div class="kt-wizard-v2__content" *ngIf="data.kabulKosullari.result" data-ktwizard-type="step-content">
+                    <div class="kt-form__section kt-form__section--first">
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <mat-radio-group aria-label="Select an option" aria-labelledby="example-radio-group-label" formControlName="kabul_kosulu">
+                                    <div class="wizardInLabel" *ngFor="let kosul of kabulKosulVerileri;">
+                                        <mat-radio-button [value]="kosul.id">
+                                            {{kosul.adi_tr}}
+                                            <br />
+                                            <div>
+                                                <span class="wrap-mat-radio-label">
+                                                    {{kosul.aciklama_tr | translateData: kosul.aciklama_en }}
+                                                </span>
+                                            </div>
+                                        </mat-radio-button>
+                                    </div>
+                                    <div class="fv-plugins-message-container" *ngIf="errorState">
+                                        <div class="fv-help-block">
+                                            <div class="fv-help-block">
+                                                <span *ngFor="let i of errorControl('kabul_kosulu')">
+                                                    {{i}}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--I used if is "touched" to don't show the error until submit
+                                        <mat-error *ngIf="form.get('control').touched">Required</mat-error>-->
+                                </mat-radio-group>
+
+                                <!-- <div class="wizardInLabel">
+                                    <mat-radio-group aria-labelledby="example-radio-group-label" (change)="radioChange()" class="example-radio-group" formControlName="kayit_turu_id">
+                                        <div *ngFor="let metin of kabulKosullari">
+                                            <mat-radio-button class="example-radio-button" [value]="metin.id">
+                                                {{metin.adi_tr | translateData: metin.adi_en }} <br>
+                                            </mat-radio-button>
+                                            <div style="background-color: azure; font-size: 10px;margin-left: 30px; padding: 10px;">
+                                                {{metin.aciklama_tr | translateData: metin.aciklama_en }}
+                                            </div>
+                                        </div>
+                                    </mat-radio-group>
+
+                                </div>
+ -->
+
+
+                                <!-- <input class="" type="radio" (change)="inputChange($event, 'kullanim_kosulu_metni_tr')" formControlName="kullanim_kosullari" />
+                                    <span style="color:#000!important;cursor: pointer;"
+                                        (click)="openModal(sinavVerileri.kullanim_kosulu_metni_tr,'kullanim_kosulu_metni_tr')">
+                                        {{'TEXT.kullanim_kosulu_metni_okudum' | translate }}
+                                    </span> -->
+                                <!-- <mat-radio-group aria-labelledby="example-radio-group-label" (change)="radioChange()" class="example-radio-group" formControlName="kayit_turu_id">
+                                    <div *ngFor="let metin of kabulKosullari">
+                                        <mat-radio-button class="example-radio-button" [value]="metin.id">
+                                            {{metin.adi_tr | translateData: metin.adi_en }} <br>
+                                        </mat-radio-button>
+                                        <div style="background-color: azure; font-size: 10px;margin-left: 30px; padding: 10px;">
+                                            {{metin.aciklama_tr | translateData: metin.aciklama_en }}
+                                        </div>
+                                    </div>
+                                </mat-radio-group>
+                                <br />
+                                <mat-error *ngIf="isErrorKayitTuru">
+                                    <strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                                </mat-error> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--end: Form Wizard Step 2 Bitti-->
+                <!--begin: Form Wizard Step 3-->
+                <div class="kt-wizard-v2__content" *ngIf="data.sinavMerkezleri.result" data-ktwizard-type="step-content">
+                    <div class="kt-form__section kt-form__section--first">
+                        <div class="form-group row">
+                            <label class="col-form-label col-3 text-lg-right text-left">
+                                {{ 'TEXT.sinav_merkezi' | translate }}
+                            </label>
+                            <div class="col-9">
+                                <select name="merkez_id" class="form-control form-control-lg form-control-solid" formControlName="merkez_id">
+                                    <option value="" selected="selected">
+                                        {{ 'TEXT.SELECT' | translate }}
+                                    </option>
+                                    <option *ngFor="let item of sinavMerkezVerileri" [value]="item.id">
+                                        {{item.adi_tr | translateData: item.adi_en }}
+                                    </option>
+                                </select>
+                                <div class="fv-plugins-message-container" *ngIf="errorState">
+                                    <div class="fv-help-block">
+                                        <div class="fv-help-block">
+                                            <span *ngFor="let i of errorControl('merkez_id')">
+                                                {{i}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- <mat-form-field appearance="fill" class="full-width">
+                                    <mat-label>{{'TEXT.SELECT' | translate }} </mat-label>
+                                    <mat-select disableRipple formControlName="merkez_id">
+                                        <mat-option *ngFor="let item of aktifSinavMerkezleri" [value]="item.id">
+                                            {{item.adi_tr | translateData: item.adi_en }}</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="isControlHasError('merkez_id','required')">
+                                        <strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                                    </mat-error>
+                                </mat-form-field> -->
+                                <!-- <select class="form-control form-control-lg form-control-solid" placeholder="Select.." formControlName="merkez_id">
+                    <option *ngFor="let item of sinavMerkezler" [value]="item.id"> {{item.adi_tr}} </option>
+            
+                </select> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end: Form Wizard Step 3-->
+                <!--begin: Form Wizard Step 4-->
+                <div class="kt-wizard-v2__content" *ngIf="sinavVerileri.ucret_odeme_turu!=ucretOdemeTuru.odeme_istenmiyor || sinavVerileri.ucret_zamani==ucretOdemeZamani.sinavdan_once" data-ktwizard-type="step-content" style="padding: 0px; margin: 0px;">
+                    <div class="kt-form__section kt-form__section--first" style="min-height: 300px;">
+                        <div *ngIf="sinavVerileri.ucret_odeme_turu==1">
+                            <iframe [src]="posOdemeUrl" width="580" [height]="sinavVerileri.ogrenci_basvuru_onay==1?'300px':'500px'" frameBorder="0" allowfullscreen></iframe>
+                        </div>
+                        <div *ngIf="sinavVerileri.ucret_odeme_turu==2">
+                            <form [formGroup]="dekontUploadForm">
+                                <doko-file-upload-all [imgURL]=" sinavVerileri.ogrenci_basvuru_dekont?dokoSettingsService.apiUrl +sinavVerileri.ogrenci_basvuru_dekont :false" controlName="dekont" [isSaveButton]="false" [multiple]="false">
+                                </doko-file-upload-all>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!--end: Form Wizard Step 4-->
+                <!--begin: Form Wizard Step 5-->
+                <div class="kt-wizard-v2__content" data-ktwizard-type="step-content" style="padding: 0px; margin: 0px;">
+                    <div class="kt-heading kt-heading--md">
+                        {{'TITLE.basvuruyu_onayla' | translate }}
+                    </div>
+                    <div style="padding:40px;">
+                        <mat-slide-toggle (change)="changeStatu($event)"></mat-slide-toggle>
+                        bütün bilgilerin doğuruluğunu kabul ediyorum.
+                        <br>
+                    </div>
+                </div>
+                <!--end: Form Wizard Step 5-->
+
+
+
+                <!--begin: Form Actions -->
+                <!-- <div class="kt-form__actions">
+                    <div class="btn btn-secondary btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u"
+                        data-ktwizard-type="action-prev">
+                    {{'TEXT.PREVIOUS' | translate }}
+                    </div>
+            
+                
+                    <div (click)="basvuruCompleted()" class="btn btn-success btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u"
+                    data-ktwizard-type="action-submit" >
+                    Başvuruyu Tamamla
+                        </div>
+            
+                        <div class="btn btn-brand btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u"
+                        data-ktwizard-type="action-next"   >
+                        {{'TEXT.NEXT' | translate }}
+                        </div>
+            
+
+            
+                </div> -->
+
+                <div *ngIf="!bilgiDurum" class="rightCrudBtn">
+                    <div style="  margin-right:-30px;">
+                        <div class="kt-form__actions">
+                            <!-- <div class="btn btn-secondary btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u" style="position: absolute; bottom: 10px; left:20px;" data-ktwizard-type="action-prev">
+                                {{'TEXT.PREVIOUS' | translate }}
+                            </div> -->
+
+                            <button type="button" class="btn btn-light-primary text-uppercase px-9 py-4" data-ktwizard-type="action-prev">
+                                {{'TEXT.PREVIOUS' | translate }}
+                            </button>
+                            <div (click)="basvuruCompleted()" class="btn btn-success btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u" data-ktwizard-type="action-submit">
+                                Başvuruyu Tamamla
+                            </div>
+                            <button type="button" class="btn btn-primary text-uppercase px-9 py-4" data-ktwizard-type="action-next">
+                                {{'TEXT.NEXT' | translate }}
+                            </button>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </form>
+            <!--end: Form Actions -->
+            <!--end: Form Wizard Form-->
+        </div>
+
+
+    </div>
+
+    <!-- </div> -->
+
+</div>

@@ -1,0 +1,171 @@
+<kt-portlet>
+	<kt-portlet-header [title]="'TITLE.ogrenci_listesi'| translate" [class]="'kt-portlet__head--lg'">
+		<ng-container ktPortletTools>
+			<a  [routerLink]="'../list'" routerLinkActive="router-link-active"  class="btn btn-secondary kt-margin-r-10" mat-raised-button
+			matTooltip="{{'TEXT.BACK' | translate}}">
+			<i class="la la-arrow-left"></i>
+			<span class="kt-hidden-mobile">{{'TEXT.BACK' | translate}}</span>
+			</a>
+			<!-- <button routerLink="../ogrenci/add" mat-raised-button color="primary" matTooltip="{{'TEXT.ADD' | translate}}">{{'TEXT.ADD' | translate}} </button> -->
+			<!-- Buttons (Material Angular) | See off.documenations 'https://material.angular.io/components/button/overview' -->
+			<!-- mat-raised-button | Rectangular contained button w/ elevation  -->
+		</ng-container>
+	</kt-portlet-header>
+    <kt-portlet-body>
+
+	<div class="tab-pane show active px-7">
+		<div class="row justify-content-md-center">
+
+			<div class="col-lg-10">
+
+				<app-img-view [imgURL]="dokoSettingsService.apiUrl + ogrenciModel.resim" [textTitle]="ogrenciModel.adi +' ' +ogrenciModel.soyadi "></app-img-view>
+
+				<mat-divider></mat-divider>
+
+				<br>
+
+
+			
+
+				<div class="row mb-6" style="position: relative ;">
+					<span style="position:absolute; top:10px; right:10px; cursor: pointer; z-index: 99999;">
+  
+						<mat-icon (click)="editStudent()" >edit</mat-icon>
+				   </span>
+					<!--begin::Info-->
+					<div class="col-6 col-md-3">
+						<div class="mb-8 d-flex flex-column">
+							<span class="text-dark font-weight-bold mb-4">{{'TEXT.aday_no' | translate }}
+							</span>
+							<span class="text-muted font-weight-bolder font-size-lg">
+								{{ogrenciModel.aday_no}}</span>
+						</div>
+					</div>					
+					<div class="col-6 col-md-3">
+						<div class="mb-8 d-flex flex-column">
+							<span class="text-dark font-weight-bold mb-4">{{'TEXT.kimlik_no' | translate }}
+							</span>
+							<span class="text-muted font-weight-bolder font-size-lg">
+								{{ogrenciModel.kimlik_no | isnullSetDash}}</span>
+						</div>
+					</div>				
+					<div class="col-6 col-md-3">
+						<div class="mb-8 d-flex flex-column">
+							<span class="text-dark font-weight-bold mb-4">{{'TEXT.dogum_tarihi' | translate
+								}}</span>
+							<span class="text-muted font-weight-bolder font-size-lg">
+								{{ogrenciModel.dogum_tarihi}}</span>
+						</div>
+					</div>
+					<div class="col-6 col-md-3">
+						<div class="mb-8 d-flex flex-column">
+							<span class="text-dark font-weight-bold mb-4">{{'TEXT.cinsiyet' | translate
+								}}</span>
+							<span class="text-muted font-weight-bolder font-size-lg"> {{ ogrenciModel.cinsiyet == 'E' ? 'Erkek' : 'Kadın' }}
+							</span>
+						</div>
+					</div>
+					<div class="col-6 col-md-3">
+						<div class="mb-8 d-flex flex-column">
+							<span class="text-dark font-weight-bold mb-4">{{'TEXT.dogum_yeri' | translate}} </span>
+								<span class="text-muted font-weight-bolder font-size-lg">
+									{{ogrenciModel.dogum_yeri}} </span>
+					</div>
+					</div>
+					
+					<div class="col-6 col-md-3">
+						<div class="mb-8 d-flex flex-column">
+							<span class="text-dark font-weight-bold mb-4">{{'TEXT.baba_adi' | translate }}</span>
+							<span class="text-muted font-weight-bolder font-size-lg">
+								{{ogrenciModel.baba_adi }} </span>
+						</div>
+					</div>
+					<div class="col-6 col-md-3">
+						<div class="mb-8 d-flex flex-column">
+							<span class="text-dark font-weight-bold mb-4">{{'TEXT.anne_adi' | translate }}</span>
+							<span class="text-muted font-weight-bolder font-size-lg"> {{ogrenciModel.anne_adi }} </span>
+						</div>
+					</div>	
+
+					<div class="col-6 col-md-3">
+						<div class="mb-8 d-flex flex-column">
+							<span class="text-dark font-weight-bold mb-4">{{'TEXT.eposta' | translate
+								}}</span>
+							<span class="text-muted font-weight-bolder font-size-lg">
+								{{ogrenciModel.eposta}}</span>
+						</div>
+					</div>
+					<div class="col-6 col-md-3">
+						<div class="mb-8 d-flex flex-column">
+							<span class="text-dark font-weight-bold mb-4">{{'TEXT.telefon' | translate }}</span>
+							<span class="text-muted font-weight-bolder font-size-lg"> {{ogrenciModel.telefon }} </span>
+						</div>
+					</div>	
+					<div class="col-6 col-md-3">
+						<div class="mb-8 d-flex flex-column">
+							<span class="text-dark font-weight-bold mb-4">{{'TEXT.sehir' | translate }}</span>
+							<span class="text-muted font-weight-bolder font-size-lg"> {{ogrenciModel.sehir }} </span>
+						</div>
+					</div>	
+					<div class="col-6 col-md-3">
+						<div class="mb-8 d-flex flex-column">
+							<span class="text-dark font-weight-bold mb-4">{{'TEXT.adres' | translate }}</span>
+							<span class="text-muted font-weight-bolder font-size-lg"> {{ogrenciModel.adres }} </span>
+						</div>
+					</div>	
+					<!--end::Info-->
+				</div>
+				<br>
+
+				<!-- <div >
+					<mat-form-field appearance="outline" style="width: 49%;margin-right: 2%;">
+						<mat-label> {{'TEXT.eposta' | translate }}</mat-label>
+						<input matInput type="text"
+							placeholder="{{'TEXT.eposta' | translate }}"
+						 [value]="ogrenciModel.eposta"  />
+			
+					</mat-form-field>
+
+					<mat-form-field appearance="outline" style="width: 49%;">
+						<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+						<mat-datepicker #picker></mat-datepicker>
+
+						<mat-label> {{'TEXT.dogum_tarihi' | translate }}</mat-label>
+						<input matInput [matDatepicker]="picker" (click)="picker.open()"
+							placeholder="{{'TEXT.dogum_tarihi' | translate }}"
+							/>
+				
+					</mat-form-field>
+				</div>					 -->
+				<!-- <div>										
+					<mat-form-field appearance="outline" style="width: 49%; margin-right: 2%;">
+						<mat-label> {{'TEXT.sehir' | translate }}</mat-label>
+						<input matInput type="text" placeholder="{{'TEXT.sehir' | translate }}"
+						 />
+				
+					</mat-form-field>			
+				</div> -->
+			</div>
+		</div>
+	</div>
+	
+	<mat-divider></mat-divider>
+
+				<br>
+		<div class="row">
+
+			<div class="col-lg-6">
+				<kt-custom-ag-grid   (editData)="editData($event)" [isSearch]="false" title="Başvuru Bilgileri"   [rowData]="rowData" [columnDefs]="columnDefs" > </kt-custom-ag-grid>
+
+			</div>
+
+			<div class="col-lg-6">
+				<kt-custom-ag-grid   (editData)="editData($event)" [isSearch]="false" title="Girdiği Sınavlar"   [rowData]="rowDataSinavList" [columnDefs]="columnDefSinav" > </kt-custom-ag-grid>
+
+			</div>
+
+		</div>
+
+	</kt-portlet-body>
+	<!-- end::Body -->
+</kt-portlet>

@@ -1,0 +1,23 @@
+<kt-portlet>
+	<kt-portlet-header [sticky]="true" [title]="'TITLE.tercih_yapan_ogrenciler'| translate"
+		[class]="'kt-portlet__head--lg'">
+		<ng-container ktPortletTools>
+			<div class="col-lg-6 kt-margin-bottom-20-mobile">
+				<mat-form-field class="mat-form-field-fluid">
+					<mat-select placeholder="{{'TEXT.toplu_islemler' | translate}}"
+						[(ngModel)]="durumTurleriSelectedValue" (selectionChange)="matSelectionChange($event)">
+						<mat-option *ngFor="let item of durumTurleri" [value]="item.value">
+							{{'TEXT.'+item.key | translate}}</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</div>
+			<!-- <button (click)="importModal({id:null})" mat-raised-button color="primary"
+				matTooltip="{{'TEXT.ADD' | translate}}">{{'TEXT.ADD' | translate}} </button> -->
+		</ng-container>
+	</kt-portlet-header>
+	<kt-portlet-body>
+		<kt-custom-ag-grid (agGridCustom)="agGridSet($event)" (editData)="editModal($event)" [rowData]="rowData"
+			[columnDefs]="columnDefs"> </kt-custom-ag-grid>
+	</kt-portlet-body>
+	<!-- end::Body -->
+</kt-portlet>

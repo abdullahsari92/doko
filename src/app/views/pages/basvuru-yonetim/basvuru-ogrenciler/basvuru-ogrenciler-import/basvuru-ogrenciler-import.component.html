@@ -1,0 +1,16 @@
+
+<kt-portlet>
+
+	<kt-portlet-header [title]="'TEXT.ADD'| translate" [class]="'kt-portlet__head--lg'">
+		<ng-container ktPortletTools>
+			<button (click)="buttonclick($event)" mat-raised-button color="primary" matTooltip="{{'TEXT.ice_aktar' | translate}}">{{'TEXT.ice_aktar' | translate}} </button>
+			<!-- Buttons (Material Angular) | See off.documenations 'https://material.angular.io/components/button/overview' -->
+			<!-- mat-raised-button | Rectangular contained button w/ elevation  -->
+		</ng-container>
+	</kt-portlet-header>
+    <kt-portlet-body>
+		<kt-custom-ag-grid  (agGridCustom)="agGridSet($event)"  [rowData]="rowData" [columnDefs]="columnDefs" > </kt-custom-ag-grid>
+	</kt-portlet-body>
+	<!-- end::Body -->
+	<button (click)="buttonclick($event)" mat-raised-button color="primary" matTooltip="{{'TEXT.SAVE' | translate}}">{{'TEXT.SAVE' | translate}} </button>
+</kt-portlet>

@@ -1,0 +1,110 @@
+<div mat-dialog-title>
+    <div class="row mt-5">
+        <div class="col-md-4 modal-title">
+            <h5 class="modal-title" id="exampleModalLongTitle">
+                {{'TITLE.vize_bilgisi' | translate }}
+            </h5>
+        </div>
+        <div class="col-md-8 p-0">
+            <button type="button" class="close" [mat-dialog-close]="" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<mat-dialog-content class="mat-typography">
+    <div class="modal-body p-1">
+        <div class="row mt-5">
+            <div class="col-xl-12">
+                <form class="form" [formGroup]="vizeForm">
+                    <div class="form-group row">
+                        <div class="col-12">
+                            <mat-radio-group aria-label="Select an option" aria-labelledby="example-radio-group-label" formControlName="vize_durumu" (change)="vizeDurumu($event.value)" [class.nonepointer]="!islem" [disabled]="!islem ? 'true' : 'false'">
+                                <div class="wizardInLabel">
+                                    <mat-radio-button [value]="1">
+                                        {{'TEXT.vize1' | translate }}
+                                    </mat-radio-button>
+                                    <mat-radio-button [value]="0">
+                                        {{'TEXT.vize2' | translate }}
+                                    </mat-radio-button>
+                                </div>
+                                <div class="fv-plugins-message-container" *ngIf="errorState">
+                                    <div class="fv-help-block">
+                                        <div class="fv-help-block">
+                                            <span *ngFor="let i of errorControl('vize_durumu')">
+                                                {{i}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-radio-group>
+                        </div>
+                    </div>
+                    <div class="form-group row" *ngIf="vizeForm.get('vize_durumu').value == 1">
+                        <label class="col-form-label col-3 text-lg-right text-left">
+                            {{"TEXT.vize_ulke_kodu"| translate}}
+                        </label>
+                        <div class="col-9">
+                            <select class="form-control form-control-lg form-control-solid" aria-placeholder="select" formControlName="vize_ulke_kodu" [class.nonepointer]="!islem" [attr.disabled]="!islem ? '' : null">
+                                <option>{{'TEXT.SELECT' | translate }} ...</option>
+                                <option *ngFor="let item of data.ulkeBilgisi" [value]="item.kodu">
+                                    {{item.adi_tr}}
+                                </option>
+                            </select>
+                            <div class="fv-plugins-message-container" *ngIf="(errorState || vizeForm.get('vize_ulke_kodu').touched) && errorControl('vize_ulke_kodu')">
+                                <!-- <div class="fv-help-block"> -->
+                                <div class="fv-help-block">
+                                    <span *ngFor="let i of errorControl('vize_ulke_kodu')">
+                                        {{i}}
+                                    </span>
+                                </div>
+                                <!-- </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row" *ngIf="vizeForm.get('vize_durumu').value == 1">
+                        <label class="col-form-label col-3 text-lg-right text-left">
+                            {{"TEXT.vize_alinacak_konsolosluk"| translate}}
+                        </label>
+                        <div class="col-9">
+                            <select class="form-control form-control-lg form-control-solid" aria-placeholder="select" formControlName="vize_konsolosluk_kodu" [class.nonepointer]="!islem" [attr.disabled]="!islem ? '' : null">
+                                <option>{{'TEXT.SELECT' | translate }} ...</option>
+                                <option *ngFor="let item of vizeUlkeKonsolosluklar()" [value]="item.kodu">
+                                    {{item.adi_tr}}
+                                </option>
+                            </select>
+                            <div class="fv-plugins-message-container" *ngIf="(errorState || vizeForm.get('vize_konsolosluk_kodu').touched) && errorControl('vize_konsolosluk_kodu')">
+                                <!-- <div class="fv-help-block"> -->
+                                <div class="fv-help-block">
+                                    <span *ngFor="let i of errorControl('vize_konsolosluk_kodu')">
+                                        {{i}}
+                                    </span>
+                                </div>
+                                <!-- </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button type="button" [mat-dialog-close]="" mat-raised-button class="btn pull-right cancbtn mr-3" [hidden]='!islem'>
+        {{"TEXT.CANCEL" | translate }}
+    </button>
+    <button id="kt_login_signin_submit" (click)="btnAdi==='SAVE' ? vizeEkle() : vizeGuncelle()" class="btn btn-primary btn-elevate kt-login__btn-primary" [disabled]='submitDisabled' [hidden]='!islem'>
+        {{"TEXT."+btnAdi | translate }}
+    </button>
+    <button (click)="vizeSil()" class="btn btn-danger btn-elevate kt-login__btn-primary mr-3" [hidden]='islem'>
+        {{"TEXT.DELETE" | translate }}
+    </button>
+    <div style="position: sticky;">
+        <div [class.gradient-border]="!islem" id="box">
+            <button (click)="islem= true;" class="btn text-white btn-sm btn-elevate kt-login__btn-primary" [hidden]='islem'>
+                {{"TEXT.UPDATE" | translate }}
+            </button>
+        </div>
+    </div>
+</mat-dialog-actions>

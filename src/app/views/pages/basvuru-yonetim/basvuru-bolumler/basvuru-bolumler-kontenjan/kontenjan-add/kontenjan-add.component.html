@@ -1,0 +1,71 @@
+<!-- <kt-portlet-body>
+    <div class="row justify-content-md-center">
+        <div class="col-lg-6">
+            <form [formGroup]="bolumKontenjanForm" class="kt-form kt-form--group-seperator-dashed">
+                <kt-alert *ngIf="hasFormErrors" type="warn" [showCloseButton]="true" [duration]="10000"
+                    (close)="onAlertClose($event)">
+                    {{'VALIDATION.ERROR' | translate}}
+                </kt-alert>
+                <div class="kt-form__section kt-form__section--first">
+                    <div class="kt-form__group">
+                        <div class="row">
+                            <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                <mat-form-field class="mat-form-field-fluid">
+                                    <mat-select placeholder="{{'TEXT.ulke' | translate}}" formControlName="ulke_kodu">
+                                        <mat-option *ngFor="let ulke of ulkeKodlari" [value]="ulke.value">
+                                            {{ulke.key}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                <mat-form-field class="mat-form-field-fluid">
+                                    <mat-select placeholder="{{'TEXT.uyruk' | translate}}" formControlName="uyruk_tipi">
+                                        <mat-option *ngFor="let tip of uyrukTipleri" [value]="tip.value">
+                                            {{tip.text}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                <mat-form-field class="mat-form-field-fluid">
+                                    <mat-label>{{'TEXT.kontenjan' | translate }}</mat-label>
+                                    <input matInput type="number" placeholder="{{'TEXT.kontenjan' | translate }}"
+                                        formControlName="kontenjan" autocomplete="off" />
+                                    <mat-error *ngIf="isControlHasError('kontenjan','required')">
+                                        <strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                                    </mat-error>
+                                    <mat-error *ngIf="isControlHasError('kontenjan','maxlength')">
+                                        <strong>{{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }} </strong>
+                                    </mat-error>
+                                    <mat-error *ngIf="isControlHasError('kontenjan','minlength')">
+                                        <strong>{{ 'VALIDATION.MIN_LENGTH_FIELD' | translate }} </strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                <mat-form-field class="mat-form-field-fluid">
+                                    <mat-label>{{'TEXT.min_kontenjan' | translate }}</mat-label>
+                                    <input matInput type="number" placeholder="{{'TEXT.min_kontenjan' | translate }}"
+                                        formControlName="min_kontenjan" autocomplete="off" />
+                                    <mat-error *ngIf="isControlHasError('min_kontenjan','required')">
+                                        <strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                                    </mat-error>
+                                    <mat-error *ngIf="isControlHasError('min_kontenjan','maxlength')">
+                                        <strong>{{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }} </strong>
+                                    </mat-error>
+                                    <mat-error *ngIf="isControlHasError('min_kontenjan','minlength')">
+                                        <strong>{{ 'VALIDATION.MIN_LENGTH_FIELD' | translate }} </strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <br>
+            <a href="javascript:;" class="btn btn-success kt-margin-r-10 float-right" color="primary"
+                (click)="onSumbit()" mat-raised-button matTooltip="{{buttonSave}}">
+                <span class="kt-hidden-mobile">{{buttonSave}}</span>
+            </a>
+        </div>
+    </div>
+</kt-portlet-body> -->

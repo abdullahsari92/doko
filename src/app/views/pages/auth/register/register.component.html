@@ -1,0 +1,188 @@
+<!--begin::Body-->
+
+
+<div class="kt-login__body">
+    <!--begin::Signin-->
+    <div class="kt-login__form">
+        <div class="kt-login__title">
+            <h3>{{ 'TEXT.SIGNUP_BUTTON' | translate }}</h3>
+        </div>
+
+        <!-- <kt-auth-notice></kt-auth-notice> -->
+
+        <form class="kt-login__form kt-form" [formGroup]="registerForm" autocomplete="off">
+            <!-- <div class="form-group">
+				<mat-form-field>
+					<mat-label>adi</mat-label>
+					<input matInput type="text" placeholder="adi" formControlName="adi"/>
+					<mat-error *ngIf="isControlHasError('adi','required')">
+						<strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+					<mat-error *ngIf="isControlHasError('adi','minlength')">
+						<strong>{{ 'VALIDATION.MIN_LENGTH_FIELD' | translate }} 3</strong>
+					</mat-error>
+					<mat-error *ngIf="isControlHasError('adi','maxlength')">
+						<strong>{{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }} 100</strong>
+					</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="form-group">
+				<mat-form-field>
+					<mat-label>soyadi</mat-label>
+					<input matInput type="text" placeholder="soyadi" formControlName="soyadi"/>
+					<mat-error *ngIf="isControlHasError('soyadi','required')">
+						<strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+					<mat-error *ngIf="isControlHasError('soyadi','minlength')">
+						<strong>{{ 'VALIDATION.MIN_LENGTH_FIELD' | translate }} 3</strong>
+					</mat-error>
+					<mat-error *ngIf="isControlHasError('soyadi','maxlength')">
+						<strong>{{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }} 100</strong>
+					</mat-error>
+				</mat-form-field>
+			</div> -->
+
+            <div class="form-group kt-form__group row">
+
+                <div class="col-lg-6 kt-margin-bottom-20-mobile" *ngFor="let item of objecDeneme()">
+                    <mat-form-field class="mat-form-field-fluid" *ngIf="ifTextBox(item) == true">
+                        <mat-label>{{item}}</mat-label>
+                        <input matInput type="text" placeholder="{{item}}" formControlName="{{item}}" />
+                        <mat-error *ngIf="isControlHasError('adi','required')">
+                            <strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                        </mat-error>
+                        <mat-error *ngIf="isControlHasError('adi','minlength')">
+                            <strong>{{ 'VALIDATION.MIN_LENGTH_FIELD' | translate }} 3</strong>
+                        </mat-error>
+                        <mat-error *ngIf="isControlHasError('adi','maxlength')">
+                            <strong>{{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }} 100</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                    <mat-form-field class="mat-form-field-fluid">
+                        <input matInput [matDatepicker]="picker" placeholder="Choose a Date of Birth" formControlName="dogum_tarihi" />
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-hint align="start">Please enter
+                            <strong>Date of Birth</strong> in 'mm/dd/yyyy' format</mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                    <mat-checkbox name="cinsiyet" formControlName="cinsiyet">
+                        cinsiyet seçiniz <a href="javascript:;">cinsiyet</a>
+                    </mat-checkbox>
+                </div>
+
+                <br/>
+                <!-- <div class="col-lg-12 kt-margin-bottom-40-mobile" >
+					<label for="singleFile">Resim Yükleyin</label>
+					<input id="singleFile"  type="file" (change)="onFileChange($event)" >
+					<br>
+			
+				<mat-file-upload-queue #fileUploadQueue
+				[fileAlias]="'file'"
+				[httpUrl]="'http://localhost:8180/jax-rs-jersey-application-sample'">
+
+				<img style='display:block; width:100px;height:100px;' id='base64image'  *ngIf="uploadImage"               
+				src='{{uploadImage}}' />
+
+				<mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
+				</mat-file-upload-queue>
+
+					<mat-error *ngIf="isFileControlHasError">
+						<strong>Sadece Resim yükleyebilirsin</strong>
+					</mat-error>
+				</div> -->
+
+                <doko-file-upload> </doko-file-upload>
+            </div>
+
+
+
+
+            <!-- <div class="form-group">
+				<mat-form-field>
+					<mat-label>{{ 'TEXT.eposta' | translate }}</mat-label>
+					<input matInput type="eposta" placeholder="{{ 'TEXT.eposta' | translate }}" formControlName="eposta" autocomplete="off"/>
+					<mat-error *ngIf="isControlHasError('eposta','required')">
+						<strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+					<mat-error *ngIf="isControlHasError('eposta','eposta')">
+						<strong>{{ 'VALIDATION.INVALID_FIELD' | translate }}</strong>
+					</mat-error>
+					<mat-error *ngIf="isControlHasError('eposta','minlength')">
+						<strong>{{ 'VALIDATION.MIN_LENGTH_FIELD' | translate }} 3</strong>
+					</mat-error>
+					<mat-error *ngIf="isControlHasError('eposta','maxlength')">
+						<strong>{{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }} 320</strong>
+					</mat-error>
+				</mat-form-field>
+			</div> -->
+
+            <!-- <div class="form-group">
+				<mat-form-field>
+					<mat-label>{{ 'TEXT.PASSWORD' | translate }}</mat-label>
+					<input matInput type="password" placeholder="{{ 'TEXT.PASSWORD' | translate }}" formControlName="password" autocomplete="off"/>
+					<mat-error *ngIf="isControlHasError('password','required')">
+						<strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+					<mat-error *ngIf="isControlHasError('password','minlength')">
+						<strong>{{ 'VALIDATION.MIN_LENGTH_FIELD' | translate }} 3</strong>
+					</mat-error>
+					<mat-error *ngIf="isControlHasError('password','maxlength')">
+						<strong>{{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }} 100</strong>
+					</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="form-group">
+				<mat-form-field>
+					<mat-label>{{ 'TEXT.CONFIRM_PASSWORD' | translate }}</mat-label>
+					<input matInput type="password" placeholder="{{ 'TEXT.CONFIRM_PASSWORD' | translate }}" formControlName="confirmPassword" autocomplete="off"/>
+					<mat-error *ngIf="isControlHasError('confirmPassword','required')">
+						<strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+					<mat-error *ngIf="isControlHasError('confirmPassword','minlength')">
+						<strong>{{ 'VALIDATION.MIN_LENGTH_FIELD' | translate }} 3</strong>
+					</mat-error>
+					<mat-error *ngIf="isControlHasError('confirmPassword','maxlength')">
+						<strong>{{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }} 100</strong>
+					</mat-error>
+					<mat-error *ngIf="registerForm.get('confirmPassword').errors && registerForm.get('confirmPassword').errors.ConfirmPassword">
+						<strong>Passsword and ConfirmPassword didn't match.</strong>
+					</mat-error>
+				</mat-form-field>
+			</div> -->
+            <!-- <div class="form-group">
+				<mat-checkbox name="agree" formControlName="agree">
+					I agree the <a href="javascript:;">terms & conditions</a>
+				</mat-checkbox>
+			</div> -->
+
+            <!--begin::Action-->
+            <!-- <div class="kt-login__actions">
+				<a href="javascript:;" routerLink="/auth/forgot-password" class="kt-link kt-login__link-forgot">
+					{{ 'TEXT.FORGOT_BUTTON' | translate }}
+				</a>
+				<button routerLink="/auth/login" [disabled]="loading" id="kt_login_signup_cancel" class="btn btn-secondary btn-elevate kt-login__btn-secondary">{{ 'TEXT.BACK' | translate }}</button>
+				<button (click)="submit()" id="kt_login_signin_submit" class="btn btn-primary btn-elevate kt-login__btn-primary" [ngClass]="{'kt-spinner kt-spinner--right kt-spinner--md kt-spinner--light': loading}">{{ 'TEXT.SAVE' | translate }}</button>
+			</div> -->
+
+            <div class="kt-portlet__foot kt-portlet__no-border kt-portlet__foot--fit">
+                <div class="kt-form__actions kt-form__actions--solid">
+                    <div class="row text-right">
+                        <div class="col-lg-12">
+                            <button type="button" mat-raised-button cdkFocusInitial matTooltip="Cancel changes">
+								Cancel
+							</button>&nbsp;
+                            <button (click)="submit()" id="kt_login_signin_submit" class="btn btn-primary btn-elevate kt-login__btn-primary" [ngClass]="{'kt-spinner kt-spinner--right kt-spinner--md kt-spinner--light': loading}">{{ 'TEXT.SAVE' | translate }}</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end::Action-->
+        </form>
+    </div>
+</div>

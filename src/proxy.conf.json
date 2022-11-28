@@ -1,0 +1,12 @@
+{
+  
+    
+
+    "/api": {
+       "target": "https://dokoapi.dpu.edu.tr",
+       "changeOrigin": true,
+      "secure":true  ,
+      "logLevel": "debug"
+    }  
+  
+}

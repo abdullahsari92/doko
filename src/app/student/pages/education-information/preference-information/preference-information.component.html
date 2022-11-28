@@ -1,0 +1,85 @@
+<div class="card card-custom card-stretch gutter-b">
+    <!--begin::Header-->
+    <div class="card-header border-0" *ngIf="preference_info==false">
+        <h3 class="card-title font-weight-bolder text-dark">
+            {{'TEXT.add_preference_information' | translate }}
+        </h3>
+        <div class="card-toolbar">
+            <div class="dropdown dropdown-inline" data-toggle="tooltip" title="" data-placement="left">
+                <div style="position: sticky;">
+                    <div [class.gradient-border]="!islem" id="box" style="width: 40px!important; height: 40px!important;">
+                        <a (click)="tercihModal()" class="btn btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="flaticon-add-circular-button fa-3x text-white"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-header border-0" *ngIf="preference_info">
+        <h3 class="card-title font-weight-bolder text-dark">
+            {{'TEXT.preferences' | translate }}
+        </h3>
+        <div class="card-toolbar">
+            <div style="position: sticky;">
+                <div [class.gradient-border]="!islem" id="box">
+                    <a (click)="tercihModal()" class="btn btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="flaticon-refresh fa-2x text-white"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="dropdown dropdown-inline" data-toggle="tooltip" title="" data-placement="left">
+                <a (click)="tercihSil()" class="btn btn-clean btn-light-danger btn-sm btn-icon ml-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="flaticon2-rubbish-bin-delete-button fa-2x"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--end::Header-->
+    <!--begin::Body-->
+    <div class="card-body pt-0" *ngIf="preference_info">
+        <!--begin::Item-->
+        <div class="align-items-center">
+
+            <div class="row p-0 m-0 my-2">
+                <div class="col-md-12 rounded bg-light-danger p-4">
+                    <div class="row m-0 p-0">
+                        <div class="col-md-12">
+                            <span href="#" class="font-weight-bold text-dark-75 font-size-lg mb-1 defaultpointer">
+                                {{tercihPuanBilgisi.puan_turu_adi_tr| translateData:tercihPuanBilgisi.puan_turu_adi_en}}
+                            </span>
+                        </div>
+                        <div class="col-md-12">
+                            <span class="text-muted font-weight-bold defaultpointer">
+                                Puanı:
+                                {{tercihPuanBilgisi.ham_puani}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row p-0 m-0 my-2" *ngFor="let item of tercihListesi;">
+                <div class="col-md-x rounded bg-light-success p-4 text-center defaultpointer" style="width: 40px;">
+                    {{item.sirasi}}
+                </div>
+                <div class="col-md-11">
+                    <div class="row m-0 p-0">
+                        <div class="col-md-12">
+                            <span href="#" class="font-weight-bold text-dark-75 font-size-lg mb-1 defaultpointer">
+                                {{item.fakulte_adi_tr | translateData: item.fakulte_adi_en}}
+                            </span>
+                        </div>
+                        <div class="col-md-12">
+                            <span class="text-muted font-weight-bold">
+                                {{item.bolum_adi_tr | translateData: item.bolum_adi_en}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end::Item-->
+    </div>
+    <!--end::Body-->
+</div>

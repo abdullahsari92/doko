@@ -1,0 +1,73 @@
+@import "sass/pages/wizard/wizard-2";
+.merkezler {
+    width: auto;
+    padding: 1em 4em;
+    position: relative;
+    flex: 0 1 380px !important;
+}
+
+.kt-form {
+    padding: 4rem 3rem 6rem !important;
+}
+
+.iconSuccess {
+    color: rgb(16, 194, 16);
+}
+
+.kt-wizard-v2__content {
+    min-height: 250px;
+}
+
+.wizardInLabel {
+    padding: 10px;
+    font-weight: 400;
+    border-bottom: 1px dashed #EBEDF3;
+}
+
+.btn.btn-primary {
+    background-color: #663259!important;
+    border-color: #663259!important;
+    font-weight: 400;
+}
+
+.btn.btn-primary:hover {
+    background-color: #803A6F!important;
+    border-color: #803A6F!important;
+    font-weight: 400;
+}
+
+.btn.btn-primary:focus {
+    background-color: #803A6F!important;
+    border-color: #803A6F!important;
+    font-weight: 400;
+}
+
+.btn.btn-light-primary {
+    color: #663259!important;
+    background-color: #F4E1F0!important;
+    border-color: #F4E1F0!important;
+    font-weight: 400;
+}
+
+.btn.btn-light-primary:hover {
+    color: #fff!important;
+    background-color: #803A6F!important;
+    border-color: #803A6F!important;
+    font-weight: 400;
+}
+
+.btn.btn-light-primary:focus {
+    color: #fff!important;
+    background-color: #803A6F!important;
+    border-color: #803A6F!important;
+    font-weight: 400;
+}
+
+.wizardInLabel>span {
+    color: #7E8299 !important;
+}
+
+.wrap-mat-radio-label {
+    white-space: normal;
+    font-size: 10px;
+}

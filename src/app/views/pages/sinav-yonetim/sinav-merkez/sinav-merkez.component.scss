@@ -1,0 +1,77 @@
+@import "sass/pages/wizard/wizard-2";
+
+
+// .kt-wizard-v2__nav-items  .kt-wizard-v2__nav-item:hover{
+
+//     background-color: #f4f6f9;
+//     padding: 0.75rem 1.5rem;
+//     position: relative;
+//     border-radius: 0.5rem;
+// }
+
+
+
+.currentItem{
+
+    background-color: #f4f6f9;
+    padding: 0.75rem 1.5rem;
+    position: relative;
+    border-radius: 0.5rem;
+}
+
+.allItem{
+
+    padding: 0.75rem 1.5rem;
+    position: relative;
+    border-radius: 0.5rem;
+    border-bottom: 1px solid #dcdcdc;
+    margin-bottom: 20px;
+}
+.kucukOk{
+
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    content: " ";
+    height: 0;
+    width: 0;
+    border: solid transparent;
+    position: absolute;
+    border-left-color: #f4f6f9;
+    border-width: 1rem;
+}
+
+.kod{
+    min-width: 80px;
+  
+    float: left;
+    padding: 8px 0
+}
+
+.merkezler{
+
+    height: 700px; width: auto; 
+     overflow-y: scroll ;
+      padding:1em 4em;
+   position: relative;
+      flex: 0 0 366px !important;
+}
+
+#kt_wizard_v2 ::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }

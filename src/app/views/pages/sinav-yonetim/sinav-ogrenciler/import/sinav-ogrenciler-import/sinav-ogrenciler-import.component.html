@@ -1,0 +1,28 @@
+<kt-portlet>
+	<kt-portlet-header [title]="'TEXT.ADD'| translate" [class]="'kt-portlet__head--lg'">
+		<ng-container ktPortletTools>
+			<button class="mr-2" (click)="buttonclick($event)" mat-raised-button color="success"
+				matTooltip="{{'TEXT.ice_aktar' | translate}}">{{'TEXT.ice_aktar' | translate}} </button>
+			<button (click)="onSubmit()" mat-raised-button color="primary"
+				matTooltip="{{'TEXT.SAVE' | translate}}">{{'TEXT.SAVE' | translate}} </button>
+			<!-- Buttons (Material Angular) | See off.documenations 'https://material.angular.io/components/button/overview' -->
+			<!-- mat-raised-button | Rectangular contained button w/ elevation  -->
+		</ng-container>
+	</kt-portlet-header>
+	<kt-portlet-body class="m-1">
+		<mat-card class="alertWarn mt-0">
+			<mat-card-title class="alertWarnTitle">Dikkat </mat-card-title>
+			<ul>
+				<li [innerHtml]="'TEXT.ogrenci_basvuru_import_adim1' | translate"></li>
+				<li>{{'TEXT.ogrenci_basvuru_import_adim2' | translate}}</li>
+				<li>{{'TEXT.ogrenci_basvuru_import_adim3' | translate}}</li>
+				<li>{{'TEXT.ogrenci_basvuru_import_adim4' | translate}}</li>
+			</ul>
+		</mat-card>
+		<!--end::Alert-->
+		<kt-custom-ag-grid (agGridCustom)="agGridSet($event)" [height]="'400px'" [rowData]="rowData"
+			[columnDefs]="columnDefs">
+		</kt-custom-ag-grid>
+	</kt-portlet-body>
+	<!-- end::Body -->
+</kt-portlet>

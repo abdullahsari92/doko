@@ -1,0 +1,66 @@
+
+<kt-portlet>
+
+    <kt-portlet-header [sticky]="true" [title]="getComponentTitle()" [class]="'kt-portlet__head--lg'">
+<ng-container ktPortletTools>
+    <a (click)="goBackWithoutId()" class="btn btn-secondary kt-margin-r-10"  mat-raised-button matTooltip="{{'TEXT.BACK' | translate}}">
+        <i class="la la-arrow-left"></i>
+        <span class="kt-hidden-mobile">{{'TEXT.BACK' | translate}}</span>
+    </a>
+
+    <a href="javascript:;" class="btn btn-primary kt-margin-r-10" color="primary" (click)="onSumbit()" mat-raised-button matTooltip="{{buttonSave}}">
+        <span class="kt-hidden-mobile">{{buttonSave}}</span>
+    </a>
+</ng-container>
+</kt-portlet-header>
+<kt-portlet-body>
+<form [formGroup]="fakulteForm" class="kt-form kt-form--group-seperator-dashed">
+
+    <kt-alert *ngIf="hasFormErrors" type="warn" [showCloseButton]="true" [duration]="10000" (close)="onAlertClose($event)">
+        {{'VALIDATION.ERROR' | translate}}
+    </kt-alert>
+
+    <div class="kt-form__section kt-form__section--first">
+        <div class="kt-form__group">
+            <div class="row">    
+
+                <div class="col-lg-6 kt-margin-bottom-20-mobile" *ngFor="let item of ObjectContorls()"  >
+                    <mat-form-field class="mat-form-field-fluid" *ngIf="ifTextBox(item) == true">
+                        <mat-label>{{'TEXT.' +item | translate }}</mat-label>
+                        <input matInput type="text" placeholder="{{'TEXT.' +item | translate }}" formControlName="{{item}}"/>
+                        <mat-error *ngIf="isControlHasError(item,'required')">
+                            <strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                        </mat-error>
+                        <mat-error *ngIf="isControlHasError(item,'minlength')">
+                            <strong>{{ 'VALIDATION.MIN_LENGTH_FIELD' | translate }} 2</strong>
+                        </mat-error>
+                        <mat-error *ngIf="isControlHasError(item,'maxlength')">
+                            <strong>{{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }} 4
+<!-- 
+                                {{isContorlMessage()}} -->
+                            </strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                                               
+            </div>
+        </div>  
+
+        <div class="kt-form__group">
+            <div class="row">                   
+                                             
+                <div class="col-md-4">
+                    <div>{{'TEXT.durumu' | translate }}:</div>
+                    <mat-slide-toggle formControlName="durumu" (change)="changeStatu()" >{{durumuText | translate}}</mat-slide-toggle>
+
+                </div>
+
+            </div>
+        </div>       
+    </div>
+</form>
+</kt-portlet-body>
+
+
+
+</kt-portlet>

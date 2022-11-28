@@ -1,0 +1,192 @@
+{
+  "ReportGuid": "415819255d07e3a338caefe6ccdfeb53",
+  "ReportName": "Report",
+  "ReportAlias": "Report",
+  "ReportFile": "Report.mrt",
+  "ReportCreated": "/Date(1646815274000+0300)/",
+  "ReportChanged": "/Date(1646815303000+0300)/",
+  "EngineVersion": "EngineV2",
+  "CalculationMode": "Interpretation",
+  "ReportUnit": "Centimeters",
+  "PreviewSettings": 260039167,
+  "Dictionary": {
+    "DataSources": {
+      "0": {
+        "Ident": "StiDataTableSource",
+        "Name": "root",
+        "Alias": "root",
+        "Columns": {
+          "0": {
+            "Name": "bb.adi_tr",
+            "Index": -1,
+            "NameInSource": "bb.adi_tr",
+            "Alias": "bb.adi_tr",
+            "Type": "System.String"
+          },
+          "1": {
+            "Name": "bb.adi_en",
+            "Index": -1,
+            "NameInSource": "bb.adi_en",
+            "Alias": "bb.adi_en",
+            "Type": "System.String"
+          },
+          "2": {
+            "Name": "o.resim",
+            "Index": -1,
+            "NameInSource": "o.resim",
+            "Alias": "o.resim",
+            "Type": "System.String"
+          },
+          "3": {
+            "Name": "o.adi",
+            "Index": -1,
+            "NameInSource": "o.adi",
+            "Alias": "o.adi",
+            "Type": "System.String"
+          },
+          "4": {
+            "Name": "o.soyadi",
+            "Index": -1,
+            "NameInSource": "o.soyadi",
+            "Alias": "o.soyadi",
+            "Type": "System.String"
+          },
+          "5": {
+            "Name": "o.aday_no",
+            "Index": -1,
+            "NameInSource": "o.aday_no",
+            "Alias": "o.aday_no",
+            "Type": "System.String"
+          },
+          "6": {
+            "Name": "sm.adi_tr",
+            "Index": -1,
+            "NameInSource": "sm.adi_tr",
+            "Alias": "sm.adi_tr",
+            "Type": "System.String"
+          },
+          "7": {
+            "Name": "sm.adi_en",
+            "Index": -1,
+            "NameInSource": "sm.adi_en",
+            "Alias": "sm.adi_en",
+            "Type": "System.String"
+          },
+          "8": {
+            "Name": "sm.adres",
+            "Index": -1,
+            "NameInSource": "sm.adres",
+            "Alias": "sm.adres",
+            "Type": "System.String"
+          },
+          "9": {
+            "Name": "ss.bina_adi",
+            "Index": -1,
+            "NameInSource": "ss.bina_adi",
+            "Alias": "ss.bina_adi",
+            "Type": "System.String"
+          },
+          "10": {
+            "Name": "ss.adres",
+            "Index": -1,
+            "NameInSource": "ss.adres",
+            "Alias": "ss.adres",
+            "Type": "System.String"
+          },
+          "11": {
+            "Name": "os.sirasi",
+            "Index": -1,
+            "NameInSource": "os.sirasi",
+            "Alias": "os.sirasi",
+            "Type": "System.String"
+          },
+          "12": {
+            "Name": "bs.sinav_tarihi",
+            "Index": -1,
+            "NameInSource": "bs.sinav_tarihi",
+            "Alias": "bs.sinav_tarihi",
+            "Type": "System.String"
+          },
+          "13": {
+            "Name": "bs.sinav_suresi",
+            "Index": -1,
+            "NameInSource": "bs.sinav_suresi",
+            "Alias": "bs.sinav_suresi",
+            "Type": "System.String"
+          },
+          "14": {
+            "Name": "bs.sinav_belgesi_aciklama_tr",
+            "Index": -1,
+            "NameInSource": "bs.sinav_belgesi_aciklama_tr",
+            "Alias": "bs.sinav_belgesi_aciklama_tr",
+            "Type": "System.String"
+          },
+          "15": {
+            "Name": "bs.sinav_belgesi_aciklama_en",
+            "Index": -1,
+            "NameInSource": "bs.sinav_belgesi_aciklama_en",
+            "Alias": "bs.sinav_belgesi_aciklama_en",
+            "Type": "System.String"
+          }
+        },
+        "NameInSource": "Veri Alanları.root"
+      }
+    }
+  },
+  "Pages": {
+    "0": {
+      "Ident": "StiPage",
+      "Name": "Page1",
+      "Guid": "6d9fc597ed7122619b4c0c2600a9e6c9",
+      "Interaction": {
+        "Ident": "StiInteraction"
+      },
+      "Border": ";;2;;;;;solid:Black",
+      "Brush": "solid:",
+      "Components": {
+        "0": {
+          "Ident": "StiText",
+          "Name": "Text1",
+          "ClientRectangle": "1.4,1,4.4,1.2",
+          "Interaction": {
+            "Ident": "StiInteraction"
+          },
+          "Text": {
+            "Value": "adı :"
+          },
+          "Font": ";24;;",
+          "Border": ";;;;;;;solid:Black",
+          "Brush": "solid:",
+          "TextBrush": "solid:Black",
+          "Type": "Expression"
+        },
+        "1": {
+          "Ident": "StiText",
+          "Name": "Text2",
+          "ClientRectangle": "7.4,0.8,5.6,1.8",
+          "Interaction": {
+            "Ident": "StiInteraction"
+          },
+          "Text": {
+            "Value": "{root.o_adi}"
+          },
+          "Font": ";24;;",
+          "Border": ";;;;;;;solid:0,0,0",
+          "Brush": "solid:",
+          "TextBrush": "solid:0,0,0"
+        }
+      },
+      "PageWidth": 21,
+      "PageHeight": 29.7,
+      "Watermark": {
+        "TextBrush": "solid:50,0,0,0"
+      },
+      "Margins": {
+        "Left": 1,
+        "Right": 1,
+        "Top": 1,
+        "Bottom": 1
+      }
+    }
+  }
+}

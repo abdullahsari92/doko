@@ -1,0 +1,63 @@
+<!-- <div ngbDropdown placement="bottom" class="kt-header__topbar-item kt-header__topbar-item--langs">
+	<div ngbDropdownToggle class="kt-header__topbar-wrapper">
+		<span class="kt-header__topbar-icon"
+	>
+    <mat-icon class="egitimIcon">school</mat-icon>
+		</span>
+	</div>
+	<div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround">
+		<ul class="kt-nav kt-margin-t-10 kt-margin-b-10">
+            <ng-container *ngFor="let donem of egitimDonemleri">
+				<li class="kt-nav__item">
+					<a   class="kt-nav__link">
+						
+						<span class="kt-nav__link-text">{{donem.key}}</span>
+					</a>
+				</li>
+			</ng-container>
+	
+		</ul>
+	</div>
+</div> -->
+
+
+<div ngbDropdown placement="bottom" class="kt-header__topbar-item kt-header__topbar-item--langs">
+	<div ngbDropdownToggle class="kt-header__topbar-wrapper">
+		<span class="kt-header__topbar-icon">
+    
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon class="egitimIcon">school</mat-icon>
+            </button>
+		</span>
+	</div>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="setEgitimDonemi(item)" *ngFor="let item of egitimDonemleri">
+          <mat-icon *ngIf="!item.selected">fiber_manual_record</mat-icon>
+          <mat-icon *ngIf="item.selected" style="color: green ; font-size: 20px;">check</mat-icon>
+
+          <span> {{item['adi_'+language]}} </span>
+
+        </button>
+    
+     
+      </mat-menu>   
+</div>
+
+<!-- 
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon class="egitimIcon">school</mat-icon>
+    </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>dialpad</mat-icon>
+      <span>Redial</span>
+    </button>
+    <button mat-menu-item disabled>
+      <mat-icon>voicemail</mat-icon>
+      <span>Check voice mail</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>notifications_off</mat-icon>
+      <span>Disable alerts</span>
+    </button>
+  </mat-menu> -->

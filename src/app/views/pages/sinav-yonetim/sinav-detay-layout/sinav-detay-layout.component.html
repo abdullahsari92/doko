@@ -1,0 +1,87 @@
+<kt-portlet *ngIf="!loader">
+    <div class="row">
+        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-xs-12" *ngIf="sinavBasvuru.id">
+            <mat-card style="margin-bottom: 20px;">
+                <div class="text-right"> <span
+                        class="badge badge-{{sinavBasvuru.badstatu}}">{{sinavBasvuru.statudetail}}</span> </div>
+                <mat-card-title> {{sinavBasvuru.adi_tr }} </mat-card-title>
+                <div class="kt-separator kt-separator--dashed"></div>
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <span class="grafikTop"></span>
+                            <div class="grafikText"> <b>{{'TEXT.basvuran_ogrenci_sayisi' | translate}} : </b>
+                                {{sinavBasvuru.basvuran_ogrenci_sayisi}} </div>
+                            <span class="grafikTop" style="background-color: #0099c6;"></span>
+                            <div class="grafikText"> <b> {{'TEXT.sinava_giren_ogrenci_sayisi' | translate}} :
+                                </b>{{sinavBasvuru.sinava_giren_ogrenci_sayisi}} </div>
+                            <google-chart [type]="chart.type" [data]="chart.data" [slices]=""
+                                [columns]="chart.columnNames" [options]="chart.options">
+                            </google-chart>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-6 mr-10">
+                            <p class="spanTitle">{{'TEXT.baslangic_tarihi' | translate}} : <span
+                                    class="spanData">{{sinavBasvuru.baslangic_tarihi | date:'dd/MM/yyyy'}}</span> </p>
+                            <p class="spanTitle">{{'TEXT.bitis_tarihi' | translate}} : <span class="spanData">
+                                    {{sinavBasvuru.bitis_tarihi | date: 'dd/MM/yyyy'}} </span> </p>
+                            <p class="spanTitle">{{'TEXT.sinav_tarihi' | translate}} : <span
+                                    class="spanData">{{sinavBasvuru.sinav_tarihi | date: 'dd/MM/yyyy'}}</span> </p>
+                            <p class="spanTitle">{{'TEXT.sonuc_gorme_durumu' | translate}} : <span
+                                    class="spanData">{{sinavBasvuru.sonuclari_goster ?
+                                    this.translate.instant("TEXT.goster") :
+                                    this.translate.instant("TEXT.GIZLI")}}</span>
+                            </p>
+                            <p class="spanTitle">{{'TEXT.ucret' | translate}} : <span
+                                    class="spanData">{{sinavBasvuru.ucret }}</span> </p>
+                        </div>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <br>
+                </mat-card-content>
+                <mat-card-footer>
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12 kt-margin-bottom-20-mobile text-center menuList">
+                            <button style="width:90%; margin-bottom:5px;" mat-raised-button
+                                [color]="activeBtnId==1?'accent':'basic'" (click)="basvuruOgrenciler(sinavBasvuru.id)"
+                                routerLink="basvuru-ogrenciler">
+                                <mat-icon>supervisor_account</mat-icon> {{'TEXT.basvuran_ogrenciler' | translate}}
+                            </button>
+                            <button style="width:90%; margin-bottom:5px;" mat-raised-button
+                                [color]="activeBtnId==2?'accent':'basic'" (click)="editData(sinavBasvuru.id)">
+                                <mat-icon>create</mat-icon> {{'TEXT.UPDATE' | translate }}
+                            </button>
+                            <button style="width:90%; margin-bottom:5px;" mat-raised-button
+                                [color]="activeBtnId==3?'accent':'basic'" (click)="sinavMerkezler(sinavBasvuru.id)">
+                                <mat-icon>school</mat-icon> {{'TITLE.basvuru_sinav_merkez_listesi' | translate}}
+                            </button>
+                            <button style="width:90%; margin-bottom:5px;" mat-raised-button
+                                [color]="activeBtnId==4?'accent':'basic'" (click)="bildirimGonderme(sinavBasvuru.id)">
+                                <mat-icon>notifications_active</mat-icon> {{'TITLE.bildirim_listesi' | translate}}
+                            </button>
+                            <button style="width:90%; margin-bottom:5px;" mat-raised-button
+                                [color]="activeBtnId==5?'accent':'basic'" (click)="islemler(sinavBasvuru.id)">
+                                <mat-icon>settings</mat-icon> {{'TITLE.diger_islemler' | translate}}
+                            </button>
+                            <button style="width:90%; margin-bottom:5px;" mat-raised-button
+                                [color]="activeBtnId==6?'accent':'basic'" (click)="raporlar(sinavBasvuru.id)">
+                                <mat-icon>assignment</mat-icon> {{'TITLE.raporlar' | translate}}
+                            </button>
+                            <button style="width:90%; margin-bottom:5px;" mat-raised-button [color]="accent"
+                                disabled="{{sinavBasvuru.disableDelete}}" (click)="remove(sinavBasvuru.id)"
+                                matTooltip="{{'TEXT.DELETE' | translate}}" type="{{'TEXT.DELETE' | translate}}">
+                                <mat-icon>delete</mat-icon> {{'TEXT.DELETE' | translate}}
+                            </button>
+                        </div>
+                    </div>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+      <div  class="col-xl-12 col-lg-12 col-md-12" *ngIf="!sinavBasvuru.id">  <!--  burası ekleme yeri olduğu için lg-12 yapıldı -->
+            <router-outlet></router-outlet>
+        </div>
+        <div  class="col-xl-9 col-lg-8 col-md-8" *ngIf="sinavBasvuru.id">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</kt-portlet>

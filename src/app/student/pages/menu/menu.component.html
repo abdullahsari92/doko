@@ -1,0 +1,353 @@
+<div class="stdsidebar sidebar-right d-flex flex-row-auto flex-column" [ngClass]="{'stdsidebar_show': menuBar === true, 'stdsidebar_hide' : menuBar === false }" id="kt_sidebar">
+    <!--begin::Aside Secondary Content-->
+    <div class="sidebar-content flex-column-fluid pb-10 pt-9 px-5 px-lg-10">
+        <!--begin::Header-->
+        <div class="offcanvas-header d-flex align-items-center justify-content-between pb-5">
+            <h3 class="font-weight-bold m-0">
+                {{'TEXT.USERINFORMATION' | translate}}
+            </h3>
+        </div>
+        <!--end::Header-->
+        <!--begin::Content-->
+        <div class="offcanvas-content pr-5 mr-n5">
+            <!--begin::Header-->
+            <div class="d-flex align-items-center mt-5">
+                <div class="symbol symbol-100 mr-5">
+                    <div class="symbol-label" style="background-image:url({{image}})"></div>
+                    <!-- <i class="symbol-badge bg-success"></i> -->
+                </div>
+                <div class="d-flex flex-column">
+                    <a class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">
+                        {{nameLastName}}
+                    </a>
+                    <!--<div class="text-muted mt-1">
+						Application Developer
+					</div>-->
+                    <div class="navi mt-2">
+                        <a class="navi-item">
+                            <span class="navi-link p-0 pb-2">
+                                <span class="navi-icon mr-1">
+                                    <span class="svg-icon svg-icon-lg svg-icon-primary">
+                                        <!--begin::Svg Icon | path:./assets/student/dashboard/media/svg/icons/Communication/Mail-notification.svg-->
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+                                            viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <rect x="0" y="0" width="24" height="24" />
+                                                <path
+                                                    d="M21,12.0829584 C20.6747915,12.0283988 20.3407122,12 20,12 C16.6862915,12 14,14.6862915 14,18 C14,18.3407122 14.0283988,18.6747915 14.0829584,19 L5,19 C3.8954305,19 3,18.1045695 3,17 L3,8 C3,6.8954305 3.8954305,6 5,6 L19,6 C20.1045695,6 21,6.8954305 21,8 L21,12.0829584 Z M18.1444251,7.83964668 L12,11.1481833 L5.85557487,7.83964668 C5.4908718,7.6432681 5.03602525,7.77972206 4.83964668,8.14442513 C4.6432681,8.5091282 4.77972206,8.96397475 5.14442513,9.16035332 L11.6444251,12.6603533 C11.8664074,12.7798822 12.1335926,12.7798822 12.3555749,12.6603533 L18.8555749,9.16035332 C19.2202779,8.96397475 19.3567319,8.5091282 19.1603533,8.14442513 C18.9639747,7.77972206 18.5091282,7.6432681 18.1444251,7.83964668 Z"
+                                                    fill="#000000" />
+                                                <circle fill="#000000" opacity="0.3" cx="19.5" cy="17.5" r="2.5" />
+                                            </g>
+                                        </svg>
+                                        <!--end::Svg Icon-->
+                                    </span>
+                            </span>
+                            <span class="navi-text text-muted text-hover-primary">
+                                    {{email}}
+                                </span>
+                            </span>
+                        </a>
+                        <a (click)="signOut()" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">
+                            {{'TEXT.SIGNOUT' | translate}}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!--end::Header-->
+            <!--begin::Separator-->
+            <div class="separator separator-dashed mt-8 mb-5"></div>
+            <!--end::Separator-->
+            <!--begin::Nav-->
+            <div class="navi navi-spacer-x-0 p-0">
+                <!--begin::Item-->
+                <a routerLink="./homepage" class="navi-item" (click)="sekmeSec()">
+                    <div class="navi-link" routerLinkActive="bg-light rounded">
+                        <div class="symbol symbol-40 bg-light mr-3">
+                            <div class="symbol-label">
+                                <!--<span class="svg-icon svg-icon-lg svg-icon-info" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">&lt;!&ndash;begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo10/dist/../src/media/svg/icons/Home/Home.svg&ndash;&gt;<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+												<rect x="0" y="0" width="24" height="24"/>
+												<path d="M3.95709826,8.41510662 L11.47855,3.81866389 C11.7986624,3.62303967 12.2013376,3.62303967 12.52145,3.81866389 L20.0429,8.41510557 C20.6374094,8.77841684 21,9.42493654 21,10.1216692 L21,19.0000642 C21,20.1046337 20.1045695,21.0000642 19,21.0000642 L4.99998155,21.0000673 C3.89541205,21.0000673 2.99998155,20.1046368 2.99998155,19.0000673 L2.99999828,10.1216672 C2.99999935,9.42493561 3.36258984,8.77841732 3.95709826,8.41510662 Z M10,13 C9.44771525,13 9,13.4477153 9,14 L9,17 C9,17.5522847 9.44771525,18 10,18 L14,18 C14.5522847,18 15,17.5522847 15,17 L15,14 C15,13.4477153 14.5522847,13 14,13 L10,13 Z" fill="#000000"/>
+											</g>
+										</svg>&lt;!&ndash;end::Svg Icon&ndash;&gt;</span>-->
+                                <span class="svg-icon svg-icon-lg svg-icon-info">
+                                    <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo10/dist/../src/media/svg/icons/Home/Door-open.svg--><svg
+                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <rect opacity="0.300000012" x="0" y="0" width="24" height="24" />
+                                            <polygon fill="#000000" fill-rule="nonzero" opacity="0.3"
+                                                points="7 4.89473684 7 21 5 21 5 3 11 3 11 4.89473684" />
+                                            <path
+                                                d="M10.1782982,2.24743315 L18.1782982,3.6970464 C18.6540619,3.78325557 19,4.19751166 19,4.68102291 L19,19.3190064 C19,19.8025177 18.6540619,20.2167738 18.1782982,20.3029829 L10.1782982,21.7525962 C9.63486295,21.8510675 9.11449486,21.4903531 9.0160235,20.9469179 C9.00536265,20.8880837 9,20.8284119 9,20.7686197 L9,3.23140966 C9,2.67912491 9.44771525,2.23140966 10,2.23140966 C10.0597922,2.23140966 10.119464,2.2367723 10.1782982,2.24743315 Z M11.9166667,12.9060229 C12.6070226,12.9060229 13.1666667,12.2975724 13.1666667,11.5470105 C13.1666667,10.7964487 12.6070226,10.1879981 11.9166667,10.1879981 C11.2263107,10.1879981 10.6666667,10.7964487 10.6666667,11.5470105 C10.6666667,12.2975724 11.2263107,12.9060229 11.9166667,12.9060229 Z"
+                                                fill="#000000" />
+                                        </g>
+                                    </svg>
+                                    <!--end::Svg Icon-->
+                                </span>
+                            </div>
+                        </div>
+                        <div class="navi-text">
+                            <div class="font-weight-bold">
+                                {{'TEXT.DASHBOARD' | translate}}
+                            </div>
+                            <!--<div class="text-muted">Account settings and more
+								<span class="label label-light-danger label-inline font-weight-bold">
+									update
+								</span>
+							</div>-->
+                        </div>
+                    </div>
+                </a>
+                <!--end:Item-->
+                <!--begin::Item-->
+                <a routerLink="./personalinfo/1" class="navi-item" (click)="menuBarClose()">
+                    <div class="navi-link" routerLinkActive="bg-light rounded">
+                        <div class="symbol symbol-40 bg-light mr-3">
+                            <div class="symbol-label">
+                                <!--<span class="svg-icon svg-icon-md svg-icon-success">
+									&lt;!&ndash;begin::Svg Icon | path:./assets/student/dashboard/media/svg/icons/General/Notification2.svg&ndash;&gt;
+									<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+										<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+											<rect x="0" y="0" width="24" height="24" />
+											<path d="M13.2070325,4 C13.0721672,4.47683179 13,4.97998812 13,5.5 C13,8.53756612 15.4624339,11 18.5,11 C19.0200119,11 19.5231682,10.9278328 20,10.7929675 L20,17 C20,18.6568542 18.6568542,20 17,20 L7,20 C5.34314575,20 4,18.6568542 4,17 L4,7 C4,5.34314575 5.34314575,4 7,4 L13.2070325,4 Z" fill="#000000" />
+											<circle fill="#000000" opacity="0.3" cx="18.5" cy="5.5" r="2.5" />
+										</g>
+									</svg>
+									&lt;!&ndash;end::Svg Icon&ndash;&gt;
+								</span>-->
+                                <span class="svg-icon svg-icon-md svg-icon-success">
+                                    <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo10/dist/../src/media/svg/icons/Communication/Contact1.svg--><svg
+                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <rect x="0" y="0" width="24" height="24" />
+                                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                            <path
+                                                d="M12,11 C10.8954305,11 10,10.1045695 10,9 C10,7.8954305 10.8954305,7 12,7 C13.1045695,7 14,7.8954305 14,9 C14,10.1045695 13.1045695,11 12,11 Z M7.00036205,16.4995035 C7.21569918,13.5165724 9.36772908,12 11.9907452,12 C14.6506758,12 16.8360465,13.4332455 16.9988413,16.5 C17.0053266,16.6221713 16.9988413,17 16.5815,17 L7.4041679,17 C7.26484009,17 6.98863236,16.6619875 7.00036205,16.4995035 Z"
+                                                fill="#000000" opacity="0.3" />
+                                        </g>
+                                    </svg>
+                                    <!--end::Svg Icon-->
+                                </span>
+
+                            </div>
+                        </div>
+                        <div class="navi-text">
+                            <div class="font-weight-bold">
+                                {{'TEXT.PERSONALINFORMATION' | translate}}
+                            </div>
+                            <!--<div class="text-muted">Account settings and more
+								<span class="label label-light-danger label-inline font-weight-bold">
+									update
+								</span>
+							</div>-->
+                        </div>
+                    </div>
+                </a>
+                <!--end:Item-->
+                <!--begin::Item-->
+                <a routerLink="./contactinfo" class="navi-item" (click)="menuBarClose()">
+                    <div class="navi-link" routerLinkActive="bg-light rounded">
+                        <div class="symbol symbol-40 bg-light mr-3">
+                            <div class="symbol-label">
+                                <!--<span class="svg-icon svg-icon-md svg-icon-warning">
+									&lt;!&ndash;begin::Svg Icon | path:./assets/student/dashboard/media/svg/icons/Communication/Mail-opened.svg&ndash;&gt;
+									<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+										<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+											<rect x="0" y="0" width="24" height="24" />
+											<path d="M6,2 L18,2 C18.5522847,2 19,2.44771525 19,3 L19,12 C19,12.5522847 18.5522847,13 18,13 L6,13 C5.44771525,13 5,12.5522847 5,12 L5,3 C5,2.44771525 5.44771525,2 6,2 Z M7.5,5 C7.22385763,5 7,5.22385763 7,5.5 C7,5.77614237 7.22385763,6 7.5,6 L13.5,6 C13.7761424,6 14,5.77614237 14,5.5 C14,5.22385763 13.7761424,5 13.5,5 L7.5,5 Z M7.5,7 C7.22385763,7 7,7.22385763 7,7.5 C7,7.77614237 7.22385763,8 7.5,8 L10.5,8 C10.7761424,8 11,7.77614237 11,7.5 C11,7.22385763 10.7761424,7 10.5,7 L7.5,7 Z" fill="#000000" opacity="0.3" />
+											<path d="M3.79274528,6.57253826 L12,12.5 L20.2072547,6.57253826 C20.4311176,6.4108595 20.7436609,6.46126971 20.9053396,6.68513259 C20.9668779,6.77033951 21,6.87277228 21,6.97787787 L21,17 C21,18.1045695 20.1045695,19 19,19 L5,19 C3.8954305,19 3,18.1045695 3,17 L3,6.97787787 C3,6.70173549 3.22385763,6.47787787 3.5,6.47787787 C3.60510559,6.47787787 3.70753836,6.51099993 3.79274528,6.57253826 Z" fill="#000000" />
+										</g>
+									</svg>
+								</span>-->
+                                <span class="svg-icon svg-icon-md svg-icon-warning">
+                                    <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo10/dist/../src/media/svg/icons/Communication/Mail-opened.svg-->
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <rect x="0" y="0" width="24" height="24" />
+                                            <path
+                                                d="M6,2 L18,2 C18.5522847,2 19,2.44771525 19,3 L19,12 C19,12.5522847 18.5522847,13 18,13 L6,13 C5.44771525,13 5,12.5522847 5,12 L5,3 C5,2.44771525 5.44771525,2 6,2 Z M7.5,5 C7.22385763,5 7,5.22385763 7,5.5 C7,5.77614237 7.22385763,6 7.5,6 L13.5,6 C13.7761424,6 14,5.77614237 14,5.5 C14,5.22385763 13.7761424,5 13.5,5 L7.5,5 Z M7.5,7 C7.22385763,7 7,7.22385763 7,7.5 C7,7.77614237 7.22385763,8 7.5,8 L10.5,8 C10.7761424,8 11,7.77614237 11,7.5 C11,7.22385763 10.7761424,7 10.5,7 L7.5,7 Z"
+                                                fill="#000000" opacity="0.3" />
+                                            <path
+                                                d="M3.79274528,6.57253826 L12,12.5 L20.2072547,6.57253826 C20.4311176,6.4108595 20.7436609,6.46126971 20.9053396,6.68513259 C20.9668779,6.77033951 21,6.87277228 21,6.97787787 L21,17 C21,18.1045695 20.1045695,19 19,19 L5,19 C3.8954305,19 3,18.1045695 3,17 L3,6.97787787 C3,6.70173549 3.22385763,6.47787787 3.5,6.47787787 C3.60510559,6.47787787 3.70753836,6.51099993 3.79274528,6.57253826 Z"
+                                                fill="#000000" />
+                                        </g>
+                                    </svg>
+                                    <!--end::Svg Icon-->
+                                </span>
+                            </div>
+                        </div>
+                        <div class="navi-text">
+                            <div class="font-weight-bold">
+                                {{'TEXT.CONTACTINFORMATION' | translate}}
+                            </div>
+                            <!--<div class="text-muted">Inbox and tasks</div>-->
+                        </div>
+                    </div>
+                </a>
+                <!--end:Item-->
+                <!--begin::Item-->
+                <a id="education_info_step" routerLink="./educationinfo" class="navi-item" *ngIf="aktifIslem(basvuruTurEnum.lisans) || aktifIslem(basvuruTurEnum.yuksekLisans) || aktifIslem(basvuruTurEnum.doktora)" (click)="menuBarClose()">
+                    <div class="navi-link" routerLinkActive="bg-light rounded">
+                        <div class="symbol symbol-40 bg-light mr-3">
+                            <div class="symbol-label">
+                                <span class="svg-icon svg-icon-md svg-icon-info">
+                                    <span class="svg-icon svg-icon-primary svg-icon-2x">
+                                        <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo10/dist/../src/media/svg/icons/Design/PenAndRuller.svg--><svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+                                            viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <rect x="0" y="0" width="24" height="24" />
+                                                <path
+                                                    d="M3,16 L5,16 C5.55228475,16 6,15.5522847 6,15 C6,14.4477153 5.55228475,14 5,14 L3,14 L3,12 L5,12 C5.55228475,12 6,11.5522847 6,11 C6,10.4477153 5.55228475,10 5,10 L3,10 L3,8 L5,8 C5.55228475,8 6,7.55228475 6,7 C6,6.44771525 5.55228475,6 5,6 L3,6 L3,4 C3,3.44771525 3.44771525,3 4,3 L10,3 C10.5522847,3 11,3.44771525 11,4 L11,19 C11,19.5522847 10.5522847,20 10,20 L4,20 C3.44771525,20 3,19.5522847 3,19 L3,16 Z"
+                                                    fill="#000000" opacity="0.3" />
+                                                <path
+                                                    d="M16,3 L19,3 C20.1045695,3 21,3.8954305 21,5 L21,15.2485298 C21,15.7329761 20.8241635,16.200956 20.5051534,16.565539 L17.8762883,19.5699562 C17.6944473,19.7777745 17.378566,19.7988332 17.1707477,19.6169922 C17.1540423,19.602375 17.1383289,19.5866616 17.1237117,19.5699562 L14.4948466,16.565539 C14.1758365,16.200956 14,15.7329761 14,15.2485298 L14,5 C14,3.8954305 14.8954305,3 16,3 Z"
+                                                    fill="#000000" />
+                                            </g>
+                                        </svg>
+                                        <!--end::Svg Icon-->
+                                    </span>
+                                </span>
+
+                            </div>
+                        </div>
+                        <div class="navi-text">
+                            <div class="font-weight-bold">
+                                {{'TEXT.EDUCATIONFORMATION' | translate}}
+                            </div>
+                            <!--<div class="text-muted">Logs and notifications</div>-->
+                        </div>
+                    </div>
+                </a>
+                <!--end:Item-->
+                <!--begin::Item-->
+                <!--<a routerLink="./examinfo" class="navi-item">
+					<div class="navi-link" routerLinkActive="bg-light rounded">
+						<div class="symbol symbol-40 bg-light mr-3">
+							<div class="symbol-label">
+									<span class="svg-icon svg-icon-md svg-icon-danger">
+										&lt;!&ndash;begin::Svg Icon | path:./assets/student/dashboard/media/svg/icons/Shopping/Chart-bar1.svg&ndash;&gt;
+										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+												<rect x="0" y="0" width="24" height="24" />
+												<rect fill="#000000" opacity="0.3" x="12" y="4" width="3" height="13" rx="1.5" />
+												<rect fill="#000000" opacity="0.3" x="7" y="9" width="3" height="8" rx="1.5" />
+												<path d="M5,19 L20,19 C20.5522847,19 21,19.4477153 21,20 C21,20.5522847 20.5522847,21 20,21 L4,21 C3.44771525,21 3,20.5522847 3,20 L3,4 C3,3.44771525 3.44771525,3 4,3 C4.55228475,3 5,3.44771525 5,4 L5,19 Z" fill="#000000" fill-rule="nonzero" />
+												<rect fill="#000000" opacity="0.3" x="17" y="11" width="3" height="6" rx="1.5" />
+											</g>
+										</svg>
+										&lt;!&ndash;end::Svg Icon&ndash;&gt;
+									</span>
+							</div>
+						</div>
+						<div class="navi-text">
+							<div class="font-weight-bold">
+								{{'TITLE.exam_information' | translate}}
+							</div>
+							&lt;!&ndash;<div class="text-muted">latest tasks and projects</div>&ndash;&gt;
+						</div>
+					</div>
+				</a>-->
+                <!--end:Item-->
+                <!--begin::Item-->
+                <!--<a routerLink="./preferenceinfo" class="navi-item">
+					<div class="navi-link" routerLinkActive="bg-light rounded">
+						<div class="symbol symbol-40 bg-light mr-3">
+							<div class="symbol-label">
+									<span class="svg-icon svg-icon-md svg-icon-primary">
+										&lt;!&ndash;begin::Svg Icon | path:./assets/student/dashboard/media/svg/icons/Communication/Mail-opened.svg&ndash;&gt;
+										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+												<rect x="0" y="0" width="24" height="24" />
+												<path d="M6,2 L18,2 C18.5522847,2 19,2.44771525 19,3 L19,12 C19,12.5522847 18.5522847,13 18,13 L6,13 C5.44771525,13 5,12.5522847 5,12 L5,3 C5,2.44771525 5.44771525,2 6,2 Z M7.5,5 C7.22385763,5 7,5.22385763 7,5.5 C7,5.77614237 7.22385763,6 7.5,6 L13.5,6 C13.7761424,6 14,5.77614237 14,5.5 C14,5.22385763 13.7761424,5 13.5,5 L7.5,5 Z M7.5,7 C7.22385763,7 7,7.22385763 7,7.5 C7,7.77614237 7.22385763,8 7.5,8 L10.5,8 C10.7761424,8 11,7.77614237 11,7.5 C11,7.22385763 10.7761424,7 10.5,7 L7.5,7 Z" fill="#000000" opacity="0.3" />
+												<path d="M3.79274528,6.57253826 L12,12.5 L20.2072547,6.57253826 C20.4311176,6.4108595 20.7436609,6.46126971 20.9053396,6.68513259 C20.9668779,6.77033951 21,6.87277228 21,6.97787787 L21,17 C21,18.1045695 20.1045695,19 19,19 L5,19 C3.8954305,19 3,18.1045695 3,17 L3,6.97787787 C3,6.70173549 3.22385763,6.47787787 3.5,6.47787787 C3.60510559,6.47787787 3.70753836,6.51099993 3.79274528,6.57253826 Z" fill="#000000" />
+											</g>
+										</svg>
+										&lt;!&ndash;end::Svg Icon&ndash;&gt;
+									</span>
+							</div>
+						</div>
+						<div class="navi-text">
+							<div class="font-weight-bold">
+								{{'TITLE.preference_information' | translate}}
+							</div>
+							&lt;!&ndash;<div class="text-muted">latest tasks and projects</div>&ndash;&gt;
+						</div>
+					</div>
+				</a>-->
+                <!--end:Item-->
+            </div>
+            <!--end::Nav-->
+            <!--begin::Separator-->
+            <div class="separator separator-dashed my-7"></div>
+            <!--end::Separator-->
+            <!--begin::Notifications-->
+            <div>
+                <!--begin:Heading-->
+                <h5 class="mb-5">
+                    {{'TEXT.RECENTNOTIF' | translate}}
+                </h5>
+                <!--end:Heading-->
+
+                <!--begin::Item-->
+                <div *ngIf="bildirimDurumu" [class.notifications_manual]="menuBar===true">
+                    <div *ngFor="let bildirim of genelBildirimler">
+                        <div class="d-flex align-items-center rounded p-5 gutter-b" [ngClass]="bildirim.turu==0 ? 'bg-light-success': 'bg-light-danger'">
+                            <span class="svg-icon svg-icon-success mr-5">
+                                <span class="svg-icon svg-icon-lg">
+                                    <i class="flaticon2-notification icon-2x"></i>
+                                </span>
+                            </span>
+
+                            <div class="d-flex flex-column flex-grow-1 mr-2">
+                                <span class="text-muted font-size-lg" style="cursor: default;">
+                                    {{(bildirim.turu==0 ? 'TEXT.genel' : 'TEXT.SPECIAL') | translate}}
+                                </span>
+                                <a (click)="openModal(bildirim.id)" class="font-weight-normal text-dark-75 text-hover-primary font-size-lg mb-1" style="cursor: pointer;width: 260px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;" *ngIf="bildirim.mesaj.length>30">
+                                    {{bildirim.mesaj}}
+                                </a>
+                                <span class="font-weight-normal text-dark-75 font-size-lg mb-1" style="cursor: default;" *ngIf="bildirim.mesaj.length<=30">
+                                    {{bildirim.mesaj}}
+                                </span>
+
+                            </div>
+                            <span class="font-weight-bolder text-success py-1 font-size-lg" *ngIf="bildirim.turu!=0 && bildirim.mesaj.length<=30">
+                                <a (click)="bildirimOnayla(bildirim.id)" style="cursor: pointer;" class="font-weight-normal text-dark-75 text-hover-primary font-size-lg mb-1">
+                                    <i class="flaticon2-checkmark icon-2x"></i>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="!bildirimDurumu">
+                    <div class="d-flex align-items-center rounded p-5 gutter-b bg-light-info">
+                        <span class="svg-icon svg-icon-success mr-5">
+                            <span class="svg-icon svg-icon-lg">
+                                <i class="flaticon2-notification icon-2x"></i>
+                            </span>
+                        </span>
+
+                        <div class="d-flex flex-column flex-grow-1 mr-2">
+                            <span class="text-muted font-size-lg" style="cursor: default;">
+                                {{'TEXT.genel' | translate}}
+                            </span>
+                            <span class="font-weight-normal text-dark-75 font-size-lg mb-1" style="cursor: default;">
+                                {{'TEXT.NOTNOTIFICATIONS' | translate}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <!--end::Item-->
+
+            </div>
+            <!--end::Notifications-->
+        </div>
+        <!--end::Content-->
+    </div>
+    <!--end::Aside Secondary Content-->
+</div>

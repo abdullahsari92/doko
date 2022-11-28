@@ -1,0 +1,41 @@
+<!-- <span class="mat-button-wrapper">
+    <mat-icon role="img" class="mat-icon notranslate material-icons mat-icon-no-color" (click)="buttonClicked()" aria-hidden="true" data-mat-icon-type="font">
+        create</mat-icon></span> -->
+<ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+    <mat-cell>
+
+        <!-- <button mat-icon-button color="primary" matTooltip="Edit" (click)="editItem()">
+            <mat-icon>create</mat-icon>
+        </button>
+
+
+        <button mat-icon-button color="warn" matTooltip="Delete" (click)="removeItem()" type="button">
+            <mat-icon>delete</mat-icon>
+        </button> -->
+
+       
+        <button mat-icon-button  [color]="getColor(item.action)" *ngFor="let item of actionsList" color="primary" matTooltip="Edit" (click)="make(item)">
+            <mat-icon>{{item.icon}}</mat-icon>
+        </button>
+
+
+        <!-- <button mat-icon-button [matMenuTriggerFor]="menu" matTooltip="More actions">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button  mat-menu-item>
+                <mat-icon>dialpad</mat-icon>
+                <span>Redial</span>
+            </button>
+            <button mat-menu-item disabled>
+                <mat-icon>voicemail</mat-icon>
+                <span>Check voicemail</span>
+            </button>
+            <button mat-menu-item>
+                <mat-icon>notifications_off</mat-icon>
+                <span>Disable alerts</span>
+            </button>
+        </mat-menu> -->
+    </mat-cell>
+</ng-container>

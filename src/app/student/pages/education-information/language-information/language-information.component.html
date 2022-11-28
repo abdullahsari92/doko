@@ -1,0 +1,29 @@
+<div *ngIf="basvuru_id" class="row">
+    <!-- dil Kart Başlangıcı -->
+    <div id="{{item.id}}" class="col-lg-4 d-flex flex-column mb-4 cerceve" style="min-width: 380px; min-height: 160px;" *ngFor="let item of langInfo" (click)="dilModal(item.id)">
+        <div class="flex-grow-1 p-8 rounded-xl flex-grow-1 bgi-no-repeat dilKutu">
+            <h4 class="mt-2">
+                {{getDilBilgileri(item.dil_id).adi_tr | translateData :getDilBilgileri(item.dil_id).adi_en}}
+            </h4>
+            <p class="my-4">
+                <!-- {{item.baslama_yili}} - {{item.bitis_yili}} -->
+            </p>
+            <p class="my-4">
+                {{item.dil_seviyesi}}
+            </p>
+        </div>
+    </div>
+    <!-- dil Kart Bitiş -->
+    <!-- dil Boş Kart Başlangıcı -->
+    <div class="col-lg-4 d-flex flex-column mb-4 dilEkleCerceve" (click)="dilModal()" *ngIf="basvuru_id && !this.dataState">
+        <div class="flex-grow-1 p-8 rounded-xl flex-grow-1 bgi-no-repeat shadow-lg p-3 mb-5 bg-white rounded dilEkle">
+            <i class="fas fa-plus "></i>
+        </div>
+    </div>
+    <!-- dil Boş Kart Bitiş -->
+</div>
+<!-- dil Mesaj Başlangıcı -->
+<div class="col-lg-4 d-flex flex-column mb-4 text-danger" *ngIf="!basvuru_id">
+    {{'TEXT.NOTDATA' | translate}}
+</div>
+<!-- dil Mesaj Bitiş -->

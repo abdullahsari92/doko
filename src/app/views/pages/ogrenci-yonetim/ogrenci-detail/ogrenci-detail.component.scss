@@ -1,0 +1,46 @@
+
+.mat-error{
+	font-size: 10px !important;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline
+{
+
+	color: #a7a7a7   !important;
+}
+
+.form-group{
+
+	margin-bottom: 20px;
+}
+
+
+.mb-8,
+.my-8 {
+    margin-bottom: 2rem !important;
+}
+::ng-deep .mat-form-field-flex>.mat-form-field-infix {
+	padding: 0.4em 0px !important;
+	height: 45px !important;
+  
+  }
+  
+  ::ng-deep .mat-form-field-label-wrapper {
+	top: -1.5em;
+	height: 45px !important;
+  }
+  
+  ::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+	transform: translateY(-1.1em) scale(.75);
+	width: 133.33333%;
+	height: 45px;
+  
+  }
+  
+  #adresField > .mat-form-field-label-wrapper > .mat-form-field-flex >.mat-form-field-infix
+  {
+	padding: 0.4em 0px !important;
+	height: 50px !important;
+
+	background-color: red !important;
+  }

@@ -1,0 +1,44 @@
+<div class="modalBody">
+    <div class="header">
+        <h4>{{ 'TITLE.basvuru_ogrenci_tanim' | translate }}</h4>
+        <span [mat-dialog-close]="data.animal" style=" position: absolute;  top: 10px;right: -20px;">
+            <mat-icon> close</mat-icon>
+        </span>
+    </div>
+    <form class="kt-login__form kt-form" [formGroup]="BasvuruOgrenciTanimForm" autocomplete="off">
+        <div class="form-group kt-form__group row">
+            <div class="row col-lg-12 col-md-12">
+                <div class="col-md-6 kt-margin-bottom-20-mobile">
+                    <mat-form-field>
+                        <mat-select placeholder="{{'TEXT.basvuru_durumu' | translate }}"
+                            formControlName="basvuru_durumu">
+                            <mat-option *ngFor="let item of BasvuruDurumlari" [value]="item.value">{{item.text}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 kt-margin-bottom-20-mobile">
+                    <div>{{'TEXT.odeme_onay' | translate}} </div>
+                    <mat-slide-toggle formControlName="odeme_onay" (change)="changeStatu(1)">{{odeme_onay | translate}}
+                    </mat-slide-toggle>
+                </div>
+            </div>
+            <div class="row col-lg-12 col-md-12">
+                <div class="col-md-6 kt-margin-bottom-20-mobile">
+                    <mat-form-field class="mat-form-field-fluid">
+                        <mat-label>{{'TEXT.yonetici_aciklama' | translate}}</mat-label>
+                        <textarea matInput formControlName="yonetici_aciklama"></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <!--end::Action-->
+    </form>
+    <div class="rightCrudBtn">
+        <button (click)="submit()" id="kt_login_signin_submit" class="btn btn-primary btn-elevate kt-login__btn-primary"
+            [ngClass]="{'kt-spinner kt-spinner--right kt-spinner--md kt-spinner--light': loading}">{{buttonSave}}
+        </button>
+        <button type="button" mat-raised-button [mat-dialog-close]="data.animal" class="btn pull-right cancbtn">
+            {{"TEXT.CANCEL" | translate }} </button>
+    </div>
+</div>

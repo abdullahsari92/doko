@@ -1,0 +1,76 @@
+<div style="position: relative;">
+    <div [fileUploadInputFor]="fileUploadQueue" [style.min-height]="height" aria-disabled="true" (onFileSelected)="onFileDragDrop($event)" class="upload-drop-zone text-center">
+        <div class="yuklenecekDosyalar text-center ">
+            <!-- Yükleme sonrası dosyanın gösterildiği alan başlangıç -->
+            <label class="yuklenecekDosya" *ngFor="let item of resultFiles let i=index">
+                <img [src]="item.file_data" width="100px" alt="" style="margin-bottom: 5px;"
+                    *ngIf="item.file_ext!=='pdf'">
+                <img src="../../../../assets/general/file_icon.png" width="200px" alt="" style="margin-bottom: 5px;"
+                    *ngIf="item.file_ext=='pdf' ||item.file_ext=='xls' ||item.file_ext=='doc' ||item.file_ext=='docx' ||item.file_ext=='xlsx'">
+                <br>
+                <mat-icon style="position: unset; vertical-align: sub;" (click)="removeItem(i)">cancel</mat-icon>
+                {{item.description}}
+            </label>
+            <!-- Yükleme sonrası dosyanın gösterildiği alan bitiş -->
+            <!-- Güncellemede dosyanın gösterildiği alan başlangıç -->
+            <label class="yuklenecekDosya" *ngIf="imgURL && (!(imgURL).includes('base64')) && imgURL.length < 300 ">
+                <img [src]="imgURL" width="200px" alt="" style="margin-bottom: 5px;">
+                <br>
+                {{imgURL.split("/")[7]}}
+                <mat-icon style="position: unset; vertical-align: sub;" (click)="removeItem()">cancel</mat-icon>
+            </label>
+            <label class="yuklenecekDosya" *ngIf="((imgBase64) && !imgURL && resultFiles.length === 0)">
+                <img [src]="imgBase64" width="200px" alt="" style="margin-bottom: 5px;">
+                <br>
+                <mat-icon style="position: unset; vertical-align: sub;" (click)="removeItem()">cancel</mat-icon>
+            </label>
+            <!-- Güncellemede dosyanın gösterildiği alan bitiş -->
+        </div>
+        <div class="text-center" *ngIf="resultFiles.length > 0 && isSaveButton" style="padding-bottom: 10px;">
+            <button mat-button (click)="close.emit(true)"> {{'TXT_CANCEL' | translate }} </button>
+            <button mat-button (click)="save()" style="padding: 0px 15px;" class="btnSave"> {{'TXT_SAVE' | translate }}
+            </button>
+            <br>
+        </div>
+    </div>
+    <!-- top:70%; left:44%; -->
+    <div style="position: absolute; top:0%; left:0%; width: 100%;  text-align: center;" *ngIf="resultFiles.length==0 && !imgURL && !imgBase64">
+        <span *ngIf="resultFiles.length==0 && !imgURL">
+            <br>
+            <img src="../../../../assets/general/file.png" alt=""> <br>
+            Drog your banner here, or <br> select <br>
+
+        </span>
+        <span class="file is-normal text-center ">
+            <label class="file-label ">
+                <input class="file-input " type="file" (change)="onFileDragDrop1($event)" name="resume"
+                    multiple="multiple">
+                <span>
+                    click to browse..
+                </span>
+        </label>
+        </span>
+    </div>
+
+    <input type="hidden" [formControlName]="controlName" [name]="controlName">
+
+
+
+    <div style="width:30%">
+        <!-- <mat-file-upload-queue #fileUploadQueue  
+        [fileAlias]="'file'"
+        [httpUrl]="'https://apifairscope.cevizyazilim.com/v100/user_files/upload'" multiple>
+
+     
+
+            <mat-file-upload [file]="file"  (removeEvent)="imgURL=''"  [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index">    </mat-file-upload>
+
+       
+    </mat-file-upload-queue> -->
+
+        <mat-error *ngIf="isFileControlHasError">
+            <strong>jpg,PNG,jpeg,pdf,docx,xlsx haricinde dosya yükleyemezsiniz.</strong>
+        </mat-error>
+    </div>
+
+</div>

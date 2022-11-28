@@ -1,0 +1,15 @@
+<kt-portlet>
+	<kt-portlet-header [title]="'TITLE.dil_tanim_listesi'| translate" [class]="'kt-portlet__head--lg'">
+		<ng-container ktPortletTools>
+			<button (click)="setLocalDatabaseLanguageVersion()" mat-raised-button color="link"
+				style="margin-right: 7px;;" matTooltip="{{'TEXT.ADD' | translate}}">{{'TEXT.dil_versiyonu_guncelle' |
+				translate}} </button>
+			<button (click)="editModal({ data: {id:null}})" mat-raised-button color="primary"
+				matTooltip="{{'TEXT.ADD' | translate}}">{{'TEXT.ADD' | translate}}</button>
+		</ng-container>
+	</kt-portlet-header>
+	<kt-portlet-body>
+		<kt-custom-ag-grid (agGridCustom)="agGridSet($event)" (editData)="editModal($event)"
+			(removeData)="remove($event)" [rowData]="rowData" [columnDefs]="columnDefs"> </kt-custom-ag-grid>
+	</kt-portlet-body>
+</kt-portlet>

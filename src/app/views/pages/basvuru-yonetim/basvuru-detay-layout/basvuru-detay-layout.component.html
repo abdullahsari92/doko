@@ -1,0 +1,117 @@
+<kt-portlet *ngIf="!loader">
+    <div class="row">
+                    
+        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-xs-12" *ngIf="birimBasvuru.id && SolMenuAktif">
+            <mat-card class="solMat-Card">     
+             
+                <mat-card-title>
+                    <div class="text-right">  
+                        <span (click)="SolMenuAktif=false"> 
+                            <mat-icon  class="menuKapatmaIcon">menu</mat-icon>
+                         </span> 
+                        <span class="badge badge-{{birimBasvuru.badstatu}}" style="font-size: 50%;">{{birimBasvuru.statudetail}} </span> 
+                        
+                     </div>
+                </mat-card-title>
+                <mat-card-title>
+                     {{birimBasvuru.adi_tr }}
+                    
+              </mat-card-title>
+                <div class="kt-separator kt-separator--dashed"></div>
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <span class="grafikTop"></span>
+                            <div class="grafikText"> <b>{{'TEXT.basvuran_ogrenci_sayisi' | translate}} :</b>
+                                {{birimBasvuru.basvuran_ogrenci_sayisi}} </div>
+                            <span class="grafikTop default-bg-color" ></span>
+                            <div class="grafikText"> <b> {{'TEXT.sinava_giren_ogrenci_sayisi' |
+                                    translate}}:</b>{{birimBasvuru.sinava_giren_ogrenci_sayisi}} </div>
+
+                            <google-chart [type]="chart.type" [data]="chart.data" [slices]=""
+                                [columns]="chart.columnNames" [options]="chart.options">
+                            </google-chart>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-6 mr-10">
+                            <!-- <span class="badge badge-info">Info</span> -->
+                            <p class="spanTitle">{{'TEXT.baslangic_tarihi' | translate}} : <span
+                                    class="spanData">{{birimBasvuru.baslangic_tarihi | date:'dd/MM/yyyy'}}</span> </p>
+                            <p class="spanTitle">{{'TEXT.bitis_tarihi' | translate}} : <span class="spanData">
+                                    {{birimBasvuru.bitis_tarihi | date: 'dd/MM/yyyy'}} </span> </p>
+                            <p class="spanTitle">{{'TEXT.sinav_tarihi' | translate}} : <span
+                                    class="spanData">{{birimBasvuru.sinav_tarihi | date: 'dd/MM/yyyy'}}</span> </p>
+                            <p class="spanTitle">{{'TEXT.sonuc_gorme_durumu' | translate}} : <span
+                                    class="spanData">{{birimBasvuru.sonuclari_goster ?
+                                    this.translate.instant("TEXT.goster") :
+                                    this.translate.instant("TEXT.GIZLI")}}</span>
+                            </p>
+                            <p class="spanTitle">{{'TEXT.ucret' | translate}} : <span
+                                    class="spanData">{{birimBasvuru.ucret }}</span> </p>
+                        </div>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <br>
+                </mat-card-content>
+                <mat-card-footer>
+                    <div class="row">
+                        <div class="col-md-12 text-center menuList">
+                            <button style="width:90%; margin-bottom:5px;" mat-raised-button
+                                [color]="activeBtnId==1?'accent':'basic'" (click)="basvuruOgrenciler(birimBasvuru.id)"
+                                routerLink="basvuru-ogrenciler"
+                                matTooltip="{{'TITLE.tercih_yapan_ogrenciler' | translate}}">
+                                <mat-icon>supervisor_account</mat-icon> {{'TITLE.tercih_yapan_ogrenciler' | translate}}
+                            </button>
+                            <button style="width:90%; margin-bottom:5px;" mat-raised-button
+                                [color]="activeBtnId==2?'accent':'basic'" (click)="editData(birimBasvuru.id)"
+                                matTooltip="{{'TEXT.UPDATE' | translate}}">
+                                <mat-icon>create</mat-icon> {{'TEXT.UPDATE' | translate}}
+                            </button>
+                            <button style="width:90%; margin-bottom:5px;" mat-raised-button
+                                [color]="activeBtnId==3?'accent':'basic'" (click)="tercihYerleri(birimBasvuru.id)"
+                                matTooltip="{{'TEXT.tercih_yerleri' | translate}}">
+                                <mat-icon>school</mat-icon> {{'TEXT.tercih_yerleri' | translate}}
+                            </button>
+                            <button style="width:90%; margin-bottom:5px;" mat-raised-button
+                                [color]="activeBtnId==4?'accent':'basic'" (click)="bildirimGonderme(birimBasvuru.id)">
+                                <mat-icon>notifications_active</mat-icon> {{'TITLE.bildirim_listesi' | translate}}
+                            </button>
+                            <button style="width:90%; margin-bottom:5px;" mat-raised-button
+                                [color]="activeBtnId==5?'accent':'basic'" (click)="islemler(birimBasvuru.id)">
+                                <mat-icon>settings</mat-icon> {{'TITLE.diger_islemler' | translate}}
+                            </button>
+                            <button style="width:90%; margin-bottom:5px;" mat-raised-button [color]="accent"
+                                disabled="{{birimBasvuru.disableDelete}}" (click)="remove(birimBasvuru.id)"
+                                matTooltip="{{'TEXT.DELETE' | translate}}" type="{{'TEXT.DELETE' | translate}}">
+                                <mat-icon>delete</mat-icon> {{'TEXT.DELETE' | translate}}
+                            </button>
+                        </div>
+                    </div>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+
+   
+        <div  class="col-lg-12 col-md-12" *ngIf="(!birimBasvuru.id || !SolMenuAktif); else elseFullPage; ">
+            <div style="float: left; width: 30px; margin: 15px 10px;" *ngIf="!SolMenuAktif">
+                <mat-card class="solAcmaMat-card">
+                    <span (click)="SolMenuAktif=true"> 
+                        <mat-icon style="height: 40px;  color: #ffff; cursor: pointer; font-size: 35px !important;">
+                            chevron_right
+                            </mat-icon>
+                         
+                     </span>
+                </mat-card>        
+            </div>
+            <router-outlet></router-outlet>
+        </div>
+
+        <ng-template #elseFullPage>
+            <div class="col-xl-9 col-lg-8 col-md-8"  >
+                <router-outlet></router-outlet>
+            </div>
+        </ng-template>
+        
+        
+    </div>
+</kt-portlet>

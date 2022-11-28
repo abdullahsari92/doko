@@ -1,0 +1,20 @@
+<div style="position: absolute; top:45%; left: 45%;" *ngIf="loader">
+  <div class="col-lg-2">
+    <mat-spinner diameter="70"></mat-spinner>
+    {{'TEXT.YUKLENIYOR' | translate}}
+  </div>
+</div>
+<kt-portlet>
+  <kt-portlet-header [title]="'TITLE.doktora_basvuru_listesi'| translate" [class]="'kt-portlet__head--lg'">
+    <ng-container ktPortletTools>
+      <button (click)="addDoktoraBasvuru()" mat-raised-button color="primary"
+        matTooltip="{{'TEXT.ADD' | translate}}">{{'TEXT.ADD' | translate}} </button>
+      <!-- Buttons (Material Angular) | See off.documenations 'https://material.angular.io/components/button/overview' -->
+      <!-- mat-raised-button | Rectangular contained button w/ elevation  -->
+    </ng-container>
+  </kt-portlet-header>
+  <kt-portlet-body>
+    <kt-ortak-basvuru [basvuruTuru]="basvuruTurEnum.doktora"></kt-ortak-basvuru>
+  </kt-portlet-body>
+  <!-- end::Body -->
+</kt-portlet>

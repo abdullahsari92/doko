@@ -1,0 +1,244 @@
+<kt-portlet>
+    <kt-portlet-header [sticky]="true" [title]="'TITLE.sinav_basvuru_tanim'| translate"
+        [class]="'kt-portlet__head--lg'">
+        <ng-container ktPortletTools>
+            <!-- <a (click)="goBackWithoutId()" class="btn btn-secondary kt-margin-r-10"  mat-raised-button matTooltip="{{'TEXT.BACK' | translate}}">
+        <i class="la la-arrow-left"></i>
+        <span class="kt-hidden-mobile">{{'TEXT.BACK' | translate}}</span>
+    </a> -->
+            <a href="javascript:;" class="btn btn-primary kt-margin-r-10" color="primary" (click)="onSumbit()"
+                mat-raised-button matTooltip="{{buttonSave}}">
+                <span class="kt-hidden-mobile">{{buttonSave}}</span>
+            </a>
+        </ng-container>
+    </kt-portlet-header>
+    <kt-portlet-body>
+        <form [formGroup]="sinavForm" class="kt-form kt-form--group-seperator-dashed" autocomplete="off">
+            <kt-alert *ngIf="hasFormErrors" type="warn" [showCloseButton]="true" [duration]="10000"
+                (close)="onAlertClose($event)">
+                {{'VALIDATION.ERROR' | translate}}
+            </kt-alert>
+            <div class="kt-form__section kt-form__section--first">
+                <div class="kt-form__group">
+                    <div class="card card-px-0 shadow-md">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                                    <mat-form-field class="mat-form-field-fluid">
+                                        <mat-label>{{'TEXT.adi_tr' | translate }}</mat-label>
+                                        <input matInput type="text" placeholder="{{'TEXT.adi_tr' | translate }}"
+                                            formControlName="adi_tr" />
+                                        <mat-error *ngIf="isControlHasError('adi_tr','required')">
+                                            <strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                                        </mat-error>
+                                        <mat-error *ngIf="isControlHasError('adi','minlength')">
+                                            <strong>{{ 'VALIDATION.MIN_LENGTH_FIELD' | translate }} 2</strong>
+                                        </mat-error>
+                                        <mat-error *ngIf="isControlHasError('adi','maxlength')">
+                                            <strong>{{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }} 100</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                                    <mat-form-field class="mat-form-field-fluid">
+                                        <mat-label>{{'TEXT.adi_en' | translate }}</mat-label>
+                                        <input matInput type="text" placeholder="{{'TEXT.adi_en' | translate }}"
+                                            formControlName="adi_en" />
+                                        <mat-error *ngIf="isControlHasError('adi_en','required')">
+                                            <strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                                        </mat-error>
+                                        <mat-error *ngIf="isControlHasError('adi','minlength')">
+                                            <strong>{{ 'VALIDATION.MIN_LENGTH_FIELD' | translate }} 2</strong>
+                                        </mat-error>
+                                        <mat-error *ngIf="isControlHasError('adi','maxlength')">
+                                            <strong>{{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }} 100</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-2 kt-margin-bottom-20-mobile">
+                                    <mat-form-field class="mat-form-field-fluid">
+                                        <input matInput [matDatepicker]="picker1" (click)="picker1.open()"
+                                            autocomplete="off" placeholder="{{'TEXT.baslangic_tarihi' | translate}}"
+                                            formControlName="baslangic_tarihi">
+                                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker1></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-2 kt-margin-bottom-20-mobile">
+                                    <mat-form-field class="mat-form-field-fluid">
+                                        <input matInput [matDatepicker]="picker2" (click)="picker2.open()"
+                                            autocomplete="off" placeholder="{{'TEXT.bitis_tarihi' | translate}}"
+                                            formControlName="bitis_tarihi">
+                                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker2></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="card card-px-0 shadow-md">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 kt-margin-bottom-20-mobile">
+                                    <mat-form-field class="mat-form-field-fluid">
+                                        <mat-label>{{'TEXT.soru_sayisi' | translate }}</mat-label>
+                                        <input matInput type="number" placeholder="{{'TEXT.soru_sayisi' | translate }}"
+                                            formControlName="soru_sayisi" />
+                                        <mat-error *ngIf="isControlHasError('soru_sayisi','required')">
+                                            <strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-3 col-md-3 kt-margin-bottom-20-mobile">
+                                    <mat-form-field class="mat-form-field-fluid">
+                                        <mat-label>{{'TEXT.sinav_suresi' | translate }}</mat-label>
+                                        <input matInput type="number" placeholder="{{'TEXT.sinav_suresi' | translate }}"
+                                            formControlName="sinav_suresi" />
+                                        <mat-error *ngIf="isControlHasError('sinav_suresi','required')">
+                                            <strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-3 col-md-3 kt-margin-bottom-20-mobile">
+                                    <mat-form-field class="mat-form-field-fluid">
+                                        <input matInput [matDatepicker]="picker6" (click)="picker6.open()"
+                                            autocomplete="off" placeholder="{{'TEXT.sinav_tarihi' | translate}}"
+                                            formControlName="sinav_tarihi">
+                                        <mat-datepicker-toggle matSuffix [for]="picker6">
+                                        </mat-datepicker-toggle>
+                                        <mat-datepicker #picker6></mat-datepicker>
+                                        <mat-error *ngIf="isControlHasError('sinav_tarihi','required')">
+                                            <strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-3 col-md-3 kt-margin-bottom-20-mobile">
+                                    <mat-form-field class="mat-form-field-fluid">
+                                        <mat-label>{{'TEXT.sinav_sirasi' | translate }}</mat-label>
+                                        <input matInput type="number" placeholder="{{'TEXT.sinav_sirasi' | translate }}"
+                                            formControlName="sirasi" />
+                                        <mat-error *ngIf="isControlHasError('sirasi','required')">
+                                            <strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="card card-px-0 shadow-md">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                    <mat-form-field class="mat-form-field-fluid">
+                                        <mat-select placeholder="{{'TEXT.ucret_odeme_turu' | translate}}"
+                                            formControlName="ucret_odeme_turu">
+                                            <mat-option *ngFor="let item of ucretOdemeTurleri" [value]="item.value">
+                                                {{'TEXT.'+item.key | translate}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-6 kt-margin-bottom-20-mobile"
+                                    *ngIf="sinavForm.controls['ucret_odeme_turu'].value==ucretOdemeTuru.online || sinavForm.controls['ucret_odeme_turu'].value==ucretOdemeTuru.dekont">
+                                    <mat-form-field class="mat-form-field-fluid">
+                                        <mat-label>{{'TEXT.ucret' | translate }}</mat-label>
+                                        <input matInput type="number" placeholder="{{'TEXT.ucret' | translate }}"
+                                            formControlName="ucret" />
+                                        <mat-error *ngIf="isControlHasError('ucret','required')">
+                                            <strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-6 kt-margin-bottom-20-mobile"
+                                    *ngIf="sinavForm.controls['ucret_odeme_turu'].value==ucretOdemeTuru.online || sinavForm.controls['ucret_odeme_turu'].value==ucretOdemeTuru.dekont">
+                                    <mat-form-field class="mat-form-field-fluid">
+                                        <mat-select placeholder="{{'TEXT.ucret_isteme_zamani' | translate}}"
+                                            formControlName="ucret_zamani">
+                                            <mat-option *ngFor="let item of ucretOdemeZamani" [value]="item.value">
+                                                {{"TEXT."+item.key | translate}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-6 kt-margin-bottom-20-mobile"
+                                    *ngIf="sinavForm.controls['ucret_odeme_turu'].value==ucretOdemeTuru.online || sinavForm.controls['ucret_odeme_turu'].value==ucretOdemeTuru.dekont">
+                                    <mat-form-field class="mat-form-field-fluid">
+                                        <input matInput type="text"
+                                            placeholder="{{'TEXT.ucret_aciklama_tr' | translate }}"
+                                            formControlName="ucret_aciklama_tr" autocomplete="off" />
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-6 kt-margin-bottom-20-mobile"
+                                    *ngIf="sinavForm.controls['ucret_odeme_turu'].value==ucretOdemeTuru.online || sinavForm.controls['ucret_odeme_turu'].value==ucretOdemeTuru.dekont">
+                                    <mat-form-field class="mat-form-field-fluid">
+                                        <input matInput type="text"
+                                            placeholder="{{'TEXT.ucret_aciklama_en' | translate }}"
+                                            formControlName="ucret_aciklama_en" autocomplete="off" />
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-6 kt-margin-bottom-20-mobile"
+                                    *ngIf="sinavForm.controls['ucret_odeme_turu'].value==ucretOdemeTuru.online">
+                                    <mat-form-field class="mat-form-field-fluid">
+                                        <mat-select placeholder="{{'TEXT.odeme_bankasi' | translate}}"
+                                            formControlName="odeme_bankasi">
+                                            <mat-option *ngFor="let item of bankaList" [value]="item.value">{{item.key}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-6 kt-margin-bottom-20-mobile"
+                                    *ngIf="sinavForm.controls['ucret_odeme_turu'].value==ucretOdemeTuru.online">
+                                    <mat-form-field class="mat-form-field-fluid">
+                                        <input matInput [matDatepicker]="picker3" (click)="picker3.open()"
+                                            autocomplete="off"
+                                            placeholder="{{'TEXT.ucret_son_odeme_tarihi' | translate}}"
+                                            formControlName="ucret_son_odeme_tarihi">
+                                        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker3></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="card card-px-0 shadow-md">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-6 kt-margin-bottom-10-mobile">
+                                    <mat-tab-group dynamicHeight>
+                                        <mat-tab label="{{'TEXT.kullanim_kosulu_metni_tr'  | translate }}">
+                                            <ckeditor [editor]="Editor" formControlName="kullanim_kosulu_metni_tr">
+                                            </ckeditor>
+                                        </mat-tab>
+                                        <mat-tab label="{{'TEXT.kullanim_kosulu_metni_en'  | translate }}">
+                                            <ckeditor [editor]="Editor" formControlName="kullanim_kosulu_metni_en">
+                                            </ckeditor>
+                                        </mat-tab>
+                                    </mat-tab-group>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="card card-px-0 shadow-md">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-3 col-lg-4 kt-margin-bottom-20-mobile">
+                                    <div>{{'TEXT.kayit_turu_durumu' | translate}} ({{'TITLE.kabul_kosullari' | translate
+                                        }}) </div>
+                                    <mat-slide-toggle formControlName="kayit_turu_durumu" (change)="changeStatu(2)">
+                                        {{kayit_turu | translate}} </mat-slide-toggle>
+                                </div>
+                                <div class="col-md-3 col-lg-4 kt-margin-bottom-20-mobile">
+                                    <div>{{'TEXT.durumu' | translate}} </div>
+                                    <mat-slide-toggle formControlName="durumu" (change)="changeStatu(1)">{{durumuText |
+                                        translate}}</mat-slide-toggle>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </kt-portlet-body>
+</kt-portlet>

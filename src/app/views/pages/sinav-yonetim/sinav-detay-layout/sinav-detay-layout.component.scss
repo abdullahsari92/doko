@@ -1,0 +1,65 @@
+.spanTitle {
+    font-size: 10px;
+    font-weight: 700;
+    color: #302e50;
+    font-family: "Roboto", sans-serif;
+    margin-bottom: 2px;
+}
+
+.spanTitle .spanData {
+    font-size: 10px;
+    font-weight: 500;
+    font-family: "Roboto", sans-serif;
+    color: #302e50;
+}
+
+.grafikTop {
+    border-radius: 50px;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    height: 10px;
+    width: 10px;
+    background-color: #dd4477;
+    position: absolute;
+    margin-right: 3px;
+}
+
+.grafikText {
+    font-size: 10px;
+    margin-left: 15px;
+}
+
+.spashLoader {
+    margin: 300px;
+}
+
+:host {
+    height: 100%;
+    margin: 0;
+}
+.card-foot {
+    padding: 10px 0px 10px 0px;
+}
+
+.mat-flat-button.mat-accent,
+.mat-raised-button.mat-accent,
+.mat-fab.mat-accent,
+.mat-mini-fab.mat-accent {
+    background-color: #0399c6 !important;
+}
+
+.card-content-bt {
+    margin-bottom: -20px;
+}
+
+.menuList button {
+    font-size: 12px;
+}
+
+.menuList button mat-icon {
+    left: 10px;
+    position: absolute;
+    top: 4px;
+    color: #46464694;
+    font-size: 22px !important;
+}

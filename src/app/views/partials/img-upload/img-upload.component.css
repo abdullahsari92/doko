@@ -1,0 +1,67 @@
+
+.image-preview {
+  
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 25px;
+ 
+    float: left;
+    position: relative;
+}
+.image-preview > img {
+    object-fit: contain;
+    width: auto;
+    border-radius: var(--border-radius);
+    height: 100%;
+}
+
+.upload-drop-zone{
+
+    min-height:210px;
+    background: #F2F2F2;
+    border: 2px dashed  #000000;
+    border-radius: 10px;
+    position: relative;
+    
+}
+
+.fileInput{
+
+    border: none;
+    color:blue;
+
+}
+
+.file {
+    align-items: stretch;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.file-label {
+    align-items: stretch;
+    display: flex;
+    cursor: pointer;
+    justify-content: flex-start;
+    overflow: hidden;
+    position: relative;
+    left: 55%;
+    top: -18px;
+    width: 100%;
+    color: #0e76a8;
+}
+
+.file-input {
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    outline: 0;  
+    top: 0;
+    position: absolute;
+    width: 100%;
+}
+                                
+
+               

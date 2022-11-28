@@ -1,0 +1,29 @@
+<div class="row">
+    <!-- vize Kart Başlangıcı -->
+    <div class="col-lg-4 d-flex flex-column mb-4 cerceve" style="min-width: 380px; min-height: 160px;" (click)="vizeModal()" *ngIf="(vizeVerileri.vize_durumu==1)">
+        <div class="flex-grow-1 p-8 rounded-xl flex-grow-1 bgi-no-repeat vizeKutu" *ngIf="(vizeVerileri.vize_durumu==1)">
+            <h4 class="mt-2">
+                {{getUlkeAdi(vizeVerileri.vize_ulke_kodu).adi_tr | translateData :getUlkeAdi(vizeVerileri.vize_ulke_kodu).adi_en}}
+            </h4>
+            <p class="my-4">
+                {{getVizeAdi(vizeVerileri.vize_konsolosluk_kodu).adi_tr | translateData :getVizeAdi(vizeVerileri.vize_konsolosluk_kodu).adi_en}}
+            </p>
+            <p class="my-4">
+                <!-- {{item.vize_seviyesi}} -->
+            </p>
+        </div>
+    </div>
+    <!-- vize Kart Bitiş -->
+    <!-- vize Boş Kart Başlangıcı -->
+    <div class="col-lg-4 d-flex flex-column mb-4 vizeEkleCerceve" (click)="vizeModal()" *ngIf="(vizeVerileri.vize_durumu=='0')">
+        <div class="flex-grow-1 p-15 rounded-xl flex-grow-1 bgi-no-repeat shadow-lg p-3 mb-5 bg-white rounded vizeEkle">
+            {{'TEXT.vize2' | translate }}
+        </div>
+    </div>
+    <div class="col-lg-4 d-flex flex-column mb-4 vizeEkleCerceve" (click)="vizeModal()" *ngIf="vizeVerileri.vize_durumu==null && vizeVerileri.vize_durumu!='0'">
+        <div class="flex-grow-1 p-8 rounded-xl flex-grow-1 bgi-no-repeat shadow-lg p-3 mb-5 bg-white rounded vizeEkle">
+            <i class="fas fa-plus "></i>
+        </div>
+    </div>
+    <!-- vize Boş Kart Bitiş -->
+</div>

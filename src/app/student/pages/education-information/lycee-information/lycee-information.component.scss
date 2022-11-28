@@ -1,0 +1,54 @@
+@import "../../../../../assets/student/login/css/style.bundle.css";
+.liseKutu {
+    background-color: #4A64DB !important;
+    background-size: 100%;
+    background-image: url('../../../../../assets/student/general/bg-5.jpg');
+    box-shadow: 3px 3px 4px #4A64DB;
+    cursor: pointer;
+    color: #fff !important;
+}
+
+.liseEkleCerceve {
+    min-width: 380px;
+    min-height: 160px;
+    height: 160px;
+    padding-top: 10px;
+}
+
+.liseEkle {
+    background-position: 305px 46px;
+    box-shadow: 3px 3px 4px #4A64DB !important;
+    background-size: auto 70%;
+    background-image: url('../../../../../assets/student/general/2.png');
+    cursor: pointer;
+    text-align: center;
+    opacity: 0.6;
+    -webkit-transition: opacity 0.3s ease-in;
+    -moz-transition: opacity 0.3s ease-in;
+    -ms-transition: opacity 0.3s ease-in;
+    -o-transition: opacity 0.3s ease-in;
+    transition: opacity 0.3s ease-in;
+}
+
+.liseEkle>i {
+    font-size: 64px;
+    padding-top: 10px;
+    color: #4A64DB;
+}
+
+.liseEkle:hover {
+    zoom: 1;
+    filter: alpha(opacity=1);
+    opacity: 1;
+}
+
+@media (max-width: 991.98px) {
+    .cerceve {
+        min-width: 100px!important;
+        min-height: 180px;
+    }
+    .liseEkleCerceve {
+        min-width: 100px!important;
+        min-height: 180px;
+    }
+}

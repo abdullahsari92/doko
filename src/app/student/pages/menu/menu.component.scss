@@ -1,0 +1,28 @@
+@media (max-width: 991.88px) {
+    /* .stdsidebar.sidebar-right {
+        right: 0!important;
+    } */
+    .stdsidebar_show {
+        height: auto!important;
+        overflow: hidden!important;
+        right: -1px!important;
+        top: 40px!important;
+        z-index: 1!important;
+    }
+    .stdsidebar_hide {
+        right: -410px!important;
+    }
+    .notifications_manual {
+        height: 72px!important;
+        overflow-y: scroll!important;
+        overflow-x: clip!important;
+    }
+}
+
+@media (max-width: 400px) {
+    .notifications_manual {
+        height: 144px!important;
+        overflow-y: scroll!important;
+        overflow-x: clip!important;
+    }
+}

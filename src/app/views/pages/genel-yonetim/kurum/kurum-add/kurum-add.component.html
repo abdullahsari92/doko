@@ -1,0 +1,51 @@
+
+<div class="modalBody">  
+    <div class="header"> 
+		  <h4>{{ 'TITLE.kurum_tanim' | translate }}</h4>
+          <span [mat-dialog-close]="data.animal" style=" position: absolute;  top: 10px;right: -20px;">
+            <mat-icon> close</mat-icon>
+          </span>      
+      </div>
+		<form class="kt-login__form kt-form" [formGroup]="kurumTanimForm" autocomplete="off">
+			<div class="form-group kt-form__group row">
+                <div class="col-lg-6 kt-margin-bottom-20-mobile" *ngFor="let item of ObjectContorls()"  >
+                    <mat-form-field class="mat-form-field-fluid">
+                        <mat-label>{{'TEXT.' +item | translate }}</mat-label>
+                        <input matInput type="text" placeholder="{{'TEXT.' +item | translate }}" formControlName="{{item}}"/>
+                        <mat-error *ngIf="isControlHasError(item,'required')">
+                            <strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                        </mat-error>
+                        <mat-error *ngIf="isControlHasError(item,'minlength')">
+                            <strong>{{ 'VALIDATION.MIN_LENGTH_FIELD' | translate }} 2</strong>
+                        </mat-error>
+                        <mat-error *ngIf="isControlHasError(item,'maxlength')">
+                            <strong>{{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }} 100</strong>
+                        </mat-error>
+						<mat-error *ngIf="isControlHasError(item,'email')">
+                            <strong>{{ 'VALIDATION.EMAIL' | translate }} </strong>
+                        </mat-error>
+						<mat-error *ngIf="isControlHasError(item,'pattern')">
+                            <strong>{{ 'VALIDATION.PHONE_FIELD' | translate }} </strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+				<div class="col-lg-6 kt-margin-bottom-20-mobile"   >
+                    <mat-form-field class="mat-form-field-fluid">
+                        <mat-label>{{'TEXT.telefon' | translate }}</mat-label>
+                        <input matInput type="text" placeholder="( 0xxx xxx xx xx)" formControlName="telefon"/>
+                     
+                  
+						<mat-error *ngIf="isControlHasError('telefon','pattern')">
+                            <strong>{{ 'VALIDATION.PHONE_FIELD' | translate }} </strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+								
+			</div>
+			<!--end::Action-->
+		</form>
+		<div class="rightCrudBtn">
+			<button (click)="submit()" id="kt_login_signin_submit" class="btn btn-primary btn-elevate kt-login__btn-primary" [ngClass]="{'kt-spinner kt-spinner--right kt-spinner--md kt-spinner--light': loading}">{{buttonSave}} </button>
+			<button type="button" mat-raised-button   [mat-dialog-close]="data.animal" class="btn pull-right cancbtn"> {{"TEXT.CANCEL" | translate }} </button>
+	</div>
+</div>

@@ -1,0 +1,75 @@
+<div class="modalBody">
+	<div class="header">
+		<h4>{{ 'TEXT.toplu_islemler' | translate }} {{ 'TEXT.'+islemTurleriEnum[islemTuru] | translate }} </h4>
+		<span [mat-dialog-close]="data.animal" style=" position: absolute;  top: 10px;right: -20px;">
+			<mat-icon> close</mat-icon>
+		</span>
+	</div>
+	<form class="kt-login__form kt-form" [formGroup]="onayForm" autocomplete="off">
+		<div class="form-group kt-form__group row">
+			<div class="col-lg-12 kt-margin-bottom-20-mobile" *ngIf="islemTuru == islemTurleriEnum.basvuru_durumu ">
+				<mat-form-field class="mat-form-field-fluid">
+					<mat-label> {{'TEXT.basvuru_durumu' | translate}}</mat-label>
+					<mat-select formControlName="durumu" placeholder="{{'TEXT.basvuru_durumu' | translate}}">
+						<mat-option *ngFor="let item of ogrenciBasvuruDurumlari" [value]="item.value">
+							{{'TEXT.'+item.key | translate}}</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</div>
+			<div class="col-lg-12 kt-margin-bottom-20-mobile"
+				*ngIf="islemTuru == islemTurleriEnum.sinav_salonuna_atama">
+				<mat-form-field class="mat-form-field-fluid">
+					<mat-label> {{'TEXT.sinav_salonuna_atama' | translate}}</mat-label>
+					<p> {{'TEXT.uyari_sinav_salon_atama' | translate}}</p>
+					<mat-select placeholder="{{'TEXT.sinav_salonuna_atama' | translate}}" formControlName="durumu">
+						<mat-option>{{'TEXT.SELECT' | translate}}</mat-option>
+						<mat-option *ngFor="let item of merkezList" [value]="item.value">{{item.key}}</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</div>
+			<div class="col-lg-12 kt-margin-bottom-20-mobile"
+				*ngIf="islemTuru == islemTurleriEnum.sinava_girme_durumu ">
+				<mat-form-field class="mat-form-field-fluid">
+					<mat-label> {{'TEXT.sinav_durumu' | translate}}</mat-label>
+					<mat-select formControlName="durumu" placeholder="{{'TEXT.sinav_durumu' | translate}}">
+						<mat-option *ngFor="let item of ogrenciSinavDurumlari" [value]="item.value">
+							{{'TEXT.'+item.key | translate}}</mat-option>
+					</mat-select>
+				</mat-form-field>
+				<mat-form-field class="mat-form-field-fluid">
+					<mat-label>{{'TEXT.durum_aciklama' | translate }}</mat-label>
+					<input matInput type="text" placeholder="{{'TEXT.durum_aciklama' | translate}}"
+						formControlName="durum_aciklama" />
+				</mat-form-field>
+			</div>
+			<div class="col-lg-12 kt-margin-bottom-20-mobile" *ngIf="islemTuru == islemTurleriEnum.odeme_onay">
+				<mat-form-field class="mat-form-field-fluid">
+					<mat-label> {{'TEXT.odeme_onay' | translate}}</mat-label>
+					<mat-select formControlName="durumu" placeholder="{{'TEXT.odeme_onay' | translate}}">
+						<mat-option *ngFor="let item of OgrenciBasvuruOdemeDurumlari" [value]="item.value">
+							{{'TEXT.'+item.key | translate}}</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</div>
+		</div>
+		<div class="form-group kt-form__group row">
+			<div *ngIf="islemTuru != islemTurleriEnum.sinav_salonuna_atama">
+				Guncellenecek Toplu Kayıt = {{this.data.ogrBasvuruIds.length}}
+			</div>
+		</div>
+		<!--end::Action-->
+	</form>
+	<div class="rightCrudBtn">
+		<button (click)="submit()" id="kt_login_signin_submit"
+			class="btn btn-primary btn-elevate kt-login__btn-primary">
+			<div *ngIf="islemTuru == islemTurleriEnum.sinav_salonuna_atama">
+				{{'TEXT.atama_yap' | translate}}
+			</div>
+			<div *ngIf="islemTuru != islemTurleriEnum.sinav_salonuna_atama">
+				{{'TEXT.ADD' | translate}}
+			</div>
+		</button>
+		<button type="button" mat-raised-button [mat-dialog-close]="data.animal" class="btn pull-right cancbtn">
+			{{"TEXT.CANCEL" | translate }} </button>
+	</div>
+</div>

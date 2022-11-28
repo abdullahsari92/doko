@@ -1,0 +1,15 @@
+@media (max-width: 1024px) {
+    .kt-header__topbar {
+        display: flex;
+        background: none;
+        left: -70px;
+    }
+    /* 
+    .kt-header_topbar_manual {
+        z-index: 9999;
+        margin-top: 15px;
+    }
+    .kt-header__topbar>button {
+        margin-top: -15px!important;
+    } */
+}

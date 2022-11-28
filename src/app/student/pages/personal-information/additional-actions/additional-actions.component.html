@@ -1,0 +1,165 @@
+<div class="modalBody">
+    <div class="header">
+        <h4>
+            {{ (data.process === 1 ? 'TEXT.mavi_kart_belge': 'TEXT.2uyruk') | translate }}
+        </h4>
+        <span style="position: absolute; top: 15px; right: -20px; cursor: pointer;" [mat-dialog-close]="" mat-raised-button class="cancbtn">
+            <mat-icon>close</mat-icon>
+        </span>
+    </div>
+    <!--begin::Group-->
+    <form class="form" id="kt_form" [formGroup]="form">
+        <div class="tab-content">
+            <!--begin::Tab-->
+            <div class="tab-pane show active" id="kt_user_edit_tab_1" role="tabpanel">
+                <!--begin::Row-->
+                <div class="row justify-content-md-center" *ngIf="data.process===1">
+                    <div class="col-xl-12">
+                        <!--begin::Group-->
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <doko-file-upload-all [height]="'150px'" [imgURL]="form.get('mavi_kart_belge').value ? dokoSettingsService.apiUrl + form.get('mavi_kart_belge').value :false" controlName="mavi_kart_belge" [isSaveButton]="false" [multiple]="false">
+                                </doko-file-upload-all>
+                                <div class="fv-plugins-message-container" *ngIf="errorState && errorControl('mavi_kart_belge') !== null">
+                                    <div class="fv-help-block">
+                                        <div class="fv-help-block">
+                                            <span *ngFor="let i of errorControl('mavi_kart_belge')">
+                                                {{i}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end::Group-->
+                    </div>
+                </div>
+                <!--end::Row-->
+                <!--begin::Row-->
+                <div class="row justify-content-md-center" *ngIf="data.process===2">
+                    <div class="col-xl-12">
+                        <!--begin::Group-->
+                        <div class="form-group row">
+                            <label class="col-form-label col-3 text-lg-right text-left">
+                                {{ 'TEXT.pasaport2_no' | translate }}
+                            </label>
+                            <div class="col-9">
+                                <input class="d-none" type="text" />
+                                <input class="form-control form-control-lg form-control-solid" type="text" placeholder="{{ 'TEXT.pasaport2_no' | translate }}" formControlName="pasaport2_no" />
+                                <div class="fv-plugins-message-container" *ngIf="(errorState || form.get('pasaport2_no').touched) && errorControl('pasaport2_no')">
+                                    <div class="fv-help-block">
+                                        <div class="fv-help-block">
+                                            <span *ngFor="let i of errorControl('pasaport2_no')">
+                                                {{i}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end::Group-->
+                        <!--begin::Group-->
+                        <div class="form-group row">
+                            <label class="col-form-label col-3 text-lg-right text-left">
+                                {{ 'TEXT.pasaport2_dosya' | translate }}
+                            </label>
+                            <div class="col-9">
+                                <doko-file-upload-all [height]="'150px'" [imgURL]="form.get('pasaport2_dosya').value ? dokoSettingsService.apiUrl + form.get('pasaport2_dosya').value :false" controlName="pasaport2_dosya" [isSaveButton]="false" [multiple]="false">
+                                </doko-file-upload-all>
+                                <div class="fv-plugins-message-container" *ngIf="errorState && errorControl('pasaport2_dosya') !== null">
+                                    <div class="fv-help-block">
+                                        <div class="fv-help-block">
+                                            <span *ngFor="let i of errorControl('pasaport2_dosya')">
+                                                {{i}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end::Group-->
+                        <!--begin::Group-->
+                        <div class="form-group row">
+                            <label class="col-form-label col-3 text-lg-right text-left">
+                                {{ 'TEXT.uyruk2_kodu' | translate }}
+                            </label>
+
+                            <!-- <div class="col-9">
+                                <input class="form-control form-control-lg form-control-solid" type="text" placeholder="{{ 'TEXT.uyruk2_kodu' | translate }}" formControlName="uyruk2_kodu" />
+                                <div class="fv-plugins-message-container" *ngIf="(errorState || form.get('uyruk2_kodu').touched) && errorControl('uyruk2_kodu') !== null">
+                                    <div class="fv-help-block">
+                                        <div class="fv-help-block">
+                                            <span *ngFor="let i of errorControl('uyruk2_kodu')">
+                                                {{i}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+
+                            <div class="col-9">
+                                <select name="uyruk2_kodu" class="form-control form-control-lg form-control-solid" formControlName="uyruk2_kodu">
+                                    <option value="">
+                                        {{ 'TEXT.SELECT' | translate }}
+                                    </option>
+                                    <option *ngFor="let item of data.ulkeler" [value]="item.kodu">
+                                        {{item.adi_tr | translateData :item.adi_en }}
+                                    </option>
+                                </select>
+                                <div class="fv-plugins-message-container" *ngIf="(errorState || form.get('uyruk2_kodu').touched) || errorControl('uyruk2_kodu') !== null">
+                                    <div class="fv-help-block">
+                                        <div class="fv-help-block">
+                                            <span *ngFor="let i of errorControl('uyruk2_kodu')">
+                                                {{i}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end::Group-->
+                        <!--begin::Group-->
+                        <div class="form-group row">
+                            <label class="col-form-label col-3 text-lg-right text-left">
+                                {{ 'TEXT.uyruk2_sebebi_id' | translate }}
+                            </label>
+                            <div class="col-9">
+                                <select name="uyruk2_sebebi_id" class="form-control form-control-lg form-control-solid" formControlName="uyruk2_sebebi_id">
+                                    <option value="" selected="selected">
+                                        {{ 'TEXT.SELECT' | translate }}
+                                    </option>
+                                    <option *ngFor="let item of data.uyrukSebebi" [value]="item.id">
+                                        {{item.adi_tr}}
+                                    </option>
+                                </select>
+                                <div class="fv-plugins-message-container" *ngIf="(errorState || form.get('uyruk2_sebebi_id').touched) && errorControl('uyruk2_sebebi_id') !== null">
+                                    <div class="fv-help-block">
+                                        <div class="fv-help-block">
+                                            <span *ngFor="let i of errorControl('uyruk2_sebebi_id')">
+                                                {{i}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end::Group-->
+                    </div>
+                </div>
+                <!--end::Row-->
+            </div>
+            <!--end::Tab-->
+        </div>
+    </form>
+    <!--end::Group-->
+    <!--begin::Group-->
+    <div class="rightCrudBtn">
+        <button type="button" [mat-dialog-close]="" mat-raised-button class="btn pull-right cancbtn">
+            {{"TEXT.CANCEL" | translate }}
+        </button>
+        <button (click)="submit()" id="kt_login_signin_submit" class="btn btn-primary btn-elevate kt-login__btn-primary">
+            {{"TEXT.SAVE" | translate }}
+        </button>
+    </div>
+    <!--end::Group-->
+</div>

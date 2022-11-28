@@ -1,0 +1,71 @@
+<kt-portlet>
+	<kt-portlet-header [title]="'TITLE.basvuru_sinav_merkez_listesi'| translate" [class]="'kt-portlet__head--lg'">
+		<ng-container ktPortletTools>
+			<!-- <a (click)="goBackWithoutId()" class="btn btn-secondary kt-margin-r-10" mat-raised-button matTooltip="Back to the products list">
+				<i class="la la-arrow-left"></i>
+				<span class="kt-hidden-mobile">{{'TEXT.BACK' | translate}}</span>
+			</a> -->
+		</ng-container>
+	</kt-portlet-header>
+	<kt-portlet-body>
+		<!--begin: Wizard -->
+		<div #wizard class="kt-grid kt-wizard-v2 kt-wizard-v2--white" id="kt_wizard_v2">
+			<div class="kt-grid__item kt-wizard-v2__aside merkezler">
+				<div>
+					<div class="kt-wizard-v2__nav">
+						<div class="kt-wizard-v2__nav-items">
+							<a class="kt-wizard-v2__nav-item {{actifLink(item,i)}} allItem" (click)="getSalonlar(item)"
+								*ngFor="let item of sinavMerkezleri index  let i=index">
+								<div class="kt-wizard-v2__nav-body">
+									<div class="kt-wizard-v2__nav-icon">
+										<i class="flaticon-globe"></i>
+									</div>
+									<div class="kt-wizard-v2__nav-label">
+										<div class="kt-wizard-v2__nav-label-title">
+											{{item.adi_tr}}
+										</div>
+										<div class="kt-wizard-v2__nav-label-desc">
+											<div class="kod"> {{item.ulke_adi_tr}} </div>
+											<span style="margin-left:79px;">
+												<button mat-icon-button color="primary"
+													style="width: auto; height: auto;" (click)="editModal(item)"
+													matTooltip="{{'TEXT.UPDATE' | translate}}">
+													<mat-icon>create</mat-icon>
+												</button>
+												<button mat-icon-button color="warn" style="width: auto; height: auto;"
+													(click)="deleteModal(item)"
+													matTooltip="{{'TEXT.DELETE' | translate}}" type="button">
+													<mat-icon>delete</mat-icon>
+												</button>
+											</span>
+										</div>
+									</div>
+								</div>
+								<spam [class.kucukOk]="item.id==sinavMerkezSalon.id"></spam>
+							</a>
+						</div>
+						<p style="text-align: right; position: sticky;bottom: 20px; right: 20px;">
+							<a mat-fab (click)="editModal( {id:null})" color="primary"
+								title="{{'TEXT.yeni_kayit' | translate}}">
+								<mat-icon>add</mat-icon>
+							</a>
+						</p>
+					</div>
+				</div>
+				<!--begin: Form Wizard Nav -->
+				<!--end: Form Wizard Nav -->
+			</div>
+			<div class="kt-grid__item kt-grid__item--fluid kt-wizard-v2__wrapper" style="width: 100%;">
+				<!--begin: Form Wizard Form-->
+				<form class="" id="">
+					<!--begin: Form Wizard Step 1-->
+					<div class="" style="padding:1em 4em;">
+						<kt-sinav-salon [sinavMerkez]="sinavMerkezSalon" [basvuruId]="basvuruId" [rowData]="rowData">
+						</kt-sinav-salon>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!--end: Wizard -->
+	</kt-portlet-body>
+</kt-portlet>

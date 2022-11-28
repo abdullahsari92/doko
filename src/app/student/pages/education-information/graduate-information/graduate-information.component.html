@@ -1,0 +1,25 @@
+<div class="row">
+    <!-- Yüksek Lisans Kart Başlangıcı -->
+    <div id="{{item.id}}" class="col-lg-4 d-flex flex-column mb-4 cerceve" style="min-width: 380px; min-height: 160px;" *ngFor="let item of graduateInfo" (click)="yuksekLisansModal(item.id)">
+        <div class="flex-grow-1 p-8 rounded-xl flex-grow-1 bgi-no-repeat yuksekLisansKutu">
+            <h4 class="mt-2">
+                {{item.universite_adi}}
+            </h4>
+            <p class="my-4">
+                {{item.anabilim_dali}} - {{item.bilim_dali}} ({{item.mezuniyet_yili}})
+            </p>
+            <p class="my-4">
+                {{item.sehir}} / {{getUlkeAdi(item.ulke_kodu).adi_tr | translateData :getUlkeAdi(item.ulke_kodu).adi_en}}
+            </p>
+        </div>
+    </div>
+    <!-- Yüksek Lisans Kart Bitiş -->
+    <!-- Yüksek Lisans Boş Kart Başlangıcı -->
+    <div class="col-lg-4 d-flex flex-column mb-4 yuksekLisansEkleCerceve" (click)="yuksekLisansModal()">
+        <!-- *ngIf="!this.dataState" -->
+        <div class="flex-grow-1 p-8 rounded-xl flex-grow-1 bgi-no-repeat shadow-lg p-3 mb-5 bg-white rounded yuksekLisansEkle">
+            <i class="fas fa-plus "></i>
+        </div>
+    </div>
+    <!-- Yüksek Lisans Boş Kart Bitiş -->
+</div>

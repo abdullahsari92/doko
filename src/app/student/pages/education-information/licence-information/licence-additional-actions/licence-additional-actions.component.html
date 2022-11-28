@@ -1,0 +1,224 @@
+<div mat-dialog-title>
+    <div class="row mt-5">
+        <div class="col-md-4 modal-title">
+            <h5 class="modal-title" id="exampleModalLongTitle">
+                {{'TITLE.lisans_bilgileri' | translate }}
+            </h5>
+        </div>
+        <div class="col-md-8 p-0">
+            <button type="button" class="close" [mat-dialog-close]="" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<mat-dialog-content class="mat-typography">
+    <div class="modal-body p-1">
+        <div class="row mt-5">
+            <div class="col-xl-12">
+                <form class="form" [formGroup]="licenceForm">
+                    <div class="form-group row">
+                        <label class="col-form-label col-3 text-lg-right text-left">
+                            {{"TEXT.universite_adi"| translate }}
+                        </label>
+                        <div class="col-9">
+                            <input class="form-control form-control-lg form-control-solid" [class.nonepointer]="!islem" formControlName="universite_adi" type="text" [readonly]="!islem">
+                            <div class="fv-plugins-message-container" *ngIf="(errorState || licenceForm.get('universite_adi').touched) && errorControl('universite_adi')">
+                                <div class="fv-help-block">
+                                    <div class="fv-help-block">
+                                        <span *ngFor="let i of errorControl('universite_adi')">
+                                            {{i}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-3 text-lg-right text-left">
+                            {{"TEXT.bolum"| translate }}
+                        </label>
+                        <div class="col-9">
+                            <input class="form-control form-control-lg form-control-solid" [class.nonepointer]="!islem" formControlName="bolum" type="text" [readonly]="!islem">
+                            <div class="fv-plugins-message-container" *ngIf="(errorState || licenceForm.get('bolum').touched) && errorControl('bolum')">
+                                <div class="fv-help-block">
+                                    <div class="fv-help-block">
+                                        <span *ngFor="let i of errorControl('bolum')">
+                                            {{i}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-3 text-lg-right text-left">
+                            {{"TEXT.program"| translate }}
+                        </label>
+                        <div class="col-9">
+                            <input class="form-control form-control-lg form-control-solid" [class.nonepointer]="!islem" formControlName="program" type="text" [readonly]="!islem">
+                            <div class="fv-plugins-message-container" *ngIf="(errorState || licenceForm.get('program').touched) && errorControl('program')">
+                                <div class="fv-help-block">
+                                    <div class="fv-help-block">
+                                        <span *ngFor="let i of errorControl('program')">
+                                            {{i}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-3 text-lg-right text-left">
+                            {{"TEXT.egitim_suresi"| translate }}
+                        </label>
+                        <div class="col-9">
+                            <input class="form-control form-control-lg form-control-solid" [class.nonepointer]="!islem" formControlName="egitim_suresi" type="text" [readonly]="!islem">
+                            <div class="fv-plugins-message-container" *ngIf="(errorState || licenceForm.get('egitim_suresi').touched) && errorControl('egitim_suresi')">
+                                <div class="fv-help-block">
+                                    <div class="fv-help-block">
+                                        <span *ngFor="let i of errorControl('egitim_suresi')">
+                                            {{i}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-3 text-lg-right text-left">
+                            {{"TEXT.mezuniyet_yili"| translate }}
+                        </label>
+                        <div class="col-9">
+                            <input class="form-control form-control-lg form-control-solid" [class.nonepointer]="!islem" formControlName="mezuniyet_yili" type="number" [readonly]="!islem">
+                            <div class="fv-plugins-message-container" *ngIf="(errorState || licenceForm.get('mezuniyet_yili').touched) && errorControl('mezuniyet_yili')">
+                                <div class="fv-help-block">
+                                    <div class="fv-help-block">
+                                        <span *ngFor="let i of errorControl('mezuniyet_yili')">
+                                            {{i}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-3 text-lg-right text-left">
+                            {{"TEXT.ortalama_dortluk" | translate }}
+                        </label>
+                        <div class="col-9">
+                            <input class="form-control form-control-lg form-control-solid" [class.nonepointer]="!islem" formControlName="ortalama_dortluk" type="number" [readonly]="!islem">
+                            <div class="fv-plugins-message-container" *ngIf="(errorState || licenceForm.get('ortalama_dortluk').touched) && errorControl('ortalama_dortluk')">
+                                <div class="fv-help-block">
+                                    <div class="fv-help-block">
+                                        <span *ngFor="let i of errorControl('ortalama_dortluk')">
+                                            {{i}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-3 text-lg-right text-left">
+                            {{"TEXT.ortalama_yuzluk"| translate }}
+                        </label>
+                        <div class="col-9">
+                            <input class="form-control form-control-lg form-control-solid" [class.nonepointer]="!islem" formControlName="ortalama_yuzluk" type="number" [readonly]="!islem">
+                            <div class="fv-plugins-message-container" *ngIf="(errorState || licenceForm.get('ortalama_yuzluk').touched) && errorControl('ortalama_yuzluk')">
+                                <div class="fv-help-block">
+                                    <div class="fv-help-block">
+                                        <span *ngFor="let i of errorControl('ortalama_yuzluk')">
+                                            {{i}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-3 text-lg-right text-left">
+                            {{"TEXT.sehir"| translate }}
+                        </label>
+                        <div class="col-9">
+                            <input class="form-control form-control-lg form-control-solid" [class.nonepointer]="!islem" formControlName="sehir" type="text" [readonly]="!islem">
+                            <div class="fv-plugins-message-container" *ngIf="(errorState || licenceForm.get('sehir').touched) && errorControl('sehir')">
+                                <div class="fv-help-block">
+                                    <div class="fv-help-block">
+                                        <span *ngFor="let i of errorControl('sehir')">
+                                            {{i}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-3 text-lg-right text-left">
+                            {{"TEXT.ulke"| translate}}
+                        </label>
+                        <div class="col-9">
+                            <select class="form-control form-control-lg form-control-solid" [class.nonepointer]="!islem" aria-placeholder="select" formControlName="ulke_kodu" [attr.disabled]="!islem ? '' : null">
+                                <option>{{'TEXT.SELECT' | translate }} ...</option>
+                                <option *ngFor="let item of ulkeKodlari" [value]="item.kodu">
+                                    {{item.adi_tr}}
+                                </option>
+                            </select>
+                            <div class="fv-plugins-message-container" *ngIf="(errorState || licenceForm.get('ulke_kodu').touched) && errorControl('ulke_kodu')">
+                                <!-- <div class="fv-help-block"> -->
+                                <div class="fv-help-block">
+                                    <span *ngFor="let i of errorControl('ulke_kodu')">
+                                        {{i}}
+                                    </span>
+                                </div>
+                                <!-- </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!--begin::Group-->
+                    <div class="form-group row">
+                        <label class="col-form-label col-3 text-lg-right text-left">
+                            {{ 'TEXT.DIPLOMA' | translate }}
+                        </label>
+                        <div class="col-9" *ngIf="islem">
+                            <doko-file-upload-all [height]="'150px'" [imgURL]="licenceForm.get('diploma_belgesi').value ? dokoSettingsService.apiUrl + licenceForm.get('diploma_belgesi').value :false" controlName="diploma_belgesi" [isSaveButton]="false" [multiple]="false">
+                            </doko-file-upload-all>
+                            <div class="fv-plugins-message-container" *ngIf="errorState && errorControl('diploma_belgesi') !== null">
+                                <div class="fv-help-block">
+                                    <div class="fv-help-block">
+                                        <span *ngFor="let i of errorControl('diploma_belgesi')">
+                                            {{i}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-9" *ngIf="!islem" [class.nonepointer]="!islem">
+                            <img [src]="licenceForm.get('diploma_belgesi').value ? dokoSettingsService.apiUrl + licenceForm.get('diploma_belgesi').value :false" height="150px">
+                        </div>
+                    </div>
+                    <!--end::Group-->
+                </form>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button type="button" [mat-dialog-close]="" mat-raised-button class="btn pull-right cancbtn mr-3" [hidden]='!islem'>
+        {{"TEXT.CANCEL" | translate }}
+    </button>
+    <button id="kt_login_signin_submit" (click)="btnAdi==='SAVE' ? lisansEkle() : lisansGuncelle()" class="btn btn-primary btn-elevate kt-login__btn-primary" [disabled]='submitDisabled' [hidden]='!islem'>
+        {{"TEXT."+btnAdi | translate }}
+    </button>
+    <button (click)="lisansSil(this.data.id)" class="btn btn-danger btn-elevate kt-login__btn-primary mr-3" [hidden]='islem'>
+        {{"TEXT.DELETE" | translate }}
+    </button>
+    <div style="position: sticky;">
+        <div [class.gradient-border]="!islem" id="box">
+            <button (click)="islem= true;" class="btn text-white btn-sm btn-elevate kt-login__btn-primary" [hidden]='islem'>
+                {{"TEXT.UPDATE" | translate }}
+            </button>
+        </div>
+    </div>
+</mat-dialog-actions>

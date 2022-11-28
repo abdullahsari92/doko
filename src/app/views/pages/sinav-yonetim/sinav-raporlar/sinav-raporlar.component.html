@@ -1,0 +1,20 @@
+<kt-portlet>
+	<kt-portlet-header [sticky]="true" [title]="'TITLE.raporlar'| translate" [class]="'kt-portlet__head--lg'">
+	</kt-portlet-header>
+	<kt-portlet-body>
+		<ng-container ktPortletTools>
+			<div class="example-button-row">
+				<button (click)="tumSalonKapiRapor({ data: {id:null}})" mat-raised-button color="primary"
+					matTooltip="{{'TEXT.ADD' | translate }}" class="mr-1">Tüm Salonların Kapı Raporları</button>
+				<button (click)="tumSalonZarfRapor({ data: {id:null}})" mat-raised-button color="primary"
+					matTooltip="{{'TEXT.ADD' | translate }}" class="mr-1">Tüm Salonların Zarf Raporları</button>
+				<button (click)="tumSalonYoklamaRapor({ data: {id:null}})" mat-raised-button color="primary"
+					matTooltip="{{'TEXT.ADD' | translate }}" class="mr-1">Tüm Salonların Yoklama Raporları</button>
+				<button (click)="tumSalonOptikRapor({ data: {id:null}})" mat-raised-button color="primary"
+					matTooltip="{{'TEXT.ADD' | translate }}" class="mr-1">Tüm Salonların Optik Raporları</button>
+			</div>
+		</ng-container>
+		<kt-custom-ag-grid (agGridCustom)="agGridSet($event)" (editData)="salonZarfRaporu($event)" [rowData]="rowData"
+			[columnDefs]="columnDefs"> </kt-custom-ag-grid>
+	</kt-portlet-body>
+</kt-portlet>

@@ -1,0 +1,32 @@
+<div>
+    <div class="my-3 text-right">
+        <button class="btn btn-outline-danger btn-sm" type="button" (click)="pdfReport()">
+      PDF
+    </button>
+        <button class="btn btn-outline-primary btn-sm mx-2" type="button" (click)="printReport()">
+      {{"TEXT.PRINT" |translate}}
+    </button>
+        <button class="btn btn-outline-secondary btn-sm" type="button" (click)="dialogClose()">
+      X
+    </button>
+    </div>
+    <div class="header">
+    </div>
+    <kt-portlet-body>
+        <div id="viewerContent"></div>
+    </kt-portlet-body>
+</div>
+
+
+<!-- 
+  <h1> sayfa yükleniyor... </h1> 
+  <span [mat-dialog-close]="data.animal" style=" position: absolute;  top: 10px;right: -20px;">
+		<mat-icon> close</mat-icon>
+	</span>
+  <a mat-fab color="primary" (click)="pdfDownload()" title="pdf">
+		<mat-icon>PDF</mat-icon>
+	</a>
+	<a mat-fab color="primary" (click)="printDownload()" title="Print">
+		<mat-icon>Print</mat-icon>
+	</a> 
+-->

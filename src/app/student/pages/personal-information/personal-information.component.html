@@ -1,0 +1,308 @@
+<!--begin::Card-->
+<div class="card card-custom">
+    <!--begin::Card header-->
+    <div class="card-header card-header-tabs-line nav-tabs-line-3x">
+        <!--begin::Toolbar-->
+        <div class="card-toolbar">
+            <ul class="nav nav-tabs nav-bold nav-tabs-line nav-tabs-line-3x">
+                <!--begin::Item-->
+                <li class="nav-item mr-3">
+                    <button type="button" (click)="changeTab(1)" class="nav-link" [class.active]="selectedTab == 1" data-toggle="tab">
+                        <span class="nav-icon">
+                            <span class="svg-icon">
+                                <span class="svg-icon svg-icon-primary svg-icon-2x">
+                                    <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo10/dist/../src/media/svg/icons/Text/Article.svg--><svg
+                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <rect x="0" y="0" width="24" height="24" />
+                                            <rect fill="#000000" x="4" y="5" width="16" height="3" rx="1.5" />
+                                            <path
+                                                d="M5.5,15 L18.5,15 C19.3284271,15 20,15.6715729 20,16.5 C20,17.3284271 19.3284271,18 18.5,18 L5.5,18 C4.67157288,18 4,17.3284271 4,16.5 C4,15.6715729 4.67157288,15 5.5,15 Z M5.5,10 L12.5,10 C13.3284271,10 14,10.6715729 14,11.5 C14,12.3284271 13.3284271,13 12.5,13 L5.5,13 C4.67157288,13 4,12.3284271 4,11.5 C4,10.6715729 4.67157288,10 5.5,10 Z"
+                                                fill="#000000" opacity="0.3" />
+                                        </g>
+                                    </svg>
+                                    <!--end::Svg Icon-->
+                                </span>
+                            </span>
+
+                        </span>
+                        <span class="nav-text font-size-lg">
+                            {{'TEXT.PERSONALINFORMATION' | translate}}
+                        </span>
+                    </button>
+                </li>
+                <!--end::Item-->
+                <!--begin::Item-->
+                <li class="nav-item">
+                    <button type="button" (click)="changeTab(2)" class="nav-link" [class.active]="selectedTab == 2" data-toggle="tab">
+                        <span class="nav-icon">
+                            <span class="svg-icon svg-icon-primary svg-icon-2x">
+                                <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo10/dist/../src/media/svg/icons/Text/Article.svg-->
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24" />
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M22 11.5C22 12.3284 21.3284 13 20.5 13H3.5C2.6716 13 2 12.3284 2 11.5C2 10.6716 2.6716 10 3.5 10H20.5C21.3284 10 22 10.6716 22 11.5Z"
+                                            fill="black" />
+                                        <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M14.5 20C15.3284 20 16 19.3284 16 18.5C16 17.6716 15.3284 17 14.5 17H3.5C2.6716 17 2 17.6716 2 18.5C2 19.3284 2.6716 20 3.5 20H14.5ZM8.5 6C9.3284 6 10 5.32843 10 4.5C10 3.67157 9.3284 3 8.5 3H3.5C2.6716 3 2 3.67157 2 4.5C2 5.32843 2.6716 6 3.5 6H8.5Z"
+                                            fill="black" />
+                                    </g>
+                                </svg>
+                                <!--end::Svg Icon-->
+                            </span>
+                        </span>
+                        <span class="nav-text font-size-lg">
+                            {{'TEXT.uyruk_bilgisi' | translate}}
+                        </span>
+                    </button>
+                </li>
+                <!--end::Item-->
+            </ul>
+        </div>
+        <!--end::Toolbar-->
+    </div>
+    <!--end::Card header-->
+    <!--begin::Card body-->
+    <div class="card-body">
+        <form class="form" id="kt_form">
+            <div class="tab-content">
+                <!--begin::Tab-->
+                <div class="tab-pane px-7" [class.active]="selectedTab == 1">
+                    <!--begin::Row-->
+                    <form class="form" id="kt_form" (ngSubmit)="update()" [formGroup]="personalInfoForm">
+                        <div class="tab-content">
+                            <!--begin::Tab-->
+                            <div class="tab-pane show active px-7" id="kt_user_edit_tab_1" role="tabpanel">
+                                <!--begin::Row-->
+                                <div class="row justify-content-md-center">
+                                    <div class="col-xl-8">
+                                        <!--begin::Row-->
+                                        <div class="row">
+                                            <label class="col-3"></label>
+                                            <div class="col-9">
+                                                <!--							<h6 class="text-dark font-weight-bold mb-10">Customer Info:</h6>-->
+                                            </div>
+                                        </div>
+                                        <!--end::Row-->
+                                        <!--begin::Group-->
+                                        <div class="form-group row">
+                                            <label class="col-form-label col-3 text-lg-right text-left">
+                                            </label>
+                                            <div class="col-9">
+                                                <div [attr.class]="imageRemove ? 'image-input image-input-outline image-input-changed':'image-input image-input-outline image-input-empty'" id="kt_user_edit_avatar" [style.background-image]="image">
+                                                    <div class="image-input-wrapper"></div>
+                                                    <!-- <input type="text" hidden formControlName="resim"> -->
+                                                    <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" ngbTooltip="{{'TEXT.SELECT' | translate}}">
+                                                        <i class="fa fa-pen icon-sm text-muted"></i>
+                                                        <input type="file" (change)="fileChange($event.target.files)"
+                                                            name="profile_avatar" accept=".png, .jpg, .jpeg" />
+                                                        <input type="hidden" name="profile_avatar_remove" />
+                                                    </label>
+                                                    <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" (click)="removeFile()" data-action="cancel" ngbTooltip="{{'TEXT.REMOVE' | translate}}">
+                                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                                    </span>
+                                                </div>
+                                                <div class="fv-plugins-message-container" *ngIf="personalInfoForm.get('resim').touched || errorControl('resim') !== null">
+                                                    <div class="fv-help-block">
+                                                        <div class="fv-help-block">
+                                                            <span *ngFor="let i of errorControl('resim')">
+                                                                {{i}}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end::Group-->
+                                        <!--begin::Group-->
+                                        <div class="form-group row">
+                                            <label class="col-form-label col-3 text-lg-right text-left">
+                                                {{ 'TEXT.kimlik_no' | translate }}
+                                            </label>
+                                            <div class="col-9">
+                                                <input class="form-control form-control-lg form-control-solid" type="text" placeholder="XXXXXXXXXXX" formControlName="kimlik_no" />
+                                                <div class="fv-plugins-message-container" *ngIf="personalInfoForm.get('kimlik_no').touched || errorControl('kimlik_no') !== null">
+                                                    <div class="fv-help-block">
+                                                        <div class="fv-help-block">
+                                                            <span *ngFor="let i of errorControl('kimlik_no')">
+                                                                {{i}}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end::Group-->
+                                        <!--begin::Group-->
+                                        <div class="form-group row">
+                                            <label class="col-form-label col-3 text-lg-right text-left">
+                                                {{ 'TEXT.adi' | translate }}
+                                            </label>
+                                            <div class="col-9">
+                                                <input class="form-control form-control-lg form-control-solid" type="text" placeholder="{{ 'TEXT.adi' | translate }}" formControlName="adi" />
+                                                <div class="fv-plugins-message-container" *ngIf="personalInfoForm.get('adi').touched || errorControl('adi') !== null">
+                                                    <div class="fv-help-block">
+                                                        <div class="fv-help-block">
+                                                            <span *ngFor="let i of errorControl('adi')">
+                                                                {{i}}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end::Group-->
+                                        <!--begin::Group-->
+                                        <div class="form-group row">
+                                            <label class="col-form-label col-3 text-lg-right text-left">
+                                                {{ 'TEXT.soyadi' | translate }}
+                                            </label>
+                                            <div class="col-9">
+                                                <input class="form-control form-control-lg form-control-solid" type="text" placeholder="{{ 'TEXT.soyadi' | translate }}" formControlName="soyadi" />
+                                                <div class="fv-plugins-message-container" *ngIf="personalInfoForm.get('soyadi').touched || errorControl('soyadi') !== null">
+                                                    <div class="fv-help-block">
+                                                        <div class="fv-help-block">
+                                                            <span *ngFor="let i of errorControl('soyadi')">
+                                                                {{i}}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end::Group-->
+                                        <!--begin::Group-->
+                                        <div class="form-group row">
+                                            <label class="col-form-label col-3 text-lg-right text-left">
+                                                {{ 'TEXT.anne_adi' | translate }}
+                                            </label>
+                                            <div class="col-9">
+                                                <input class="form-control form-control-lg form-control-solid" type="text" placeholder="{{ 'TEXT.anne_adi' | translate }}" formControlName="anne_adi" />
+                                                <div class="fv-plugins-message-container" *ngIf="personalInfoForm.get('anne_adi').touched || errorControl('anne_adi') !== null">
+                                                    <div class="fv-help-block">
+                                                        <div class="fv-help-block">
+                                                            <span *ngFor="let i of errorControl('anne_adi')">
+                                                                {{i}}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end::Group-->
+                                        <!--begin::Group-->
+                                        <div class="form-group row">
+                                            <label class="col-form-label col-3 text-lg-right text-left">
+                                                {{ 'TEXT.baba_adi' | translate }}
+                                            </label>
+                                            <div class="col-9">
+                                                <input class="form-control form-control-lg form-control-solid" type="text" placeholder="{{ 'TEXT.baba_adi' | translate }}" formControlName="baba_adi" />
+                                                <div class="fv-plugins-message-container" *ngIf="personalInfoForm.get('baba_adi').touched || errorControl('baba_adi') !== null">
+                                                    <div class="fv-help-block">
+                                                        <div class="fv-help-block">
+                                                            <span *ngFor="let i of errorControl('baba_adi')">
+                                                                {{i}}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end::Group-->
+                                        <!--begin::Group-->
+                                        <div class="form-group row">
+                                            <label class="col-form-label col-3 text-lg-right text-left">
+                                                {{ 'TEXT.dogum_yeri' | translate }}
+                                            </label>
+                                            <div class="col-9">
+                                                <input class="form-control form-control-lg form-control-solid" type="text" placeholder="{{ 'TEXT.dogum_yeri' | translate }}" formControlName="dogum_yeri" />
+                                                <div class="fv-plugins-message-container" *ngIf="personalInfoForm.get('dogum_yeri').touched || errorControl('dogum_yeri') !== null">
+                                                    <div class="fv-help-block">
+                                                        <div class="fv-help-block">
+                                                            <span *ngFor="let i of errorControl('dogum_yeri')">
+                                                                {{i}}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end::Group-->
+                                        <!--begin::Group-->
+                                        <div class="form-group row">
+                                            <label class="col-form-label col-3 text-lg-right text-left">
+                                                {{ 'TEXT.dogum_tarihi' | translate }}
+                                            </label>
+                                            <div class="col-9">
+                                                <input [matDatepicker]="picker" (click)="picker.open()" class="form-control form-control-lg form-control-solid" type="text" placeholder="{{ 'TEXT.dogum_tarihi' | translate }}" [min]="minDate" [max]="maxDate" formControlName="dogum_tarihi" />
+                                                <mat-datepicker #picker></mat-datepicker>
+                                                <div class="fv-plugins-message-container" *ngIf="personalInfoForm.get('dogum_tarihi').touched || errorControl('dogum_tarihi') !== null">
+                                                    <div class="fv-help-block">
+                                                        <div class="fv-help-block">
+                                                            <span *ngFor="let i of errorControl('dogum_tarihi')">
+                                                                {{i}}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end::Group-->
+                                        <!--begin::Group-->
+                                        <div class="form-group row">
+                                            <label class="col-form-label col-3 text-lg-right text-left">
+                                                {{ 'TEXT.cinsiyet' | translate }}
+                                            </label>
+                                            <div class="col-9">
+                                                <select name="cinsiyet" class="form-control form-control-lg form-control-solid" formControlName="cinsiyet">
+                                                    <option value="">
+                                                        {{ 'TEXT.SELECT' | translate }}
+                                                    </option>
+                                                    <option value="E">{{'TEXT.Erkek' | translate }} </option>
+                                                    <option value="K">{{'TEXT.Kadin' | translate }} </option>
+                                                </select>
+                                                <div class="fv-plugins-message-container" *ngIf="personalInfoForm.get('cinsiyet').touched || errorControl('cinsiyet') !== null">
+                                                    <div class="fv-help-block">
+                                                        <div class="fv-help-block">
+                                                            <span *ngFor="let i of errorControl('cinsiyet')">
+                                                                {{i}}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end::Group-->
+                                        <!--begin::Group-->
+                                        <div class="form-group row">
+                                            <div class="col-12">
+                                                <button type="submit" class="btn btn-success pull-right">
+                                                    {{'TEXT.UPDATE' | translate}}
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <!--end::Group-->
+                                    </div>
+                                </div>
+                                <!--end::Row-->
+                            </div>
+                            <!--end::Tab-->
+                        </div>
+                    </form>
+                    <!--end::Row-->
+                </div>
+                <!--end::Tab-->
+                <!--begin::Tab-->
+                <div class="tab-pane px-7" [class.active]="selectedTab == 2">
+                    <kt-nationality-information></kt-nationality-information>
+                    <div class="separator separator-dashed my-10"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!--begin::Card body-->
+</div>
+<!--end::Card-->

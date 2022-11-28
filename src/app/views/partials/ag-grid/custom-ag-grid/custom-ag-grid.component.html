@@ -1,0 +1,92 @@
+
+	<div class="row align-items-center collapse kt-form__group-actions kt-margin-top-20 kt-margin-bottom-20"
+    [ngClass]="{'show' : selectedData.length >0 }"><!-- We show 'Group Actions' div if smth are selected -->
+    <div class="col-xl-12">
+        <div class="kt-form__group kt-form__group--inline">
+                   <div class="kt-form__control kt-form__group--inline">
+                <label class="kt--font-bold kt-font-danger- kt-margin-right-10">
+                    <span>Seçilen degerler </span> {{ selectedData.length }}
+                </label>
+                    <button (click)="deleteItem()"
+                        mat-raised-button
+                        color="accent"
+                        matTooltip="Delete selected customers" 
+                        class="mat-button-mt-4">
+                        <mat-icon>delete</mat-icon>
+                        Delete All
+                    </button>&nbsp;<!-- Call 'delete-entity-dialog' from _shared folder -->
+            
+
+                <button (click)="updateStatusForItem()" mat-raised-button matTooltip="Update status for selected customers"  class="mat-button-mt-4">
+                    <mat-icon>update</mat-icon>
+                    Update status
+                </button><!-- Call 'update-stated-dialog' from _shared folder -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- <div class="row align-items-center  kt-margin-top-20 kt-margin-bottom-20">
+    <div class="col-xl-12">
+            <div class="kt-form__control kt-form__group--inline">
+            <button  mat-raised-button matTooltip="Fetch selected customers" class="mat-button-mt-4">
+                    <mat-icon>clear_all</mat-icon>
+                    Fetch Selected
+                </button>&nbsp;
+                <button (click)="getSelectedRows()" mat-raised-button matTooltip="Fetch selected customers" class="mat-button-mt-4">
+                    <mat-icon>clear_all</mat-icon>
+                             Model Selected 
+                </button>
+                <button (click)="onColumnMoved()" mat-raised-button matTooltip="Update status for selected customers"  class="mat-button-mt-4">
+                    <mat-icon>update</mat-icon>
+                    Save status Grid
+                </button>
+            </div>
+    </div>
+</div> -->
+
+<div class="row justify-content-center" *ngIf="!isSearch">
+    <div class="col-lg-4" *ngIf="title!=''">
+        <h4> {{title}} </h4>
+    </div></div>
+
+<div class="row justify-content-end" *ngIf="isSearch">
+    <div class="col-lg-4" *ngIf="title!=''">
+        <h4> {{title}} </h4>
+    </div>
+    <div class="col-lg-4"  *ngIf="isSearch">
+        <mat-form-field  style="width: 100%;">
+            <input matInput   [(ngModel)]="filter" placeholder="Filter..." (keyup)="onFilterTextBoxChanged()" placeholder="Araçlarda arayın..." required>
+        </mat-form-field>
+    </div>
+</div>
+
+<div class="mat-table__wrapper">
+
+      <ag-grid-angular #agGrid
+            [style.height]="height"
+            class="ag-theme-material"
+            [rowData]="rowData"
+            [pagination]="pagination"
+            [columnDefs]="columnDefs"
+            [animateRows]="true"
+            [defaultColDef]="defaultColDef"
+            [autoGroupColumnDef]="autoGroupColumnDef"
+            [frameworkComponents]="frameworkComponents"			
+            [paginationPageSize]="paginationPageSize"
+            [suppressMoveWhenRowDragging]="true"
+            [rowDragManaged]="true"
+            [allowContextMenuWithControlKey]="true"
+            [getContextMenuItems]="getContextMenuItems"
+            rowSelection="multiple"
+            (sortChanged)="onSortChanged($event)"
+            (gridReady)="onGridReady($event)"
+            (rowDragEnd)="onRowDragEnd($event)"
+            (columnMoved)="onColumnMoved()"
+            (selectionChanged)="onSelectionChanged($event)"
+    >
+    </ag-grid-angular>
+
+    <!-- geçici kaldırdım (sortChanged)="onSortChanged($event)" -->
+</div>

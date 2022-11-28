@@ -1,0 +1,41 @@
+<kt-portlet>
+	<kt-portlet-header [title]="'TITLE.basvuru_bolumler_bilgi'| translate" [class]="'kt-portlet__head--lg'">
+		<ng-container ktPortletTools>
+            <a (click)="goBackWithoutId()" class="btn btn-secondary kt-margin-r-10"  mat-raised-button matTooltip="{{'TEXT.BACK' | translate}}">
+                <i class="la la-arrow-left"></i>
+                <span class="kt-hidden-mobile">{{'TEXT.BACK' | translate}}</span>
+            </a>
+		</ng-container>
+	</kt-portlet-header>
+    <kt-portlet-body>
+        <div class="row">
+            <div class="col-lg-6 gridList" style="border-right: 1px solid #d9d9d9;">
+                <h3>
+                    {{'TEXT.fakulte_listesi' | translate }}
+                </h3>
+                <kt-custom-ag-grid  (agGridCustom)="agGridSet($event)"  height="250px" [isSelectActive]="true"  [pagination]="false" [isSearch]="false" (editData)="editData($event)"  [rowData]="rowData" [columnDefs]="columnDefs" > </kt-custom-ag-grid>
+            </div>
+            <div class="col-lg-6 gridList" >
+                <h3>
+                    {{'TEXT.bolum_listesi' | translate }}
+                </h3>
+                <kt-custom-ag-grid *ngIf="rowDataBolumler.length > 0" (agGridCustom)="agGridSet($event)"  height="250px" [isSelectActive]="true"   [pagination]="false" [isSearch]="false" (editData)="addBolum($event)"  [rowData]="rowDataBolumler" [columnDefs]="columnDefsBolumler" > </kt-custom-ag-grid>
+            </div>
+            </div>
+        </kt-portlet-body>
+    </kt-portlet>
+    <kt-portlet *ngIf="tercihListesi.length > 0">
+        <kt-portlet-header [class]="'kt-portlet__head--lg'">
+            <ng-container ktPortletTools>
+                <button (click)="addData()" class="btn btn-primary" style="width: 100px ;margin-top:10px;" matTooltip="{{'TEXT.SAVE' | translate}} ">{{'TEXT.SAVE' | translate}} </button>
+            </ng-container>
+        </kt-portlet-header>
+            <kt-portlet-body>
+            <div class="row" *ngIf="tercihListesi.length > 0">
+                <div class="col-lg-12 gridList">
+                    <kt-custom-ag-grid  (agGridCustom)="agGridSet($event)"  height="250px" [pagination]="false" [isSearch]="false" (editData)="addBolum($event)"  [rowData]="tercihListesi" [columnDefs]="columnDefsTercihler" > </kt-custom-ag-grid>
+                </div>
+            </div>	
+	</kt-portlet-body>
+	<!-- end::Body -->
+</kt-portlet>

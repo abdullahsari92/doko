@@ -1,0 +1,286 @@
+<!--begin::Row-->
+<div class="row mt-0 mt-lg-8" *ngIf="seciliSekme==1">
+    <div class="col-xl-12">
+        <!--begin::Card-->
+        <div class="card card-custom gutter-b">
+            <!--begin::Card header-->
+            <div class="card-header h-auto border-0">
+                <div class="card-title ml-3">
+                    <h3 class="card-label">
+                        <!-- <span class="d-block text-dark font-weight-bolder">Recent Orders</span> -->
+                        <span class="d-block text-muted mt-2 font-size-sm">
+                            {{'TEXT.islem_tipi_secim' | translate}}
+                        </span>
+                    </h3>
+                </div>
+            </div>
+            <!--end:: Card header-->
+            <!--begin::Card body-->
+            <div class="card-body">
+                <div class="row">
+                    <!-- <div class="col-lg-4 d-flex flex-column mb-4 card_manual" *ngIf="item!==basvuruTurEnum.girisUcreti" (click)="basvuruTuruSec(item)"> -->
+                    <div class="col-xl-4 col-lg-12 col-md-6 col-12 d-flex flex-column mb-4 card_manual" *ngFor="let item of aktifIslemlerListesi()" (click)="basvuruTuruSec(item)">
+                        <!--begin::Engage Widget 2-->
+                        <div *ngIf="item== basvuruTurEnum.sinav" class="flex-grow-1 pt-24 rounded-xl sinavKutu text-center">
+                            <h4 class="font-weight-bolder">
+                                {{'TEXT.sinav_basvuru_islemleri' | translate }}
+                            </h4>
+                        </div>
+                        <div *ngIf="item== basvuruTurEnum.lisans" class="flex-grow-1 pt-24 rounded-xl lisansKutu text-center">
+                            <h4 class="font-weight-bolder">
+                                {{'TEXT.lisans_basvuru_islemleri' | translate }}
+                            </h4>
+                        </div>
+                        <div *ngIf="item== basvuruTurEnum.yuksekLisans" class="flex-grow-1 pt-24 rounded-xl yuksekLisansKutu text-center">
+                            <h4 class="font-weight-bolder">
+                                {{'TEXT.ylisans_basvuru_islemleri' | translate }}
+                            </h4>
+                        </div>
+                        <div *ngIf="item== basvuruTurEnum.doktora" class="flex-grow-1 pt-24 rounded-xl doktoraKutu text-center">
+                            <h4 class="font-weight-bolder">
+                                {{'TEXT.doktora_basvuru_islemleri' | translate }}
+                            </h4>
+                        </div>
+                        <div *ngIf="item== basvuruTurEnum.hazirlik" class="flex-grow-1 pt-24 rounded-xl hazirlikKutu text-center">
+                            <h4 class="font-weight-bolder">
+                                {{'TEXT.hazirlik_basvuru_islemleri' | translate }}
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end:: Card body-->
+        </div>
+        <!--end:: Card-->
+    </div>
+</div>
+<!--end::Row-->
+
+<div class="card card-custom gutter-b" *ngIf="seciliSekme==2">
+    <!--begin::Card header-->
+    <div class="card-header h-auto border-0">
+        <div class="card-toolbar ml-auto">
+            <ul class="nav nav-pills nav-pills-sm nav-dark-75" role="tablist">
+                <li class="nav-item" *ngIf="gecmisBasvuruDurumu">
+                    <a class="nav-link py-2 px-4 cursor-pointer" [class.active]="sinavDonemi() == 0" data-toggle="tab" (click)="sinavDonemi(0)">
+                        <span class="nav-text font-size-sm">{{'TEXT.PAST' | translate }}</span>
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="tamamlanmayanBasvuruDurumu">
+                    <a class="nav-link py-2 px-4 cursor-pointer" [class.bg-danger]="sinavDonemi() === 2" [class.active]="sinavDonemi() === 2" data-toggle="tab" (click)="sinavDonemi(2)">
+                        <span class="nav-text font-size-sm text-white" [class.text-danger]="sinavDonemi() !== 2" [class.text-white]="sinavDonemi() === 2">{{'TEXT.NOTCOMPLETED' | translate }}</span>
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="aktifBasvuruDurumu">
+                    <a class="nav-link py-2 px-4 cursor-pointer" data-toggle="tab" [class.active]="sinavDonemi() == 1" (click)="sinavDonemi(1)">
+                        <span class="nav-text font-size-sm"> {{'TEXT.APP_PROCESS' | translate }}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--end::Card header-->
+    <div class="card-body" *ngIf="seciliSekme === 2">
+        <!-- <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated " role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+        </div> -->
+        <div class="row">
+            <div class="col-xl-4 col-lg-12 col-md-6 col-12 d-flex flex-column mb-4" *ngFor="let item of sinavDonemVerileri()">
+                <!-- begin::Sınav | Exam -->
+                <div *ngIf="item.basvuru_turu== basvuruTurEnum.sinav" class="flex-grow-1 p-8 rounded-xl sinavKutu">
+                    <h4 class="font-weight-bolder">
+                        {{item.adi_tr | translateData :item.adi_en }}
+                    </h4>
+                    <p class="my-3">
+                        <span style="font-weight: 400;">
+                            {{'TEXT.basvuru_tarihleri' | translate }} :
+                        </span> {{item.baslangic_tarihi | date:"dd.MM.yyyy"}} - {{item.bitis_tarihi | date:"dd.MM.yyyy"}}
+                    </p>
+                    <p class="my-3">
+                        <span style="font-weight: 400;">
+                            {{'TEXT.sinav_tarihi' | translate }} :
+                        </span> {{item.sinav_tarihi | date:"dd.MM.yyyy"}}
+                    </p>
+                    <div style="position: sticky; float: left;" [ngStyle]="{'margin-bottom':(item.ogrenci_basvuru_durumu!=OgrenciBasvuruDurumEnum.yonetici_onayladi) ? '10px': '0px' }">
+                        <span style="font-weight: 400;">
+                            {{'TEXT.durumu' | translate }} :
+                        </span> {{basvuruDurumu(item.ogrenci_basvuru_durumu, item.basvuru_yapmis, 'barText')}}
+                        <div id="box" class="gradient-border text-white" style="font-weight:bold; display: inline-flex!important; margin-left: 5px;">
+                            !
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column w-100 mr-2">
+                        <!-- 
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <span class="text-muted mr-2 font-size-sm font-weight-bold">65%</span>
+                                <span class="text-muted font-size-sm font-weight-bold">Progress</span>
+                            </div> 
+                        -->
+                        <div class="progress" style="height: 20px;" *ngIf="(item.ogrenci_basvuru_durumu!==null) && item.ogrenci_basvuru_durumu!=OgrenciBasvuruDurumEnum.yonetici_onayladi">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-{{basvuruDurumu(item.ogrenci_basvuru_durumu, item.basvuru_yapmis, 'barColor')}}" role="progressbar" [style.width]="basvuruDurumu(item.ogrenci_basvuru_durumu, item.basvuru_yapmis, 'barSize')"
+                                aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-block mt-6" style="background-color: #57BB3A;color: #fff;" *ngIf="item.ogrenci_basvuru_durumu ==OgrenciBasvuruDurumEnum.yeni_kayit || item.ogrenci_basvuru_durumu ==null" (click)="getBasvuruDetay(item)">
+                        <span
+                            *ngIf="item.basvuru_yapmis==1 && item.ogrenci_basvuru_durumu==OgrenciBasvuruDurumEnum.yeni_kayit">
+                            {{'TEXT.UPDATE' | translate }}
+                        </span>
+                        <span *ngIf="item.basvuru_yapmis==0">
+                            {{'TEXT.basvur' | translate }}
+                        </span>
+                    </button>
+                    <button type="button" *ngIf="item.basvuru_yapmis==1 && item.ogrenci_basvuru_durumu !=OgrenciBasvuruDurumEnum.yeni_kayit" (click)="getBasvuruDetay(item)" class="btn btn-block mt-6" style="background-color: #57BB3A;color: #fff;">
+                        {{(item.ogrenci_basvuru_durumu ==OgrenciBasvuruDurumEnum.yonetici_onayladi) ? 'Sınav Giriş
+                        Belgesi':'TEXT.VIEW' | translate }}
+                    </button>
+                </div>
+                <!-- end::Sınav | Exam -->
+                <!-- begin::Lisans | Degree -->
+                <div *ngIf="item.basvuru_turu== basvuruTurEnum.lisans" class="flex-grow-1 p-8 rounded-xl flex-grow-1 bgi-no-repeat lisansKutu">
+                    <h4 class="font-weight-bolder">
+                        {{item.adi_tr | translateData :item.adi_en }}
+                    </h4>
+                    <p class="my-3">
+                        {{'TEXT.basvuru_tarihleri' | translate }} : {{item.baslangic_tarihi | date:"dd.MM.yyyy"}} - {{item.bitis_tarihi | date:"dd.MM.yyyy"}}
+                    </p>
+                    <button type="button" class="btn btn-block mt-15" *ngIf="item.ogrenci_basvuru_durumu ==OgrenciBasvuruDurumEnum.yeni_kayit ||  item.ogrenci_basvuru_durumu ==null" (click)="getBasvuruDetay(item)">
+                        <span
+                            *ngIf="item.basvuru_yapmis==1 && item.ogrenci_basvuru_durumu==OgrenciBasvuruDurumEnum.yeni_kayit">
+                            {{'TEXT.UPDATE' | translate }}
+                        </span>
+                        <span *ngIf="item.basvuru_yapmis==0">
+                            {{'TEXT.basvur' | translate }}
+                        </span>
+                    </button>
+                    <button type="button" *ngIf="item.basvuru_yapmis==1 && item.ogrenci_basvuru_durumu !=OgrenciBasvuruDurumEnum.yeni_kayit" (click)="getBasvuruDetay(item)" class="btn btn-block mt-15" style="background-color: #fff;color: #7142E3;">
+                        {{'TEXT.VIEW' | translate }}
+                    </button>
+                </div>
+                <!-- end::Lisans | Degree -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card card-custom gutter-b" *ngIf="seciliSekme==0">
+    <!--begin::Card body-->
+    <div class="card-body error">
+        <div class="row">
+            <div class="col-lg-6 mx-auto d-flex flex-column px-24 pt-36">
+                {{'TEXT.NOTDATA' | translate }}
+            </div>
+        </div>
+    </div>
+    <!--end:: Card body-->
+</div>
+
+<ng-template #odemeModal>
+    <mat-dialog-content>
+        <form [formGroup]="odemeForm" class="mt-12">
+            <div *ngIf="ucretOdemeYontemi==1 || girisUcretOdemeYontemi==1">
+                <span style="font-size: 14px; color:red">
+                    {{'TEXT.odeme_bekleme' |translate}}
+                </span>
+                <div class="wizardInLabel mt-5">
+                    <a (click)="iptalIadeUrl()" style="float:left">
+                        <input type="checkbox" formControlName="iptal_iade_kosullari" />
+                        <span style="color:#000!important;cursor: pointer;">
+                            {{'TEXT.iptal_iade_kosullari' | translate }}
+                        </span>
+                    </a>
+                    <div style="position: sticky;margin-left: 10px;float: left;margin-bottom: 10px;">
+                        <div id="box" class="gradient-border text-white" style="font-weight:bold;">
+                            !
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="ifIframePos">
+                    <iframe [src]="posOdemeUrl" width="580" [height]="'500px'" frameBorder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div *ngIf="ucretOdemeYontemi==2 || girisUcretOdemeYontemi==2">
+                <doko-file-upload-all [imgURL]="odemeForm.value.dekont?dokoSettingsService.apiUrl + odemeForm.value.dekont :false" controlName="dekont" [isSaveButton]="false" [multiple]="false">
+                </doko-file-upload-all>
+                <div class="fv-plugins-message-container" *ngIf="errorState">
+                    <div class="fv-help-block">
+                        <div class="fv-help-block">
+                            <span *ngFor="let i of errorControl('dekont')">
+                                {{i}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button type="button" [mat-dialog-close]="" mat-raised-button class="btn pull-right cancbtn mr-3">
+            {{"TEXT.CLOSE" | translate }}
+        </button>
+        <div style="position: sticky;" *ngIf="ucretOdemeYontemi==2 || girisUcretOdemeYontemi==2">
+            <div id="box" class="gradient-border">
+                <button (click)="dekontYukle()" class="btn btn-sm text-white btn-elevate kt-login__btn-primary">
+                    {{(dekontDurumu)?"TEXT.UPDATE":"TEXT.SAVE" | translate }}
+                </button>
+            </div>
+        </div>
+    </mat-dialog-actions>
+</ng-template>
+
+
+<!-- 
+
+<div *ngIf="(basvuruVerileri.ucret_odeme_turu==ucretOdemeTuru.online)">
+    <span *ngIf="basvuruVerileri.odeme_onay!=1" style="font-size: 14px; color:red">
+        {{'TEXT.odeme_bekleme' |translate}}
+    </span>
+    <div class="wizardInLabel">
+        <a (click)="iptalIadeUrl()">
+            <input type="checkbox" formControlName="iptal_iade_kosullari" />
+            <span style="color:#000!important;cursor: pointer;">
+                {{'TEXT.iptal_iade_kosullari' | translate }}
+            </span>
+        </a>
+        <div class="fv-plugins-message-container" *ngIf="errorState">
+            <div class="fv-help-block">
+                <div class="fv-help-block">
+                    <span *ngFor="let i of errorControl('iptal_iade_kosullari')">
+                        {{i}}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="ifIframePos">
+        <iframe [src]="posOdemeUrl" width="580" [height]="basvuruVerileri.ogrenci_basvuru_onay==1?'300px':'500px'"
+            frameBorder="0" allowfullscreen></iframe>
+    </div>
+    <div class="fv-plugins-message-container" *ngIf="errorState && basvuruForm.value.iptal_iade_kosullari">
+        <div class="fv-help-block">
+            <div class="fv-help-block">
+                <span *ngFor="let i of errorControl('odeme_onay')">
+                    {{i}}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="basvuruVerileri.ucret_odeme_turu==ucretOdemeTuru.dekont">
+    <form [formGroup]="basvuruForm">
+        <doko-file-upload-all
+            [imgURL]="basvuruForm.value.dekont?dokoSettingsService.apiUrl + basvuruForm.value.dekont :false"
+            controlName="dekont" [isSaveButton]="false" [multiple]="false">
+        </doko-file-upload-all>
+    </form>
+    <div class="fv-plugins-message-container" *ngIf="errorState">
+        <div class="fv-help-block">
+            <div class="fv-help-block">
+                <span *ngFor="let i of errorControl('dekont')">
+                    {{i}}
+                </span>
+            </div>
+        </div>
+    </div>
+</div> -->

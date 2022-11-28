@@ -1,0 +1,34 @@
+
+<div style="text-align:center;">
+    <img src="../../../../assets/general/avatar.png" width="100px" height="100px"  *ngIf="!imgURL" alt="">
+    <img  [src]="imgURL"  width="100px" height="100px"  style="border-radius: 100%;" *ngIf="imgURL" alt="">
+
+    <div class="file is-normal text-center ">
+        
+            <label class="file-label">
+                <input class="file-input " type="file" (change)="onFileChance($event)" name="resume" >
+                <span>
+                    <!-- <img style="border:1.5px solid #70BD88;padding: 4px;margin-right: 4px; background-color: white; z-index: 99;" src="../../../../assets/general/add_btn-green.svg"> -->
+                <mat-icon>edit </mat-icon>
+                </span>
+            </label>   
+ 
+    </div>      
+    <b *ngIf="subMessage">   {{subMessage}}  </b>
+    <mat-error *ngIf="isControlHasError(controlName,'required',this.form)">
+        <strong>vesikalık resim yüklemek zorunludur!</strong>
+    </mat-error>
+
+    <br>
+    <br>
+
+</div>
+
+<input type="hidden" [formControlName]="controlName" [name]="controlName">
+
+<div style="width:100%" *ngIf="isFileControlHasError">
+
+    <mat-error >
+        <strong>jpg,PNG,jpeg haricinde dosya yükleyemezsiniz.</strong>
+    </mat-error>
+</div>

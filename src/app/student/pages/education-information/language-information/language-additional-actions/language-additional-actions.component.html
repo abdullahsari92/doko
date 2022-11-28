@@ -1,0 +1,111 @@
+<div mat-dialog-title>
+    <div class="row mt-5">
+        <div class="col-md-4 modal-title">
+            <h5 class="modal-title" id="exampleModalLongTitle">
+                {{'TITLE.dil_bilgisi' | translate }}
+            </h5>
+        </div>
+        <div class="col-md-8 p-0">
+            <button type="button" class="close" [mat-dialog-close]="" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<mat-dialog-content class="mat-typography">
+    <div class="modal-body p-1">
+        <div class="row mt-5">
+            <div class="col-xl-12">
+                <form class="form" [formGroup]="dilForm">
+                    <div class="form-group row">
+                        <label class="col-form-label col-3 text-lg-right text-left">
+                            {{"TEXT.dil_id"| translate}}
+                        </label>
+                        <div class="col-9">
+                            <select class="form-control form-control-lg form-control-solid" aria-placeholder="select" formControlName="dil_id" [attr.disabled]="!islem ? '' : null" [class.nonepointer]="!islem">
+                                <option value="">{{'TEXT.SELECT' | translate }} ...</option>
+                                <option *ngFor="let item of dilSinavlari" [value]="item.id">
+                                    {{item.adi_tr | translateData :item.adi_en}}
+                                </option>
+                            </select>
+                            <div class="fv-plugins-message-container" *ngIf="(errorState || dilForm.get('dil_id').touched) && errorControl('dil_id')">
+                                <!-- <div class="fv-help-block"> -->
+                                <div class="fv-help-block">
+                                    <span *ngFor="let i of errorControl('dil_id')">
+                                        {{i}}
+                                    </span>
+                                </div>
+                                <!-- </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row" *ngIf="dilForm.get('dil_id').value">
+                        <label class="col-form-label col-3 text-lg-right text-left">
+                            {{"TEXT.dil_seviyesi"| translate}}
+                        </label>
+                        <div class="col-9">
+                            <select class="form-control form-control-lg form-control-solid" aria-placeholder="select" formControlName="dil_seviyesi" [attr.disabled]="!islem ? '' : null" [class.nonepointer]="!islem">
+                                <option>{{'TEXT.SELECT' | translate }} ...</option>
+                                <option *ngFor="let item of dilSeviyeleri()" [value]="item">
+                                    {{item}}
+                                </option>
+                            </select>
+                            <div class="fv-plugins-message-container" *ngIf="(errorState || dilForm.get('dil_seviyesi').touched) && errorControl('dil_seviyesi')">
+                                <!-- <div class="fv-help-block"> -->
+                                <div class="fv-help-block">
+                                    <span *ngFor="let i of errorControl('dil_seviyesi')">
+                                        {{i}}
+                                    </span>
+                                </div>
+                                <!-- </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!--begin::Group-->
+                    <div class="form-group row">
+                        <label class="col-form-label col-3 text-lg-right text-left">
+                            {{ 'TEXT.dil_belgesi' | translate }}
+                        </label>
+                        <div class="col-9" *ngIf="islem">
+                            <doko-file-upload-all [height]="'150px'" [imgURL]="dilForm.get('dil_belgesi').value ? dokoSettingsService.apiUrl + dilForm.get('dil_belgesi').value :false" controlName="dil_belgesi" [isSaveButton]="false" [multiple]="false">
+                            </doko-file-upload-all>
+                            <div class="fv-plugins-message-container" *ngIf="errorState && errorControl('dil_belgesi') !== null">
+                                <div class="fv-help-block">
+                                    <div class="fv-help-block">
+                                        <span *ngFor="let i of errorControl('dil_belgesi')">
+                                            {{i}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-9" *ngIf="!islem" [class.nonepointer]="!islem">
+                            <img [src]="dilForm.get('dil_belgesi').value ? dokoSettingsService.apiUrl + dilForm.get('dil_belgesi').value :false" height="150px">
+                        </div>
+                    </div>
+                    <!--end::Group-->
+                </form>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button type="button" [mat-dialog-close]="" mat-raised-button class="btn pull-right cancbtn mr-3" [hidden]='!islem'>
+        {{"TEXT.CANCEL" | translate }}
+    </button>
+    <button id="kt_login_signin_submit" (click)="btnAdi==='SAVE' ? dilEkle() : dilGuncelle()" class="btn btn-primary btn-elevate kt-login__btn-primary" [disabled]='submitDisabled' [hidden]='!islem'>
+        {{"TEXT."+btnAdi | translate }}
+    </button>
+    <button (click)="dilSil(this.data.id)" class="btn btn-danger btn-elevate kt-login__btn-primary mr-3" [hidden]='islem'>
+        {{"TEXT.DELETE" | translate }}
+    </button>
+    <div style="position: sticky;">
+        <div [class.gradient-border]="!islem" id="box">
+            <button (click)="islem= true;" class="btn btn-sm text-white btn-elevate kt-login__btn-primary" [hidden]='islem'>
+                {{"TEXT.UPDATE" | translate }}
+            </button>
+        </div>
+    </div>
+
+</mat-dialog-actions>

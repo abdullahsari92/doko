@@ -1,0 +1,7 @@
+<!-- splash screen -->
+<div #splashScreen class="kt-splash-screen">
+    <span *ngIf="loaderType === 'spinner-message'">{{loaderMessage}}</span>
+    <!-- <img *ngIf="loaderType === 'spinner-logo'" [attr.src]="loaderLogo" alt="Logo"> -->
+    <img alt="logo" [attr.src]="(apiSetting.logo_url == null || apiSetting.logo_url == '')? './assets/student/login/media/logos/dpu_logo.png': apiSetting.logo_url" *ngIf="loaderType === 'spinner-logo'" />
+    <mat-spinner diameter="40"></mat-spinner>
+</div>

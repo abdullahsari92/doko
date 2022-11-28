@@ -1,0 +1,70 @@
+
+<div class="modalBody">  
+    <div class="header"> 
+		  <h4>{{ 'TITLE.yetki_tanim' | translate }}</h4>
+          <span [mat-dialog-close]="data.animal" style=" position: absolute;  top: 10px;right: -20px;">
+            <mat-icon> close</mat-icon>
+          </span>      
+      </div>
+		<form class="kt-login__form kt-form" [formGroup]="yetkiTanimForm" autocomplete="off">
+			<div class="form-group kt-form__group row">
+				<div class="col-lg-12 kt-margin-bottom-20-mobile">
+					<mat-form-field class="mat-form-field-fluid">
+						<mat-label>{{ 'TEXT.yetki_kodu' | translate }}</mat-label>
+						<input matInput type="text" placeholder="{{ 'TEXT.yetki_kodu' | translate }}" [readonly]="data.id"
+							formControlName="yetki_kodu" />
+						<mat-error *ngIf="isControlHasError('yetki_kodu','required')">
+							<strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+						</mat-error>
+						<mat-error *ngIf="isControlHasError('yetki_kodu','maxlength')">
+							<strong>{{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }} 100</strong>
+						</mat-error>
+					</mat-form-field>
+				</div>
+				<div class="col-lg-12 kt-margin-bottom-20-mobile">
+					<mat-form-field class="mat-form-field-fluid">
+						<mat-label>{{ 'TEXT.yetki_adi' | translate }}</mat-label>
+						<input matInput type="text" placeholder="{{ 'TEXT.yetki_adi' | translate }}" formControlName="yetki_adi" />
+						<mat-error *ngIf="isControlHasError('yetki_adi','required')">
+							<strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+						</mat-error>
+						<mat-error *ngIf="isControlHasError('yetki_adi','maxlength')">
+							<strong>{{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }} 100</strong>
+						</mat-error>
+					</mat-form-field>
+				</div>
+				<div class="col-lg-12 kt-margin-bottom-20-mobile">
+					<mat-form-field>
+						<mat-select placeholder="{{ 'TEXT.grup_adi' | translate }}" formControlName="grup_adi">
+							<mat-option *ngFor="let grup of addList" [value]="grup.key">{{grup.value}}</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
+				<div class="col-lg-12 kt-margin-bottom-20-mobile">
+					<mat-checkbox name="unit_manager" formControlName="unit_manager">
+						<a href="javascript:;"> {{ 'TEXT.unit_manager' | translate }}</a>
+					</mat-checkbox>
+				</div>
+				<div class="col-lg-12 kt-margin-bottom-20-mobile">
+					<mat-checkbox name="unit_manager_assistant" formControlName="unit_manager_assistant">
+						<a href="javascript:;">{{ 'TEXT.unit_manager_assistant' | translate }}</a>
+					</mat-checkbox>
+				</div>
+				<div class="col-lg-12 kt-margin-bottom-20-mobile">
+					<mat-checkbox name="agent_user" formControlName="agent_user">
+						<a href="javascript:;">{{ 'TEXT.agent_user' | translate }}</a>
+					</mat-checkbox>
+				</div>
+				<div class="col-lg-12 kt-margin-bottom-20-mobile">
+					<mat-checkbox name="unit_user" formControlName="unit_user">
+						<a href="javascript:;">{{ 'TEXT.unit_user' | translate }}</a>
+					</mat-checkbox>
+				</div>
+			</div>
+			<!--end::Action-->
+		</form>
+		<div class="rightCrudBtn">
+			<button (click)="submit()" id="kt_login_signin_submit" class="btn btn-primary btn-elevate kt-login__btn-primary" [ngClass]="{'kt-spinner kt-spinner--right kt-spinner--md kt-spinner--light': loading}">{{buttonSave}} </button>
+			<button type="button" mat-raised-button   [mat-dialog-close]="data.animal" class="btn pull-right cancbtn"> {{"TEXT.CANCEL" | translate }} </button>
+	</div>
+</div>

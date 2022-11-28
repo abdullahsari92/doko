@@ -1,0 +1,124 @@
+@import "sass/pages/wizard/wizard-2";
+
+
+// .kt-wizard-v2__nav-items  .kt-wizard-v2__nav-item:hover{
+
+//     background-color: #f4f6f9;
+//     padding: 0.75rem 1.5rem;
+//     position: relative;
+//     border-radius: 0.5rem;
+// }
+
+
+
+.currentItem{
+
+    background-color: #f4f6f9;
+    padding: 0.75rem 1.5rem;
+    position: relative;
+    border-radius: 0.5rem;
+}
+
+.allItem{
+
+    padding: 0.75rem 1.5rem;
+    position: relative;
+    border-radius: 0.5rem;
+    border-bottom: 1px solid #dcdcdc;
+    margin-bottom: 20px;
+    cursor:pointer;
+}
+.kucukOk{
+
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    content: " ";
+    height: 0;
+    width: 0;
+    border: solid transparent;
+    position: absolute;
+    border-left-color: #f4f6f9;
+    border-width: 1rem;
+}
+
+.kod{
+    min-width: 80px;
+  
+    float: left;
+    padding: 8px 0
+}
+
+.kategoriler{
+
+    height: 700px; width: auto; 
+     overflow-y: scroll ;
+      //padding:1em 4em;
+        position: relative;
+      flex: 0 0 366px !important;
+}
+
+#kt_wizard_v2 ::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+// --
+
+
+
+// .spanTitle{
+
+//     font-size: 10px;
+//     font-weight:700;
+//     color: #302e50;
+//     //font-family: 'Times New Roman', Times, serif;
+//     font-family: 'Roboto', sans-serif;
+//     margin-bottom: 2px;
+// }
+
+// .spanTitle .spanData{
+
+//     //font-size: 12px;
+//     font-size: 10px;
+//     font-weight:500;
+//     //font-family: 'Times New Roman', Times, serif;
+//     font-family: 'Roboto',  sans-serif;
+//     color: #302e50;
+
+//     //color: dimgray;
+
+// }
+
+
+
+// .spashLoader
+// {
+//     margin:300px
+// }
+
+:host {
+	height: 100%;
+	margin: 0;
+}
+
+.icon-3x {
+    color: #7E8299 !important;
+    font-size: 4rem !important;
+}
+
+  

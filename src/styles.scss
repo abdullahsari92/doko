@@ -1,0 +1,258 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~material-design-icons/iconfont/material-icons.css";
+@import "~highlight.js/styles/googlecode.css";
+@import "../node_modules/ag-grid-community/dist/styles/ag-grid.css";
+// @import "../node_modules/ag-grid-community/dist/styles/ag-theme-alpine.css";
+@import "../node_modules/ag-grid-community/src/styles/ag-grid.scss";
+// @import "../node_modules/ag-grid-community/src/styles/ag-theme-alpine/sass/ag-theme-alpine-mixin.scss";
+@import "../node_modules/ag-grid-community/src/styles/ag-theme-material/sass/ag-theme-material-mixin.scss";
+@import "../node_modules/ag-grid-community/src/styles/ag-theme-bootstrap/sass/ag-theme-bootstrap.scss";
+// @import "../node_modules/ag-grid-community/src/styles/ag-theme-dark/sass/ag-theme-dark.scss";
+// @import '~quill/dist/quill.core.css';
+// @import '~quill/dist/quill.bubble.css';
+// @import '~quill/dist/quill.snow.css';
+//@import "../node_modules/sweetalert2/src/sweetalert2.scss";
+//Öğrenci ALANI
+
+@import "../src/assets/student/login/css/style.bundle.css";
+
+@import "../src/assets/student/login/css/pages/login/login-2.css"; //giriş
+@import "../src/assets/student/login/css/pages/login/login-3.css";
+@import "../src/assets/student/login/plugins/global/plugins.bundle.css";
+@import "../src/assets/student/login/plugins/custom/prismjs/prismjs.bundle.css";
+// @import "../src/assets/stimulSoft/css/stimulsoft.designer.office2013.lightgraycarmine.css";
+@import "../node_modules/stimulsoft-reports-js/Css/stimulsoft.designer.office2013.lightgraypurple.css";
+//Öğrenci ALANI
+// .ag-theme-alpine {
+//     @include ag-theme-alpine((
+//         //odd-row-background-color: #CFD8DC;
+// 		border:none
+//     ));
+// }
+.ag-theme-material {
+    @include ag-theme-material(( //odd-row-background-color: #CFD8DC;
+    padding: 10px));
+}
+
+// hide bootstrap dropdown arrow globally
+.dropdown-toggle::after {
+    display: none !important;
+}
+
+.mat-table__wrapper--dashboard .mat-table {
+    min-width: 600px !important;
+    width: 100% !important;
+}
+
+.position-static {
+    position: static;
+}
+
+.height100 {
+    height: 100%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.scroll {
+    overflow-y: auto;
+}
+
+.scrollBody {}
+
+.scrollBody ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    border-radius: 30px;
+    text-align: center;
+    top: 0;
+    right: 30px;
+}
+
+.modalBody ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    border-radius: 30px;
+    text-align: center;
+    top: 0;
+    right: 30px;
+}
+
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: rgb(218, 218, 218);
+}
+
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(218, 218, 218);
+}
+
+.modalBody {
+    max-width: 1440px;
+    position: relative;
+    //  height: 750px;
+}
+
+.modalBody .header {
+    color: #011E2B;
+    z-index: 9999;
+    background-color: white;
+    position: sticky;
+    width: 100%;
+    top: 0px;
+    padding: 15px 0 25px 0;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.modalBody .header .mat-icon {
+    font-size: 24px !important;
+}
+
+.modalBody .header div {
+    margin: 0 -20px;
+}
+
+.modalBody .header h4 {
+    margin: 0 -20px;
+}
+
+.modalBody .modalContent {
+    height: 700px;
+    overflow-y: auto;
+}
+
+.modalBody .rightCrudBtn {
+    z-index: 9999;
+    background-color: white;
+    text-align: right;
+    position: sticky;
+    width: 100%;
+    bottom: -1px;
+    padding: 15px 0px;
+    height: 60px;
+    margin-bottom: 10px;
+    margin-right: -10px;
+}
+
+.modalBody .rightCrudBtn .cancbtn {
+    margin-left: 5px;
+}
+
+.mat-dialog-container {
+    padding: 0px 40px !important;
+    border-radius: 5px !important;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    border-radius: 40px;
+    text-align: center;
+    top: 0;
+    right: 30px;
+}
+
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    background: #fafafa;
+}
+
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: rgb(224, 224, 224);
+    border-radius: 40px;
+    box-shadow: 10px;
+    width: 7px;
+    height: 7px;
+    cursor: pointer;
+}
+
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(179, 179, 179);
+    border-radius: 40px;
+    box-shadow: 10px;
+    width: 7px;
+    height: 7px;
+    cursor: pointer;
+}
+
+//btn
+.nonepointer {
+    cursor: not-allowed;
+    color: rgb(190, 190, 202)!important;
+}
+
+.defaultpointer {
+    cursor: default;
+}
+
+#box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* color: white;
+  font-size: 2.5rem; */
+}
+
+.gradient-border {
+    --borderWidth: 3px;
+    position: relative;
+    border-radius: var(--borderWidth);
+}
+
+.gradient-border:after {
+    content: '';
+    position: absolute;
+    top: calc(-1 * var(--borderWidth));
+    left: calc(-1 * var(--borderWidth));
+    height: calc(100% + var(--borderWidth) * 2);
+    width: calc(100% + var(--borderWidth) * 2);
+    background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+    //background: linear-gradient(60deg, #a7cfd7, #84bdc8, #47919e, #2f616a, #5073b8, #1098ad, #07b39b, #6fba82);
+    border-radius: calc(2 * var(--borderWidth));
+    z-index: -1;
+    animation: animatedgradient 3s ease alternate infinite;
+    background-size: 300% 300%;
+}
+
+@keyframes animatedgradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+//btn

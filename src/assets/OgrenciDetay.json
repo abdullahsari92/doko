@@ -1,0 +1,30 @@
+{
+"ogrenci":{
+
+    "adi":"",
+    "soyadı":""
+},
+"basvurular":[
+    
+            {
+
+            "adi":"",
+            "soyadı":""
+        },
+        {
+
+            "adi":"",
+            "soyadı":""
+        }
+],
+
+ "tercihler":  {
+  "langVersion":"10",
+  "countryVersion":"10"
+ }
+    
+  }
+
+
+  
+

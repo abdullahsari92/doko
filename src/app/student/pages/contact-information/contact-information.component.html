@@ -1,0 +1,257 @@
+<div id="designerContent"></div>
+<form class="form" id="kt_form" (ngSubmit)="update()" [formGroup]="contactInfoForm">
+    <div class="tab-content">
+        <!--begin::Tab-->
+        <div class="tab-pane show active px-7" id="kt_user_edit_tab_1" role="tabpanel">
+            <!--begin::Row-->
+            <div class="row">
+                <div class="col-xl-2"></div>
+                <div class="col-xl-7 my-2">
+                    <!--begin::Row-->
+                    <div class="row">
+                        <label class="col-3"></label>
+                        <div class="col-9">
+                            <!--<h6 class="text-dark font-weight-bold mb-10">Customer Info:</h6>-->
+                        </div>
+                    </div>
+                    <!--end::Row-->
+                    <!--begin::Group-->
+                    <div class="form-group row">
+                        <label class="col-form-label col-3 text-lg-right text-left">
+							{{'TEXT.eposta' | translate}}
+						</label>
+                        <div class="col-9">
+                            <div class="input-group input-group-lg input-group-solid">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+										<i class="la la-at"></i>
+									</span>
+                                </div>
+                                <input type="text" class="form-control form-control-lg form-control-solid" placeholder="{{'TEXT.eposta' | translate}}" formControlName="eposta">
+                            </div>
+                            <div class="fv-plugins-message-container" *ngIf="(errorState || (contactInfoForm.get('eposta').touched) && errorControl('eposta'))">
+                                <div class="fv-help-block">
+                                    <div class="fv-help-block">
+                                        <span *ngFor="let i of errorControl('eposta')">
+                                            {{i}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Group-->
+
+                    <!--begin::Group-->
+                    <div class="form-group row">
+                        <label class="col-form-label col-3 text-lg-right text-left">
+							<!-- {{ 'TEXT.telefon' | translate }} -->
+						</label>
+                        <div class="col-9">
+                            <div class="radio-inline">
+                                <label class="radio radio-success">
+                                    <input type="radio" name="telefon_no" value="telefon"
+                                        formControlName="telefon_no" (change)="telefonSecim($event)" />
+                                    <span></span>
+                                    {{ 'TEXT.telefon' | translate }}
+                                </label>
+                                <label class="radio radio-success">
+                                    <input type="radio" name="telefon_no" value="whatsapp_no"
+                                        formControlName="telefon_no" (change)="telefonSecim($event)" />
+                                    <span></span>
+                                    {{ 'TEXT.whatsapp_no' | translate }}
+                                </label>
+                                <label class="radio radio-success">
+                                    <!--radio-disabled-->
+                                    <input type="radio" name="telefon_no" value="diger_telefon_no"
+                                        formControlName="telefon_no" (change)="telefonSecim($event)" />
+                                    <span></span>
+                                    {{ 'TEXT.diger_telefon_no' | translate }}
+                                </label>
+                            </div>
+                            <div class="fv-plugins-message-container" *ngIf="errorState && errorControl('telefon_no')">
+                                <div class="fv-help-block">
+                                    <span *ngFor="let i of errorControl('telefon_no')">
+                                        {{i}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Group-->
+
+
+                    <!--begin::Form Group-->
+                    <!-- <div class="form-group">
+                        <label class="font-size-h6 font-weight-bolder text-dark">
+                            
+                        </label>
+                        <div class="col-form-label">
+                            
+                        </div>
+                    </div> -->
+                    <!--end::Form Group-->
+                    <!--begin::Group-->
+                    <div id="telefon_step" class="form-group row">
+                        <label class="col-form-label col-3 text-lg-right text-left">
+							{{'TEXT.telefon' | translate}}
+						</label>
+                        <div class="col-9">
+                            <div class="input-group input-group-lg input-group-solid">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+										<i class="la la-phone"></i>
+									</span>
+                                </div>
+                                <input type="text" class="form-control form-control-lg form-control-solid" placeholder="{{'TEXT.telefon' | translate}}" formControlName="telefon">
+                            </div>
+                            <div class="fv-plugins-message-container" *ngIf="(errorState || (contactInfoForm.get('telefon').touched) && errorControl('telefon'))">
+                                <div class="fv-help-block">
+                                    <div class="fv-help-block">
+                                        <span *ngFor="let i of errorControl('telefon')">
+                                            {{i}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Group-->
+                    <!--begin::Group-->
+                    <div id="whatsapp_no_step" class="form-group row d-none">
+                        <label class="col-form-label col-3 text-lg-right text-left">
+							{{'TEXT.whatsapp_no' | translate}}
+						</label>
+                        <div class="col-9">
+                            <div class="input-group input-group-lg input-group-solid">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+										<i class="la la-phone"></i>
+									</span>
+                                </div>
+                                <input type="text" class="form-control form-control-lg form-control-solid" placeholder="{{'TEXT.whatsapp_no' | translate}}" formControlName="whatsapp_no">
+                            </div>
+                            <div class="fv-plugins-message-container" *ngIf="(errorState || (contactInfoForm.get('whatsapp_no').touched) && errorControl('whatsapp_no'))">
+                                <div class="fv-help-block">
+                                    <div class="fv-help-block">
+                                        <span *ngFor="let i of errorControl('whatsapp_no')">
+                                            {{i}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Group-->
+                    <!--begin::Group-->
+                    <div id="diger_telefon_no_step" class="form-group row d-none">
+                        <label class="col-form-label col-3 text-lg-right text-left">
+							{{'TEXT.diger_telefon_no' | translate}}
+						</label>
+                        <div class="col-9">
+                            <div class="input-group input-group-lg input-group-solid">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+										<i class="la la-phone"></i>
+									</span>
+                                </div>
+                                <input type="text" class="form-control form-control-lg form-control-solid" placeholder="{{'TEXT.diger_telefon_no' | translate}}" formControlName="diger_telefon_no">
+                            </div>
+                            <div class="fv-plugins-message-container" *ngIf="(errorState || (contactInfoForm.get('diger_telefon_no').touched) && errorControl('diger_telefon_no'))">
+                                <div class="fv-help-block">
+                                    <div class="fv-help-block">
+                                        <span *ngFor="let i of errorControl('diger_telefon_no')">
+                                            {{i}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Group-->
+                    <!--begin::Group-->
+                    <div class="form-group row">
+                        <label class="col-form-label col-3 text-lg-right text-left">
+							{{'TEXT.adres' | translate}}
+						</label>
+                        <div class="col-9">
+                            <div class="input-group input-group-lg input-group-solid">
+                                <textarea class="form-control h-auto py-7 px-6 border-0 rounded-lg font-size-h6" cols="30" rows="12" placeholder="{{ 'TEXT.adres' | translate }}" formControlName="adres" style="resize: none"></textarea>
+                            </div>
+                            <div class="fv-plugins-message-container" *ngIf="(errorState || (contactInfoForm.get('adres').touched) && errorControl('adres'))">
+                                <div class="fv-help-block">
+                                    <div class="fv-help-block">
+                                        <span *ngFor="let i of errorControl('adres')">
+                                            {{i}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Group-->
+                    <!--begin::Group-->
+                    <div class="form-group row">
+                        <label class="col-form-label col-3 text-lg-right text-left">
+							{{'TEXT.sehir' | translate}}
+						</label>
+                        <div class="col-9">
+                            <div class="input-group input-group-lg input-group-solid">
+                                <input type="text" class="form-control form-control-lg form-control-solid" placeholder="{{'TEXT.sehir' | translate}}" formControlName="sehir">
+                            </div>
+                            <div class="fv-plugins-message-container" *ngIf="(errorState || (contactInfoForm.get('sehir').touched) && errorControl('sehir'))">
+                                <div class="fv-help-block">
+                                    <div class="fv-help-block">
+                                        <span *ngFor="let i of errorControl('sehir')">
+                                            {{i}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Group-->
+                    <!--begin::Group-->
+                    <div class="form-group row">
+                        <label class="col-form-label col-3 text-lg-right text-left">
+							{{'TEXT.ulke' | translate}}
+						</label>
+                        <div class="col-9">
+                            <div class="input-group input-group-lg input-group-solid">
+                                <select class="form-control form-control-lg form-control-solid" formControlName="ulke_kodu">
+									<option value="">
+										{{ 'TEXT.SELECT' | translate }}
+									</option>
+									<option *ngFor="let item of countryList" [value]="item.kodu">
+										{{item.adi_tr}}
+									</option>
+								</select>
+                            </div>
+                            <div class="fv-plugins-message-container" *ngIf="(errorState || (contactInfoForm.get('telefon').touched) && errorControl('ulke_kodu'))">
+                                <div class="fv-help-block">
+                                    <div class="fv-help-block">
+                                        <span *ngFor="let i of errorControl('ulke_kodu')">
+                                            {{i}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Group-->
+                    <!--begin::Group-->
+                    <div class="form-group row">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-success pull-right">
+								{{'TEXT.UPDATE' | translate}}
+							</button>
+                        </div>
+                    </div>
+                    <!--end::Group-->
+                </div>
+            </div>
+            <!--end::Row-->
+        </div>
+        <!--end::Tab-->
+    </div>
+</form>

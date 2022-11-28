@@ -1,0 +1,54 @@
+@import "../../../../../assets/student/login/css/style.bundle.css";
+.yuksekLisansKutu {
+    background-color: #4585AD !important;
+    background-size: 100% 100%;
+    background-image: url('../../../../../assets/student/general/bg-3.jpg');
+    box-shadow: 3px 3px 4px #4585AD;
+    cursor: pointer;
+    color: #fff !important;
+}
+
+.yuksekLisansEkleCerceve {
+    min-width: 380px;
+    min-height: 160px;
+    height: 160px;
+    padding-top: 10px;
+}
+
+.yuksekLisansEkle {
+    background-position: 250px 40px;
+    box-shadow: 3px 3px 4px #4585ad !important;
+    background-size: auto 70%;
+    background-image: url('../../../../../assets/student/general/1-1.png');
+    cursor: pointer;
+    text-align: center;
+    opacity: 0.6;
+    -webkit-transition: opacity 0.3s ease-in;
+    -moz-transition: opacity 0.3s ease-in;
+    -ms-transition: opacity 0.3s ease-in;
+    -o-transition: opacity 0.3s ease-in;
+    transition: opacity 0.3s ease-in;
+}
+
+.yuksekLisansEkle>i {
+    font-size: 64px;
+    padding-top: 10px;
+    color: #4585AD;
+}
+
+.yuksekLisansEkle:hover {
+    zoom: 1;
+    filter: alpha(opacity=1);
+    opacity: 1;
+}
+
+@media (max-width: 991.98px) {
+    .cerceve {
+        min-width: 100px!important;
+        min-height: 180px;
+    }
+    .yuksekLisansEkleCerceve {
+        min-width: 100px!important;
+        min-height: 180px;
+    }
+}

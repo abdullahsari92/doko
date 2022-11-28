@@ -1,0 +1,48 @@
+<kt-portlet>
+    <kt-portlet-header [sticky]="true" [title]="'TITLE.diger_islemler'| translate" [class]="'kt-portlet__head--lg'">
+        <ng-container ktPortletTools>
+            <button (click)="onSumbit()" mat-raised-button color="primary" matTooltip="{{buttonSave}}">{{buttonSave}} </button>
+        </ng-container>
+    </kt-portlet-header>
+    <kt-portlet-body>
+        <form [formGroup]="sinavIslemlerForm" class="kt-form kt-form--group-seperator-dashed" autocomplete="off">
+            <kt-alert *ngIf="hasFormErrors" type="warn" [showCloseButton]="true" [duration]="10000"
+                (close)="onAlertClose($event)">
+                {{'VALIDATION.ERROR' | translate}}
+            </kt-alert>
+            <div class="kt-form__section kt-form__section--first">
+                <div class="kt-form__group">
+                    <div class="card card-px-0 shadow-md">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                    <div>{{'TEXT.sonuc_gorme_durumu' | translate}}</div>
+                                    <mat-slide-toggle formControlName="sonuclari_goster" (change)="changeStatu(1)">
+                                        {{sonuclari_goster| translate}}</mat-slide-toggle>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br /> 
+
+                    <div class="card card-px-0 shadow-md">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-3 kt-margin-bottom-20-mobile" *ngFor="let itm of SablonTuru" [formGroup]="raporForm">
+                                    <div>{{itm.value}}</div>
+                                        <mat-select placeholder="{{'TEXT.SELECT' | translate}}" formControlName="{{itm.key}}">
+                                            <mat-option *ngFor="let item of getSablon(itm.key)" [value]="item.key">
+                                                {{item.value}}</mat-option>
+                                        </mat-select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <br /> 
+                </div>
+                <br /> 
+            </div>
+        </form>
+    </kt-portlet-body>
+</kt-portlet>

@@ -1,0 +1,165 @@
+<div mat-dialog-title>
+    <div class="row mt-5">
+        <div class="col-md-5 modal-title">
+            <h5 class="modal-title" id="exampleModalLongTitle">
+                {{'TEXT.tercih_bilgisi' | translate }}
+            </h5>
+        </div>
+        <div class="col-md-7 p-0">
+            <button type="button" class="close" [mat-dialog-close]="" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<mat-dialog-content class="mat-typography">
+    <div class="modal-body p-1">
+        <div *ngIf="!tercihIslemi">
+            <form class="form" [formGroup]="preferenceForm">
+                <div class="form-group row">
+                    <label class="col-form-label col-3 text-lg-right text-left">
+                        {{"TEXT.puan_turu"| translate}}
+                    </label>
+                    <div class="col-9">
+                        <select class="form-control form-control-lg form-control-solid" (change)="setPuanTur()" aria-placeholder="select" formControlName="puan_turu_id" [attr.disabled]="!islem ? '' : null" [class.nonepointer]="!islem">
+                            <option>{{'TEXT.SELECT' | translate }} ...</option>
+                            <option *ngFor="let item of data.puanTurBilgisi" [value]="item.id">
+                                {{item.adi_tr | translateData: item.adi_en}}
+                            </option>
+                        </select>
+                        <div class="fv-plugins-message-container" *ngIf="(errorState || preferenceForm.get('puan_turu_id').touched) && errorControl('puan_turu_id')">
+                            <div class="fv-help-block">
+                                <span *ngFor="let i of errorControl('puan_turu_id')">
+                                    {{i}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-3 text-lg-right text-left">
+                        {{"TEXT.ham_puani"| translate}}
+                    </label>
+                    <div class="col-9">
+                        <input class="form-control form-control-lg form-control-solid" formControlName="ham_puani" type="number" (keyup)="puanHesaplama($event)" [readonly]="!islem" [class.nonepointer]="!islem">
+                        <div class="fv-plugins-message-container" *ngIf="(errorState || preferenceForm.get('ham_puani').touched) && errorControl('ham_puani')">
+                            <div class="fv-help-block">
+                                <div class="fv-help-block">
+                                    <span *ngFor="let i of errorControl('ham_puani')">
+                                        {{i}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-3 text-lg-right text-left">
+                        {{"TEXT.puani"| translate}}
+                    </label>
+                    <div class="col-9">
+                        <input class="form-control form-control-lg form-control-solid nonepointer" formControlName="puani" type="number" readonly>
+                        <div class="fv-plugins-message-container text-danger">
+                            {{puan_araligi}}
+                        </div>
+                        <div class="fv-plugins-message-container" *ngIf="(errorState || preferenceForm.get('puani').touched) && errorControl('puani')">
+                            <div class="fv-help-block">
+                                <div class="fv-help-block">
+                                    <span *ngFor="let i of errorControl('puani')">
+                                        {{i}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--begin::Group-->
+                <div class="form-group row">
+                    <label class="col-form-label col-3 text-lg-right text-left">
+                        {{"TEXT.puan_belgesi"| translate}}
+                    </label>
+                    <div class="col-9" *ngIf="islem" [class.nonepointer]="!islem">
+                        <doko-file-upload-all [height]="'150px'" [imgURL]="preferenceForm.get('puan_belgesi').value ? dokoSettingsService.apiUrl + preferenceForm.get('puan_belgesi').value :false" controlName="puan_belgesi" [isSaveButton]="false" [multiple]="false">
+                        </doko-file-upload-all>
+                        <div class="fv-plugins-message-container" *ngIf="errorState && errorControl('puan_belgesi') !== null">
+                            <div class="fv-help-block">
+                                <div class="fv-help-block">
+                                    <span *ngFor="let i of errorControl('puan_belgesi')">
+                                        {{i}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-9" *ngIf="!islem" [class.nonepointer]="!islem">
+                        <img [src]="preferenceForm.get('puan_belgesi').value ? dokoSettingsService.apiUrl + preferenceForm.get('puan_belgesi').value :false" height="150px">
+                    </div>
+                </div>
+                <!--end::Group-->
+            </form>
+        </div>
+        <div class="row mt-5" *ngIf="tercihIslemi && islem">
+            <div class="col-lg-6 gridList" style="border-right: 1px solid #d9d9d9;">
+                <h5>{{'TEXT.fakulte_listesi' | translate }}</h5>
+                <kt-custom-ag-grid height="200px" [isSelectActive]="true" (agGridCustom)="agGridFakulteSet($event)" [pagination]="false" [isSearch]="false" (editData)="editData($event)" [rowData]="rowData" [columnDefs]="columnDefs"> </kt-custom-ag-grid>
+            </div>
+            <div class="col-lg-6 gridList">
+                <h5>{{'TEXT.bolum_listesi' | translate }}</h5>
+                <kt-custom-ag-grid height="200px" (agGridCustom)="agGridBolumSet($event)" [isSelectActive]="true" [pagination]="false" [isSearch]="false" (editData)="addBolum($event)" [rowData]="rowDataBolumler" [columnDefs]="columnDefsBolumler"></kt-custom-ag-grid>
+            </div>
+        </div>
+        <div class="row" *ngIf="tercihIslemi && tercihListesi.length > 0">
+            <div class="col-lg-12">
+                <kt-custom-ag-grid *ngIf="tercihListesi.length > 0" (agGridCustom)="agGridSet($event)" (changeOrder)="changeOrder($event)" height="200px" [pagination]="false" [isSearch]="false" [rowData]="tercihListesi" [columnDefs]="columnDefsTercihler"></kt-custom-ag-grid>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>
+
+<!-- <mat-dialog-actions align="end">
+    <button type="button" [mat-dialog-close]="" mat-raised-button class="btn pull-right cancbtn mr-3">
+        {{"TEXT.CANCEL" | translate }}
+    </button>
+    <button id="kt_login_signin_submit" (click)="tercihEkle()" class="btn btn-primary text-white btn-elevate kt-login__btn-primary" [disabled]='submitDisabled' *ngIf='tercihIslemi'>
+        {{"TEXT."+btnAdi | translate }}
+    </button> ti-{{tercihIslemi}}-----islem{{islem}}
+    <div style="position: sticky;">
+        <div [class.gradient-border]="!tercihIslemi" id="box">
+            <button id="kt_login_signin_submit" (click)="tercihModal()" class="btn btn-sm text-white btn-elevate kt-login__btn-primary" *ngIf="!tercihIslemi" [hidden]='!islem'>
+                {{"TEXT.preferences" | translate }}
+            </button>
+
+            <button (click)="islem= true;" class="btn btn-sm text-white btn-elevate kt-login__btn-primary" *ngIf="!tercihIslemi" [hidden]='islem'>
+                {{"TEXT."+btnAdi | translate }}
+            </button>
+        </div>
+    </div>
+</mat-dialog-actions>
+ -->
+
+
+<mat-dialog-actions align="end">
+
+    <button type="button" [mat-dialog-close]="" mat-raised-button class="btn pull-right cancbtn mr-3">
+        {{"TEXT.CANCEL" | translate }}
+    </button>
+    <div *ngIf="!tercihIslemi">
+        <div style="position: sticky;">
+            <div [class.gradient-border]="!tercihIslemi" id="box">
+                <button id="kt_login_signin_submit" (click)="islem= true;" class="btn btn-sm text-white btn-elevate kt-login__btn-primary" [hidden]='islem'>
+                    {{"TEXT.UPDATE" | translate }}
+                </button>
+                <button id="kt_login_signin_submit" (click)="tercihModal()" class="btn btn-sm text-white btn-elevate kt-login__btn-primary" [hidden]='!islem'>
+                    {{"TEXT.SAVE" | translate }}
+                </button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="tercihIslemi">
+        <button id="kt_login_signin_submit" (click)="tercihEkle()" class="btn btn-primary text-white btn-elevate kt-login__btn-primary" [disabled]='submitDisabled'>
+            {{"TEXT."+btnAdi | translate }}
+        </button>
+    </div>
+
+</mat-dialog-actions>

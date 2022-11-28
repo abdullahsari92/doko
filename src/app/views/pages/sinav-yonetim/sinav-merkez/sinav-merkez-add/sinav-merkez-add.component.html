@@ -1,0 +1,139 @@
+<div class="modalBody">
+	<div class="header">
+		<h4>{{ 'TITLE.basvuru_sinav_merkez_tanim' | translate }}</h4>
+		<span [mat-dialog-close]="data.animal" style=" position: absolute;  top: 10px;right: -20px;">
+			<mat-icon> close</mat-icon>
+		</span>
+	</div>
+	<form class="kt-login__form kt-form" [formGroup]="sinavMerkez" autocomplete="off">
+		<div class="form-group kt-form__group row">
+			<div class="col-lg-6 kt-margin-bottom-20-mobile">
+				<mat-form-field class="mat-form-field-fluid">
+					<mat-select placeholder="{{'TEXT.ulke_adi_tr' | translate}}" formControlName="ulke_kodu">
+						<mat-option *ngFor="let ulke of ulkeKodlari" [value]="ulke.value">{{ulke.key}}</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</div>
+			<!-- <div class="col-lg-6 kt-margin-bottom-20-mobile" *ngIf="false">
+				<mat-form-field class="mat-form-field-fluid">
+					<div *ngIf="item =='lokasyon'; then thenLoc; else elseLoc"></div>
+					<ng-template #thenLoc>
+						<mat-label>{{'TEXT.lokasyon_aciklama' | translate }} </mat-label>
+						<a mat-mini-fab class="float-right"
+							href="https://www.google.com/maps/@39.8658772,35.013228,7.06z">
+							<mat-icon>map</mat-icon>
+						</a>
+					</ng-template>
+					<ng-template #elseLoc>
+						<mat-label>{{'TEXT.'+item | translate }}</mat-label>
+					</ng-template>
+					<div *ngIf="item !=='sinav_saati'; then thenTime; else elseTime"></div>
+					<ng-template #thenTime><input matInput type="text" placeholder="{{'TEXT.'+item | translate }}"
+							formControlName="{{item}}" /></ng-template>
+					<ng-template #elseTime>
+						<input matInput type="time" placeholder="{{'TEXT.'+item | translate }}"
+							formControlName="{{item}}" />
+						</ng-template>
+					<mat-error *ngIf="isControlHasError(item,'required')">
+						<strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+					<mat-error *ngIf="isControlHasError('adi','minlength')">
+						<strong>{{ 'VALIDATION.MIN_LENGTH_FIELD' | translate }} 2</strong>
+					</mat-error>
+					<mat-error *ngIf="isControlHasError('adi','maxlength')">
+						<strong>{{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }} 100</strong>
+					</mat-error>
+				</mat-form-field>
+			</div> -->
+			<!-- <div style="position:relative;overflow:hidden;">
+					<a href="https://yandex.com.tr/harita/10754/serpuhov/?utm_medium=mapframe&utm_source=maps" 
+					style="color:#eee;font-size:12px;position:absolute;top:0px;">Serpuhov</a>
+					<a href="https://yandex.com.tr/harita/10754/serpuhov/?ll=37.410960%2C54.919694&utm_medium=mapframe&utm_source=maps&z=13.56" style="color:#eee;font-size:12px;position:absolute;top:14px;">Serpuhov — Yandex.Haritalar</a>
+					<iframe src="https://yandex.com.tr/map-widget/v1/-/CCUubNEJ3C" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe>
+				</div> -->
+			<div class="col-lg-6 kt-margin-bottom-20-mobile">
+				<mat-form-field class="mat-form-field-fluid">
+					<mat-label>{{'TEXT.adi_tr' | translate }}</mat-label>
+					<input matInput type="text" placeholder="Adi Tr" formControlName="adi_tr" />
+				  <mat-error *ngIf="dokoSettingService.isControlHasError('adi_tr','required',sinavMerkez)">
+						<strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+						<mat-error *ngIf="dokoSettingService.isControlHasError('adi_tr','maxlength',sinavMerkez)">
+						<strong> {{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }}</strong>
+					</mat-error>
+
+				</mat-form-field>
+			</div>
+			<div class="col-lg-6 kt-margin-bottom-20-mobile">
+				<mat-form-field class="mat-form-field-fluid">
+					<mat-label>{{'TEXT.adi_en' | translate }}</mat-label>
+					<input matInput type="text" placeholder="adi_en" formControlName="adi_en" />
+					<mat-error *ngIf="dokoSettingService.isControlHasError('adi_en','required',sinavMerkez)">
+						<strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+					<mat-error *ngIf="dokoSettingService.isControlHasError('adi_en','maxlength',sinavMerkez)">
+						<strong>{{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }} 100</strong>
+					</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="col-lg-6 kt-margin-bottom-20-mobile">
+				<mat-form-field class="mat-form-field-fluid">
+					<mat-label>{{'TEXT.sehir' | translate }} </mat-label>
+					<input matInput type="text" placeholder="sehir" formControlName="sehir" />
+					<mat-error *ngIf="dokoSettingService.isControlHasError('sehir','required',sinavMerkez)">
+						<strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+					<mat-error *ngIf="dokoSettingService.isControlHasError('sehir','maxlength',sinavMerkez)">
+						<strong>{{ 'VALIDATION.MAX_LENGTH_FIELD' | translate }} 100</strong>
+					</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="col-lg-6 kt-margin-bottom-20-mobile">
+				<mat-form-field class="mat-form-field-fluid">
+					<mat-label>{{'TEXT.adres' | translate }}</mat-label>
+					<input matInput type="text" placeholder="adres" formControlName="adres" />
+					<mat-error *ngIf="dokoSettingService.isControlHasError('adres','required',sinavMerkez)">
+						<strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>				
+				</mat-form-field>
+			</div>
+			<div class="col-lg-6 kt-margin-bottom-20-mobile">
+				<mat-form-field class="mat-form-field-fluid">
+					<mat-label>{{'TEXT.sorumlusu' | translate }}</mat-label>
+					<input matInput type="text" placeholder="sorumlusu" formControlName="sorumlusu" />				
+				</mat-form-field>
+			</div>
+			<div class="col-lg-6 kt-margin-bottom-20-mobile">
+				<mat-form-field class="mat-form-field-fluid">
+					<mat-label>{{'TEXT.sinav_saati' | translate }}</mat-label>
+					<input matInput type="time" placeholder="{{'TEXT.sinav_saati' | translate }}"
+			formControlName="sinav_saati" />
+			 <mat-error *ngIf="dokoSettingService.isControlHasError('sinav_saati','required',sinavMerkez)">
+						<strong>{{ 'VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+			
+				</mat-form-field>
+			</div>
+
+			<div class="col-lg-6 kt-margin-bottom-20-mobile">
+				<mat-form-field class="mat-form-field-fluid">
+					<mat-label>{{'TEXT.lokasyon_aciklama' | translate }} </mat-label>
+					<input matInput type="text" placeholder="lokasyon" formControlName="lokasyon" />
+				
+				</mat-form-field>
+			</div>
+		
+
+		
+		</div>
+		<!--end::Action-->
+	</form>
+
+	<div class="rightCrudBtn">
+		<button (click)="submit()" id="kt_login_signin_submit" class="btn btn-primary btn-elevate kt-login__btn-primary"
+			[ngClass]="{'kt-spinner kt-spinner--right kt-spinner--md kt-spinner--light': loading}">{{buttonSave}}
+		</button>
+		<button type="button" mat-raised-button [mat-dialog-close]="data.animal" class="btn pull-right cancbtn">
+			{{"TEXT.CANCEL" | translate }} </button>
+	</div>
+</div>
