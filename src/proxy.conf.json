@@ -3,7 +3,7 @@
     
 
     "/api": {
-       "target": "https://dokoapi.dpu.edu.tr",
+       "target": "ttt",
        "changeOrigin": true,
       "secure":true  ,
       "logLevel": "debug"

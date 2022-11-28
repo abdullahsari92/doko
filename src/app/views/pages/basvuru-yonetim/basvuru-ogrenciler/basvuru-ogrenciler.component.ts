@@ -162,7 +162,7 @@ export class BasvuruOgrencilerComponent implements OnInit {
   // }
 
   customImgCellRendererFunc(params): string {
-    let html = '<img src="https://dokoapi.dpu.edu.tr/' + params.value + '" width="100px" height="100px"/>';
+    let html = '<img src="' + params.value + '" width="100px" height="100px"/>';
     return html;
   }
 
