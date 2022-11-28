@@ -1,6 +1,6 @@
 # Metronic Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.7.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.18.
 
 ## Development server
 
