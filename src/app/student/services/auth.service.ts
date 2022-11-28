@@ -19,19 +19,7 @@ export class AuthService {
 		private dokoApi: DokoSettingsService,
 		private http: HttpClient,
 	) {}
-	/*login(slogin: SloginModel): Observable<any>{
-		slogin.key = sha512(slogin.eposta + slogin.sifre + 'eb73i7fumaenbvn6hbbd8rwabs4wc6qycxyiet68');
-		return this.http.post<any>(this.dokoApi.localapiUrl + 'student/login', slogin);
-	}
-	register(sregister: SregisterModel): Observable<any>{
-		return this.http.post<any>(this.dokoApi.localapiUrl + 'student/register/register', sregister);
-	}
-	updatePass(email: string): Observable<any>{
-		return this.http.post<any>(this.dokoApi.localapiUrl + 'student/student/update_pass', email);
-	}
-	getCountry(): Observable<countryModel[]>{
-		return this.http.post<countryModel[]>(this.dokoApi.localapiUrl + 'student/register/country', '');
-	}*/
+
 	welcome(): Observable<any>{
 		return this.http.post<any>(this.dokoApi.apiUrl + 'welcome', null);
 	}
