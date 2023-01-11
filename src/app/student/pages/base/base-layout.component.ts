@@ -33,15 +33,8 @@ export class BaseLayoutComponent implements OnInit {
 		private langServicee: langService,
 		private baseContService: StudentService
 	) {
-		/*this.baseContService.studentGeneralData()
-			.subscribe(data => {
-				console.log('Base-controller', data);
-			});*/
-
 		if (this.localStorage.getItem('student_data'))
 			this.userData = this.localStorage.getItem('student_data').data.user;
-		//	this.language = this.langServicee.getLang();
-		//	this.changeLang();
 		this.cdr.markForCheck();
 	}
 	ngOnInit(): void {

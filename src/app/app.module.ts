@@ -37,13 +37,16 @@ import * as json from 'highlight.js/lib/languages/json';
 import { InlineSVGModule } from 'ng-inline-svg';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { WelcomeService } from './views/services/welcome.service';
-import { AuthenticationInterceptor } from './authentication-interceptor';
 import { StimulsoftViewerModule } from 'stimulsoft-viewer-angular';
 import { TranslateService } from './core/services/translate.service';
 import { AuthModule } from './student/pages/auth/auth.module';
 import { AdminAuthModule } from './views/pages/auth/adminAuth.module';
 
-// tslint:disable-next-line:class-name
+
+/*
+ABDULLAH SRAI
+*/
+
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 	wheelSpeed: 0.5,
 	swipeEasing: true,
