@@ -328,7 +328,7 @@ export class HazirlikBasvuruComponent implements OnInit {
 				basvuruId: this.sinavVerileri.basvuru_id,
 				dil: this.localStorageService.getItem("language")
 			}
-			var deger = "https://dokoapi.dpu.edu.tr/student/payment/application/" + dataOdeme.token + "/" + dataOdeme.birimUid + "/" + dataOdeme.basvuruId + "/" + dataOdeme.dil;
+			var deger = this.dokoSettingsService.apiUrl + dataOdeme.token + "/" + dataOdeme.birimUid + "/" + dataOdeme.basvuruId + "/" + dataOdeme.dil;
 			this.posOdemeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(deger);
 			console.log('POS', this.posOdemeUrl);
 		}

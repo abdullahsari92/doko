@@ -18,13 +18,6 @@ import { LocalStorageService } from '../../../../core/services/local-storage.ser
 import { BirimYonetimService } from '../../../../views/services/birim_yonetim.service';
 import { AuthModel } from '../../../../core/models/authModel';
 import { YetkiTanimService } from '../../../../views/services/yetki-tanim.service';
-/**
- * ! Just example => Should be removed in development
- */
-// const DEMO_PARAMS = {
-// 	EMAIL: 'abdullah.sari@dpu.edu.tr',
-// 	PASSWORD: '12345'
-// };
 
 @Component({
 	selector: 'kt-login',
